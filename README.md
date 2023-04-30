@@ -50,11 +50,11 @@
 
 ### 3.1 Windows: <br/>
 > 3.1.1 With pickle-test.yaml```pickle.bat -t /path/to/test/pickle-test.yaml -r /path/to/result/folder``` <br/>
-> 3.1.2 Without pickle-test.yaml  <br/>```pickle.bat --http-request --method GET/get --url http://example.com/ --header --accept application/json --content-type application/json  --authorizartion "Bearer 1234" --user-agent "Mozilla/5.0" --request-data /path/to/request-data.yaml --expected-response --status 200 --body /path/to/excpected-body.yaml --result /path/to/result/folder -r /path/to/result/folder``` <br/>
+> 3.1.2 Without pickle-test.yaml  <br/>```pickle.bat --request --method GET/get --url http://example.com/ --header --accept application/json --content-type application/json  --authorizartion "Bearer 1234" --user-agent "Mozilla/5.0" --request-data /path/to/request-data.yaml --expected-response --status 200 --body /path/to/excpected-body.yaml --result /path/to/result/folder -r /path/to/result/folder``` <br/>
 
 ### 3.2 Linux: <br/>
 > 3.2.1 With pickle-test.yaml```pickle.sh -t /path/to/test/pickle-test.yaml -r /path/to/result/folder``` <br/>
-> 3.2.2 Without pickle-test.yaml <br/>```pickle.sh --http-request --method GET/get --url http://example.com/ --header --accept application/json --content-type application/json  --authorizartion "Bearer 1234" --user-agent "Mozilla/5.0" --request-data /path/to/request-data.yaml --expected-response --status 200 --body /path/to/excpected-body.yaml --result /path/to/result/folder -r /path/to/result/folder``` <br/>
+> 3.2.2 Without pickle-test.yaml <br/>```pickle.sh --request --method GET/get --url http://example.com/ --header --accept application/json --content-type application/json  --authorizartion "Bearer 1234" --user-agent "Mozilla/5.0" --request-data /path/to/request-data.yaml --expected-response --status 200 --body /path/to/excpected-body.yaml --result /path/to/result/folder -r /path/to/result/folder``` <br/>
 
 
 ## 4. Pickle TechStack
@@ -67,9 +67,9 @@
 ## 5. How to test endpoints ?
 > 1. Create a new folder which will contain your test files. <br/>
 > 2. Create a new ```pickle-test``` file with the extension ``` .json / .yaml / .xml ``` <br/>
-> 3. Your pickle file should be contain ```http-request, header, request-data,  excpected-response``` fields. <br/>
->> 3.1. Of course , you can write path to already existing file which contains field data. For example you can have ```http-request.json``` file
->> which contain already defined elements. <br/> Notes: ```http-request``` and another pre-defined files should have equal extension as a pickle file <br/>
+> 3. Your pickle file should be contain ```request, header, request-data,  excpected-response``` fields. <br/>
+>> 3.1. Of course , you can write path to already existing file which contains field data. For example you can have ```request.json``` file
+>> which contain already defined elements. <br/> Notes: ```request``` and another pre-defined files should have equal extension as a pickle file <br/>
 > 4. When you run the Pickle, you should specify the path to the pickle file and the path to the folder where the result will be saved. <br/>
 > 5. After the test is completed, you will see the result in the specified folder. pickle-success-report.yaml and pickle-failed-report.yaml will be created in your pre-defined path. <br/>
 
@@ -78,7 +78,7 @@
 #### 6.1.1 YAML
 ```
    rest-request:
-      http-request:
+      request:
             method: GET
             url: https://example.com/hello
       header:
@@ -99,7 +99,7 @@
 ### 6.1.2 JSON
 ```
    "rest-request": {
-       "http-request": {
+       "request": {
            "method": "GET",
            "url": "https://example.com/hello"
        },
@@ -128,10 +128,10 @@
 ### 6.1.3 XML
 ```
 <rest-request>
-    <http-request>
+    <request>
         <method>GET</method>
         <url>https://example.com/hello</url>
-    </http-request>
+    </request>
     <header>
         <Accept>application/json</Accept>
         <Content-Type>application/json</Content-Type>
@@ -157,43 +157,46 @@
 ## 6.2 SOAP
 ### 6.2.1 YAML
 ```
-soap-request:
-  url: https://example.com/soap-api
-  soap-action: http://example.com/GetUserData
-  headers:
-    Content-Type: text/xml;charset=UTF-8
-    Authorization: "Bearer 1234567890"
-    User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
-  body: |
-    <?xml version="1.0" encoding="UTF-8"?>
-    <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-      <soap:Body>
-        <GetUserDataRequest xmlns="http://example.com/">
-          <UserId>123456</UserId>
-        </GetUserDataRequest>
-      </soap:Body>
-    </soap:Envelope>
-  expected-response:
-    status: 200
-    headers:
-      Content-Type: text/xml;charset=UTF-8
-    body: |
-      <?xml version="1.0" encoding="UTF-8"?>
-      <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-        <soap:Body>
-          <GetUserDataResponse xmlns="http://example.com/">
-            <UserName>John Doe</UserName>
-            <Email>john.doe@example.com</Email>
-          </GetUserDataResponse>
-        </soap:Body>
-      </soap:Envelope>
+soap:
+     request:
+       url: https://example.com/soap-api
+       soap-action: http://example.com/GetUserData
+     headers:
+       Content-Type: text/xml;charset=UTF-8
+       Authorization: "Bearer 1234567890"
+       User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+     body: |
+       <?xml version="1.0" encoding="UTF-8"?>
+       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+         <soap:Body>
+           <GetUserDataRequest xmlns="http://example.com/">
+             <UserId>123456</UserId>
+           </GetUserDataRequest>
+         </soap:Body>
+       </soap:Envelope>
+     expected-response:
+       status: 200
+       headers:
+         Content-Type: text/xml;charset=UTF-8
+       body: |
+         <?xml version="1.0" encoding="UTF-8"?>
+         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+           <soap:Body>
+             <GetUserDataResponse xmlns="http://example.com/">
+               <UserName>John Doe</UserName>
+               <Email>john.doe@example.com</Email>
+             </GetUserDataResponse>
+           </soap:Body>
+         </soap:Envelope>
 ```
 ### 6.2.2 JSON
 ```
 {
-  "soap-request": {
-    "url": "https://example.com/soap-api",
-    "soap-action": "http://example.com/GetUserData",
+  "soap": {
+   "request": {
+      "url": "https://example.com/soap-api",
+      "soap-action": "http://example.com/GetUserData",
+    },
     "headers": {
       "Content-Type": "text/xml;charset=UTF-8",
       "Authorization": "Bearer 1234567890",
@@ -213,9 +216,11 @@ soap-request:
 ```
 ### 6.2.3 XML
 ```
-<soap-request>
-  <url>https://example.com/soap-api</url>
-  <soap-action>http://example.com/GetUserData</soap-action>
+<soap>
+   <request>
+     <url>https://example.com/soap-api</url>
+     <soap-action>http://example.com/GetUserData</soap-action>
+   </request>
   <headers>
     <Content-Type>text/xml;charset=UTF-8</Content-Type>
     <Authorization>Bearer 1234567890</Authorization>
@@ -234,14 +239,14 @@ soap-request:
 
 
 ## 7. How to import pre-defined files ?
-> For example, you have a ```http-request / header / request-data / excpected-response ``` file, with ```.json / .yaml / .xml``` file extension, which contains ```http-request``` field. <br/>
+> For example, you have a ```request / header / request-data / excpected-response ``` file, with ```.json / .yaml / .xml``` file extension, which contains ```request``` field. <br/>
 > You can import this file to your pickle file by using ```import``` field. <br/>
 > ```import``` field should contain path to your file. <br/>
 
 #### 7.1 YAML:
 ```
-http_request:
-    import: /path/to/http-request.yaml
+request:
+    import: /path/to/request.yaml
 header:
     import: /path/to/header.yaml
 request-data:
@@ -252,8 +257,8 @@ expected-response:
 
 #### 7.2 JSON:
 ```
-"http-request": {
-    "import": "/path/to/http-request.json"
+"request": {
+    "import": "/path/to/request.json"
 },
 "header": {
     "import": "/path/to/header.json"
@@ -268,9 +273,9 @@ expected-response:
 
 #### 7.3 XML:
 ```
-<http-request>
-    <import>/path/to/http-request.xml</import>
-</http-request>
+<request>
+    <import>/path/to/request.xml</import>
+</request>
 <header>
     <import>/path/to/header.xml</import>
 </header>
