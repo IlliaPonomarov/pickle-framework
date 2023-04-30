@@ -1,5 +1,5 @@
 # The Pickle
-
+![Logo](./img/logo.png)
 ## Table of Contents
 1. [Pickle Philosophy](#1-pickle-philosophy)
 2. [Pickle Installation](#2-pickle-installation)
