@@ -77,7 +77,7 @@
 ### 6.1 REST
 #### 6.1.1 YAML
 ```
-   rest-request:
+   rest:
       request:
             method: GET
             url: https://example.com/hello
@@ -98,7 +98,7 @@
 
 ### 6.1.2 JSON
 ```
-   "rest-request": {
+   "rest": {
        "request": {
            "method": "GET",
            "url": "https://example.com/hello"
@@ -127,7 +127,7 @@
 
 ### 6.1.3 XML
 ```
-<rest-request>
+<rest>
     <request>
         <method>GET</method>
         <url>https://example.com/hello</url>
@@ -151,7 +151,7 @@
             <surname>Doe</surname>
         </body>
     </expected-response>
-</rest-request>
+</rest>
 ```
 
 ## 6.2 SOAP
