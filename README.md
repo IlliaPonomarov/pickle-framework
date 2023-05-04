@@ -24,7 +24,7 @@
     1. [YAML](#71-yaml)
     2. [JSON](#72-json)
     3. [XML](#73-xml)
-8. [Test Results](#8-test-results)
+8. [com.pickle.Test Results](#8-test-results)
 9. [Maven Dependencies](#9-maven-dependencies)
 
 
@@ -287,7 +287,7 @@ expected-response:
 </expected-response>
 ```
 
-## 8. Test Results
+## 8. com.pickle.Test Results
 > Results of your tests will be saved in ```/your/path/to/folder``` folder. <br/>
 > pickle-folder will contain ```/pickle-reports/pickle-failed-report.yaml``` file which will contain all information about your failed tests. <br/>
 > pickle-folder will contain ```/pickle-reports/pickle-success-report.json``` file which will contain all information about your success tests. <br/>
