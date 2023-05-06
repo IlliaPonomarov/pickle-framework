@@ -50,11 +50,11 @@
 
 ### 3.1 Windows: <br/>
 > 3.1.1 With pickle-test.yaml```pickle.bat -t /path/to/test/pickle-test.yaml -r /path/to/result/folder``` <br/>
-> 3.1.2 Without pickle-test.yaml  <br/>```pickle.bat --request --method GET/get --url http://example.com/ --header --accept application/json --content-type application/json  --authorizartion "Bearer 1234" --user-agent "Mozilla/5.0" --request-data /path/to/request-data.yaml --expected-response --status 200 --body /path/to/excpected-body.yaml --result /path/to/result/folder -r /path/to/result/folder``` <br/>
+> 3.1.2 Without pickle-test.yaml  <br/>```pickle.bat --request --method GET/get --url http://example.com/ --header --accept application/json --content-type application/json  --authorizartion "Bearer 1234" --user-agent "Mozilla/5.0"  --expected-response --status 200 --body /path/to/excpected-body.yaml --result /path/to/result/folder -r /path/to/result/folder``` <br/>
 
 ### 3.2 Linux: <br/>
 > 3.2.1 With pickle-test.yaml```pickle.sh -t /path/to/test/pickle-test.yaml -r /path/to/result/folder``` <br/>
-> 3.2.2 Without pickle-test.yaml <br/>```pickle.sh --request --method GET/get --url http://example.com/ --header --accept application/json --content-type application/json  --authorizartion "Bearer 1234" --user-agent "Mozilla/5.0" --request-data /path/to/request-data.yaml --expected-response --status 200 --body /path/to/excpected-body.yaml --result /path/to/result/folder -r /path/to/result/folder``` <br/>
+> 3.2.2 Without pickle-test.yaml <br/>```pickle.sh --request --method GET/get --url http://example.com/ --header --accept application/json --content-type application/json  --authorizartion "Bearer 1234" --user-agent "Mozilla/5.0"  --expected-response --status 200 --body /path/to/excpected-body.yaml --result /path/to/result/folder -r /path/to/result/folder``` <br/>
 
 
 ## 4. Pickle TechStack
@@ -78,79 +78,82 @@
 #### 6.1.1 YAML
 ```
    rest:
-      request:
-            method: GET
-            url: https://example.com/hello
-      header:
-            Accept: application/json
-            Content-Type: application/json
-            Authorization: "Bearer 1234567890" ( Optional )
-            User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" ( Optional )
-      request-data ( Optional ):
-            name: "John"
-            surname: "Doe"
-      expected-response:
-               status: 200
-               body:
-                   name: "John"
-                   surname: "Doe"
+        requestName:
+            request:
+                  method: GET
+                  url: https://example.com/hello
+                  body: /path/to/body.yaml ( Optional )
+                  params: 
+                        name: "John"
+            header:
+                  Accept: application/json
+                  Content-Type: application/json
+                  Authorization: "Bearer 1234567890" ( Optional )
+                  User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" ( Optional )
+            expected-response:
+                     status: 200
+                     body:
+                         name: "John"
+                         surname: "Doe"
 ```
 
 ### 6.1.2 JSON
 ```
    "rest": {
-       "request": {
-           "method": "GET",
-           "url": "https://example.com/hello"
-       },
-       "header": {
-           "Accept": "application/json",
-           "Content-Type": "application/json",
-           "Authorization": "Bearer 1234567890",
-           "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
-       },
-       
-       "request-data": {
-           "name": "John",
-           "surname": "Doe"
-       },
-       
-       "expected-response": {
-           "status": 200,
-           "body": {
-               "name": "John",
-               "surname": "Doe"
-           }
-       }
+      "requestName": {
+             "request": {
+                 "method": "GET",
+                 "url": "https://example.com/hello"
+                 "body": "/path/to/body.yaml"
+                 "params": {
+                     "name": "John"
+                 }
+             },
+             "header": {
+                 "Accept": "application/json",
+                 "Content-Type": "application/json",
+                 "Authorization": "Bearer 1234567890",
+                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+             },
+             "expected-response": {
+                 "status": 200,
+                 "body": {
+                     "name": "John",
+                     "surname": "Doe"
+                 }
+             }
+          }
     }
 ```
 
 ### 6.1.3 XML
 ```
 <rest>
-    <request>
-        <method>GET</method>
-        <url>https://example.com/hello</url>
-    </request>
-    <header>
-        <Accept>application/json</Accept>
-        <Content-Type>application/json</Content-Type>
-        <Authorization>Bearer 1234567890</Authorization>
-        <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
-    </header>
-    
-    <request-data>
-        <name>John</name>
-        <surname>Doe</surname>
-    </request-data>
-    
-    <expected-response>
-        <status>200</status>
-        <body>
-            <name>John</name>
-            <surname>Doe</surname>
-        </body>
-    </expected-response>
+   <requestName>
+          <request>
+              <method>GET</method>
+              <url>https://example.com/hello</url>
+              <body>/path/to/body.yaml</body>
+               <params>
+                    <name>John</name>
+               </params>
+          </request>
+          <header>
+              <Accept>application/json</Accept>
+              <Content-Type>application/json</Content-Type>
+              <Authorization>Bearer 1234567890</Authorization>
+              <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
+          </header>
+
+          
+          <expected-response>
+              <status>200</status>
+              <body>
+                  <name>John</name>
+                  <surname>Doe</surname>
+              </body>
+          </expected-response>
+   </requestName>
 </rest>
 ```
 
@@ -158,58 +161,60 @@
 ### 6.2.1 YAML
 ```
 soap:
-     request:
-       url: https://example.com/soap-api
-       soap-action: http://example.com/GetUserData
-     headers:
-       Content-Type: text/xml;charset=UTF-8
-       Authorization: "Bearer 1234567890"
-       User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
-     body: |
-       <?xml version="1.0" encoding="UTF-8"?>
-       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-         <soap:Body>
-           <GetUserDataRequest xmlns="http://example.com/">
-             <UserId>123456</UserId>
-           </GetUserDataRequest>
-         </soap:Body>
-       </soap:Envelope>
-     expected-response:
-       status: 200
-       headers:
-         Content-Type: text/xml;charset=UTF-8
-       body: |
-         <?xml version="1.0" encoding="UTF-8"?>
-         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-           <soap:Body>
-             <GetUserDataResponse xmlns="http://example.com/">
-               <UserName>John Doe</UserName>
-               <Email>john.doe@example.com</Email>
-             </GetUserDataResponse>
-           </soap:Body>
-         </soap:Envelope>
+   requestName:
+        request:
+          url: https://example.com/soap-api
+          soap-action: http://example.com/GetUserData
+          body: /path/to/body.xml
+          params:
+               UserId: "123456"
+          
+        headers:
+          Content-Type: text/xml;charset=UTF-8
+          Authorization: "Bearer 1234567890"
+          User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+        
+        expected-response:
+          status: 200
+          headers:
+            Content-Type: text/xml;charset=UTF-8
+          body: |
+            <?xml version="1.0" encoding="UTF-8"?>
+            <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+              <soap:Body>
+                <GetUserDataResponse xmlns="http://example.com/">
+                  <UserName>John Doe</UserName>
+                  <Email>john.doe@example.com</Email>
+                </GetUserDataResponse>
+              </soap:Body>
+            </soap:Envelope>
 ```
 ### 6.2.2 JSON
 ```
 {
   "soap": {
-   "request": {
-      "url": "https://example.com/soap-api",
-      "soap-action": "http://example.com/GetUserData",
-    },
-    "headers": {
-      "Content-Type": "text/xml;charset=UTF-8",
-      "Authorization": "Bearer 1234567890",
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
-    },
-    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"><soap:Body><GetUserDataRequest xmlns=\"http://example.com/\"><UserId>123456</UserId></GetUserDataRequest></soap:Body></soap:Envelope>",
-    "expected-response": {
-      "status": 200,
-      "headers": {
-        "Content-Type": "text/xml;charset=UTF-8"
-      },
-      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"><soap:Body><GetUserDataResponse xmlns=\"http://example.com/\"><UserName>John Doe</UserName><Email>john.doe@example.com</Email></GetUserDataResponse></soap:Body></soap:Envelope>"
-    }
+     "requestName": {
+         "request": {
+            "url": "https://example.com/soap-api",
+            "soap-action": "http://example.com/GetUserData",
+            "body": /path/to/body.json
+            "params": {
+              "UserId": "123456"
+            }
+          },
+          "headers": {
+            "Content-Type": "text/xml;charset=UTF-8",
+            "Authorization": "Bearer 1234567890",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+          },
+          "expected-response": {
+            "status": 200,
+            "headers": {
+              "Content-Type": "text/xml;charset=UTF-8"
+            },
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"><soap:Body><GetUserDataResponse xmlns=\"http://example.com/\"><UserName>John Doe</UserName><Email>john.doe@example.com</Email></GetUserDataResponse></soap:Body></soap:Envelope>"
+          }
+       }
   }
 }
 
@@ -217,29 +222,35 @@ soap:
 ### 6.2.3 XML
 ```
 <soap>
-   <request>
-     <url>https://example.com/soap-api</url>
-     <soap-action>http://example.com/GetUserData</soap-action>
-   </request>
-  <headers>
-    <Content-Type>text/xml;charset=UTF-8</Content-Type>
-    <Authorization>Bearer 1234567890</Authorization>
-    <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
-  </headers>
-  <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><GetUserDataRequest xmlns="http://example.com/"><UserId>123456</UserId></GetUserDataRequest></soap:Body></soap:Envelope>]]></body>
-  <expected-response>
-    <status>200</status>
-    <headers>
-      <Content-Type>text/xml;charset=UTF-8</Content-Type>
-    </headers>
-    <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><GetUserDataResponse xmlns="http://example.com/"><UserName>John Doe</UserName><Email>john.doe@example.com</Email></GetUserDataResponse></soap:Body></soap:Envelope>]]></body>
-  </expected-response>
+    <requestName>
+         <request>
+           <url>https://example.com/soap-api</url>
+           <soap-action>http://example.com/GetUserData</soap-action>
+           <body>/path/to/body.json</body>
+           <params>
+                <UserId>123456</UserId>
+          </params>
+         </request>
+        <headers>
+          <Content-Type>text/xml;charset=UTF-8</Content-Type>
+          <Authorization>Bearer 1234567890</Authorization>
+          <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
+        </headers>
+        <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><GetUserDataRequest xmlns="http://example.com/"><UserId>123456</UserId></GetUserDataRequest></soap:Body></soap:Envelope>]]></body>
+        <expected-response>
+          <status>200</status>
+          <headers>
+            <Content-Type>text/xml;charset=UTF-8</Content-Type>
+          </headers>
+          <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><GetUserDataResponse xmlns="http://example.com/"><UserName>John Doe</UserName><Email>john.doe@example.com</Email></GetUserDataResponse></soap:Body></soap:Envelope>]]></body>
+        </expected-response>
+   </requestName>
 </soap-request>
 ```
 
 
 ## 7. How to import pre-defined files ?
-> For example, you have a ```request / header / request-data / excpected-response ``` file, with ```.json / .yaml / .xml``` file extension, which contains ```request``` field. <br/>
+> For example, you have a ```request / header / excpected-response ``` file, with ```.json / .yaml / .xml``` file extension, which contains ```request``` field. <br/>
 > You can import this file to your pickle file by using ```import``` field. <br/>
 > ```import``` field should contain path to your file. <br/>
 
@@ -249,8 +260,6 @@ request:
     import: /path/to/request.yaml
 header:
     import: /path/to/header.yaml
-request-data:
-    import: /path/to/request-data.yaml
 expected-response:
     import: /path/to/expected-response.yaml
 ```
@@ -263,13 +272,10 @@ expected-response:
 "header": {
     "import": "/path/to/header.json"
 },
-"request-data": {
-    "import": "/path/to/request-data.json"
-},
 "expected-response": {
     "import": "/path/to/expected-response.json"
 }
-```
+```****
 
 #### 7.3 XML:
 ```
@@ -279,9 +285,7 @@ expected-response:
 <header>
     <import>/path/to/header.xml</import>
 </header>
-<request-data>
-    <import>/path/to/request-data.xml</import>
-</request-data>
+
 <expected-response>
     <import>/path/to/expected-response.xml</import>
 </expected-response>
@@ -294,3 +298,30 @@ expected-response:
 
 ## 9. Maven Dependency
 ``` EMPTY ```
+## 10. Pickle Options
+> 1. Basic arguments
+>> 1.1 ```-i``` or ```--input``` - path to your pickle file. <br/>
+>> 1.2 ```-o``` or ```--output``` - path to your folder where you want to save your reports. <br/>
+
+> 2. Header arguments
+>> 2.1 ```-h``` or ```--header``` - using this argument you specify that the arguments after will refer to the header <br/>
+>> 2.2 ```-a``` or ```--accept``` - using to specify the Accept header <br/>
+>> 2.3 ```-c``` or ```--content-type``` - using to specify the Content-Type header <br/>
+>> 2.4 ```-e``` or ```--encoding``` - using to specify the Encoding header <br/>
+>> 2.5 ```-au``` or ```--authorization``` - using to specify the Authorization header <br/>
+>> 2.6 ```-u``` or ```--user-agent``` - using to specify the User-Agent header <br/>
+
+> 3. Request arguments
+>> 3.1 ```-r``` or ```--request``` - using this argument you specify that the arguments after will refer to the request <br/>
+>> 3.2 ```-m``` or ```--method``` - using to specify the request method <br/>
+>> 3.3 ```-u``` or ```--url``` - using to specify the request url <br/>
+>> 3.4 ```-s``` or ```--soap-action``` - using to specify the SOAPAction header <br/>
+>> 3.5 ```-b``` or ```--body``` - using to specify the request body <br/>
+>> 3.6 ```-p``` or ```--params``` - using to specify the request params <br/>
+
+> 4. Expected-response arguments
+>> 4.1 ```-er``` or ```--expected-response``` - using this argument you specify that the arguments after will refer to the expected-response <br/>
+>> 4.2 ```-s``` or ```--status``` - using to specify the expected-response status <br/>
+>> 4.3 ```-em``` or ```--expected-method``` - using to specify the expected-response method <br/>
+>> 4.4 ```-eu``` or ```--expected-url``` - using to specify the expected-response url <br/>
+>> 4.5 ```-eb``` or ```--expected-body``` - using to specify the expected-response body <br/>

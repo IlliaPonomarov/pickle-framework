@@ -13,9 +13,8 @@ public class Pickle {
 
         CommandLine myArgumentParser = MyArgumentParser.build(args);
 
-        // Show all the arguments
-        for (String arg : args) {
-            System.out.println(arg);
+        if ((myArgumentParser.hasOption("i") || myArgumentParser.hasOption("input")) && (myArgumentParser.hasOption("o") || myArgumentParser.hasOption("output"))) {
+            System.out.println("Input");
         }
     }
 }

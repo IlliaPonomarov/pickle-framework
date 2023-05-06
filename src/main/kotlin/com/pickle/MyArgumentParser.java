@@ -2,6 +2,11 @@ package com.pickle;
 
 import org.apache.commons.cli.*;
 
+/**
+ * @author Illia Ponomarov
+ * @version 1.0
+ * The MyArgumentParser class is a class to parse arguments
+ */
 public class MyArgumentParser {
     private final Options options;
 
@@ -46,7 +51,6 @@ public class MyArgumentParser {
         addHeaderArguments();
         addRequestArguments();
         addExpectedRequestArguments();
-        addSoapRequestArguments();
     }
 
     /**
@@ -66,6 +70,7 @@ public class MyArgumentParser {
         addArgument("c", "content-type", "Show content-type header");
         addArgument("au", "authorization", "Show Authorization header");
         addArgument("u", "user-agent", "Show user-agent header");
+        addArgument("e", "encoding", "Show encoding header");
     }
 
     /**
@@ -75,7 +80,9 @@ public class MyArgumentParser {
         addArgument("r", "request", "Show request");
         addArgument("m", "method", "Show http method");
         addArgument("u", "url", "Show url");
-        addArgument("d", "data", "Show request data");
+        addArgument("b", "body", "Show request body");
+        addArgument("s","soap-action", "Show SOAP action");
+        addArgument("p", "params", "Show request params");
     }
 
     /**
@@ -85,16 +92,13 @@ public class MyArgumentParser {
         addArgument("er", "expected-request", "Show expected request");
         addArgument("em", "expected-method", "Show expected http method");
         addArgument("eu", "expected-url", "Show expected url");
-        addArgument("ed", "expected-data", "Show expected request data");
+        addArgument("eb", "expected-body", "Show expected request body");
         addArgument("s", "status", "Show status");
     }
 
     /**
      * The addSoapRequestArguments method for MyArgumentParser
      */
-    private void addSoapRequestArguments() {
-        addArgument("ac", "action", "Show SOAP action");
-    }
 
     /**
      * The addArgument method for MyArgumentParser
