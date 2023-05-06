@@ -1,0 +1,40 @@
+<soap>
+    <requestName>
+        <request>
+            <url>https://example.com/soap-api</url>
+            <soap-action>http://example.com/GetUserData</soap-action>
+            <body>/path/to/body.json</body>
+            <params>
+                <UserId>123456</UserId>
+            </params>
+        </request>
+        <headers>
+            <Content-Type>text/xml;charset=UTF-8</Content-Type>
+            <Authorization>Bearer 1234567890</Authorization>
+            <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
+        </headers>
+        <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+      <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+        <soap:Body>
+          <GetUserDataRequest xmlns="http://example.com/">
+            <UserId>123456</UserId>
+          </GetUserDataRequest>
+        </soap:Body>
+      </soap:Envelope>]]></body>
+        <expected-response>
+            <status>200</status>
+            <headers>
+                <Content-Type>text/xml;charset=UTF-8</Content-Type>
+            </headers>
+            <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+          <soap:Body>
+            <GetUserDataResponse xmlns="http://example.com/">
+              <UserName>John Doe</UserName>
+              <Email>john.doe@example.com</Email>
+            </GetUserDataResponse>
+          </soap:Body>
+        </soap:Envelope>]]></body>
+        </expected-response>
+    </requestName>
+</soap>

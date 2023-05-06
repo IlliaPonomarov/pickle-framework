@@ -245,7 +245,7 @@ soap:
           <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><GetUserDataResponse xmlns="http://example.com/"><UserName>John Doe</UserName><Email>john.doe@example.com</Email></GetUserDataResponse></soap:Body></soap:Envelope>]]></body>
         </expected-response>
    </requestName>
-</soap-request>
+</soap>
 ```
 
 

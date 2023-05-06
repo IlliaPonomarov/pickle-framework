@@ -1,0 +1,25 @@
+<rest>
+    <requestName>
+        <request>
+            <method>GET</method>
+            <url>https://example.com/hello</url>
+            <body>/path/to/body.yaml</body>
+            <params>
+                <name>John</name>
+            </params>
+        </request>
+        <header>
+            <Accept>application/json</Accept>
+            <Content-Type>application/json</Content-Type>
+            <Authorization>Bearer 1234567890</Authorization>
+            <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
+        </header>
+        <expected-response>
+            <status>200</status>
+            <body>
+                <name>John</name>
+                <surname>Doe</surname>
+            </body>
+        </expected-response>
+    </requestName>
+</rest>

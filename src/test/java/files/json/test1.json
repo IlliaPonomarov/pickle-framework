@@ -1,0 +1,26 @@
+{
+  "soap": {
+    "requestName": "Get User Data",
+    "request": {
+      "url": "https://api.example.com/soap-api",
+      "soap-action": "http://example.com/GetUserData",
+      "body": "/path/to/body.json",
+      "params": {
+        "UserId": 123456
+      }
+    },
+    "headers": {
+      "Content-Type": "text/xml;charset=UTF-8",
+      "Authorization": "Bearer 1234567890",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+    },
+
+    "expected-response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/xml;charset=UTF-8"
+      },
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"><soap:Body><GetUserDataResponse xmlns=\"http://example.com/\"><UserName>John Doe</UserName><Email>john.doe@example.com</Email></GetUserDataResponse></soap:Body></soap:Envelope>"
+    }
+  }
+}

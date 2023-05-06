@@ -1,0 +1,22 @@
+{
+  "requestName": "Get User",
+  "request": {
+    "method": "GET",
+    "url": "https://api.example.com/user/123",
+    "params": {
+      "fields": ["name", "email"]
+    }
+  },
+  "header": {
+    "Authorization": "Bearer 1234567890",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)",
+    "Accept": "application/json"
+  },
+  "expected-response": {
+    "status": 200,
+    "body": {
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    }
+  }
+}
