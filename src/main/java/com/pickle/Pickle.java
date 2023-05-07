@@ -1,5 +1,6 @@
 package com.pickle;
 import com.pickle.parsers.FileParser;
+import com.pickle.services.ArgsService;
 import com.pickle.services.FileService;
 import com.pickle.utility.MyLogger;
 import org.apache.commons.cli.CommandLine;
@@ -14,36 +15,38 @@ public class Pickle {
 
     public static void main(String[] args) {
         CommandLine myArgumentParser;
-        String inputPath = "C:\\Users\\hp\\IdeaProjects\\pickle-framework\\src\\test\\java\\files\\yaml\\test1.yaml";
+        String inputPath = "";
         String outputPath = "";
+        ArgsService argsService;
         Optional<File[]> inputFiles;
         FileService fileService = new FileService();
 
-//        if (args.length == 0) {
-//            MyLogger.logger.error("No arguments provided");
-//            System.exit(1);
-//        }
-
+        if (args.length == 0) {
+            MyLogger.logger.error("No arguments provided");
+            System.exit(1);
+        }
 
         MyLogger.logger.info("Starting Pickle ...");
 
-
-
         myArgumentParser = MyArgumentParser.build(args);
+        argsService = new ArgsService(myArgumentParser);
 
-        if ((myArgumentParser.hasOption("i") || myArgumentParser.hasOption("input")) && (myArgumentParser.hasOption("o") || myArgumentParser.hasOption("output"))) {
-            System.out.println("Input");
-            inputFiles = Optional.ofNullable(new File(inputPath).listFiles());
+        myArgumentParser.getOptionValue("i");
 
-            if (inputFiles.isEmpty()) {
-                MyLogger.logger.error("No files found in the input directory");
-                System.exit(1);
+        try {
+            if (argsService.hasInputAndOutputPath()) {
+                MyLogger.logger.info(String.format("INPUT PATH: %s", myArgumentParser.getOptionValue("i")));
+                MyLogger.logger.info(String.format("OUTPUT PATH: %s", myArgumentParser.getOptionValue("o")));
+                inputFiles = Optional.ofNullable(new File(inputPath).listFiles());
+
+                Arrays.stream(inputFiles.get()).forEach(file -> {
+                    FileParser fileParser = new FileParser(file.getAbsolutePath(), "outputPath");
+                    MyLogger.logger.info(fileParser.getInputExtensionType().toString());
+                });
             }
-
-            Arrays.stream(inputFiles.get()).forEach(file -> {
-                FileParser fileParser = new FileParser(file.getAbsolutePath(), "outputPath");
-                MyLogger.logger.info(fileParser.getInputExtensionType().toString());
-            });
+        } catch (NullPointerException e) {
+            MyLogger.logger.error("No input or output path provided");
+            System.exit(1);
         }
     }
 }
