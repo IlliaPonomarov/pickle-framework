@@ -1,10 +1,11 @@
-package com.pickle.utility.enums;
+package com.pickle.utility;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class MyLogger {
-    private final static Logger LOGGER = LoggerFactory.getLogger(MyLogger.class);
+    public final static Logger logger = LogManager.getLogger();
 
 }

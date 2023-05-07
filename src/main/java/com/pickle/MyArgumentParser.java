@@ -1,5 +1,6 @@
 package com.pickle;
 
+import com.pickle.utility.MyLogger;
 import org.apache.commons.cli.*;
 
 /**
@@ -30,6 +31,7 @@ public class MyArgumentParser {
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd = null;
+        MyLogger.logger.info("Parsing arguments ...");
 
         try {
             cmd = parser.parse(new MyArgumentParser().options, args);
