@@ -1,5 +1,5 @@
 # The Pickle
-![Logo](./img/logo.png)
+![Logo](./img/logo2.png)
 ## Table of Contents
 1. [Pickle Philosophy](#1-pickle-philosophy)
 2. [Pickle Installation](#2-pickle-installation)
@@ -24,8 +24,8 @@
     1. [YAML](#71-yaml)
     2. [JSON](#72-json)
     3. [XML](#73-xml)
-8. [com.pickle.Test Results](#8-test-results)
-9. [Maven Dependencies](#9-maven-dependencies)
+8. [Maven Dependencies](#9-maven-dependencies)
+9. [Pickle Options](#10-pickle-options)
 
 
 ## 1. Pickle Philosophy

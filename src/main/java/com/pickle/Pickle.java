@@ -14,6 +14,17 @@ import java.util.Optional;
 public class Pickle {
 
     public static void main(String[] args) {
+
+        System.out.println("\n" +
+                "\033[32m" +
+                "██████╗ ██╗ ██████╗██╗  ██╗██╗     ███████╗\n" +
+                "██╔══██╗██║██╔════╝██║ ██╔╝██║     ██╔════╝\n" +
+                "██████╔╝██║██║     █████╔╝ ██║     █████╗  \n" +
+                "██╔═══╝ ██║██║     ██╔═██╗ ██║     ██╔══╝  \n" +
+                "██║     ██║╚██████╗██║  ██╗███████╗███████╗\n" +
+                "╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝\n" +
+                "                                           \n" +
+                "\033[0m");
         CommandLine myArgumentParser;
         String inputPath = "";
         String outputPath = "";
