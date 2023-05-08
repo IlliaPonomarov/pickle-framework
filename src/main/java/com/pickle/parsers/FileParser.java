@@ -3,6 +3,7 @@ package com.pickle.parsers;
 import com.pickle.services.FileService;
 import com.pickle.utility.MyLogger;
 import com.pickle.utility.enums.ExtensionType;
+import org.springframework.stereotype.Service;
 
 import javax.imageio.IIOException;
 import java.io.File;
@@ -11,16 +12,32 @@ import java.nio.file.Path;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+/**
+ * The InputNotFoundException class for the input path
+ * @version 1.0
+ * @since 2023-05-07
+ * @author Illia Ponomarov
+ */
+
+@Service
 public class FileParser {
     private String inputPath;
     private String outputPath;
     private String extension;
 
+    public FileParser() {
+
+    }
+
+    /**
+     * The FileParser constructor
+     * @param inputPath the input path
+     * @param outputPath the output path
+     */
     public FileParser(String inputPath, String outputPath) {
         this.inputPath = inputPath;
         this.outputPath = outputPath;
     }
-
 
 
     public String getInputFileName() {
@@ -59,6 +76,11 @@ public class FileParser {
         return getFileNameWithoutExtension(this.outputPath);
     }
 
+    /**
+     * The getFileNameWithoutExtension method
+     * @param path the path
+     * @return String
+     */
     public String getFileNameWithoutExtension(String path) {
         String fileName = getFileName(path);
         return fileName.substring(0, fileName.lastIndexOf("."));
@@ -91,6 +113,10 @@ public class FileParser {
         return new File(path).exists();
     }
 
+    /**
+     * The getExtension method
+     * @return String
+     */
 
     public String getInputPath() {
         return inputPath;
@@ -104,12 +130,9 @@ public class FileParser {
         return extension;
     }
 
-
-
     public void setExtension(String extension) {
         this.extension = extension;
     }
-
 
     public void setInputPath(String inputPath) {
         this.inputPath = inputPath;

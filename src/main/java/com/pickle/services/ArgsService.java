@@ -6,6 +6,8 @@ import com.pickle.utility.exceptions.argumentsExceptions.InputOrOutputNotFoundEx
 import com.pickle.utility.exceptions.argumentsExceptions.InputNotFoundException;
 import com.pickle.utility.exceptions.argumentsExceptions.OutputNotFoundException;
 import org.apache.commons.cli.CommandLine;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
@@ -15,9 +17,10 @@ import java.util.Optional;
  * @author Illia Ponomarov
  * @since 2023-05-07
  */
+@Service
 public class ArgsService {
 
-    private final CommandLine myArgumentParser;
+    private CommandLine myArgumentParser;
 
     public ArgsService() {
         this.myArgumentParser = null;
@@ -27,6 +30,10 @@ public class ArgsService {
         this.myArgumentParser = myArgumentParser;
     }
 
+    /**
+     * The hasInputAndOutputPath method for ArgsService
+     * @return boolean value
+     */
     public boolean hasInputAndOutputPath(){
         String input = myArgumentParser.getOptionValue("i");
         String output = myArgumentParser.getOptionValue("o");
@@ -36,6 +43,8 @@ public class ArgsService {
 
     /**
      * The hasInputAndOutputPath method for ArgsService
+     * @param input the input path
+     * @param output the output path
      * @return boolean value
      */
 
@@ -56,6 +65,7 @@ public class ArgsService {
 
     /**
      * The hasInputPath method for ArgsService
+     * @param input the input path
      * @return boolean value
      */
 
@@ -74,6 +84,7 @@ public class ArgsService {
 
     /**
      * The hasOutputPath method for ArgsService
+     * @param output the output path
      * @return boolean value
      */
 
@@ -89,13 +100,38 @@ public class ArgsService {
         return true;
     }
 
+    /**
+     * The getInputPath method for ArgsService
+     * @return the input path
+     */
     public String getInputPath() {
         return myArgumentParser.getOptionValue("i");
     }
 
+    /**
+     * The getOutputPath method for ArgsService
+     * @return the output path
+     */
     public String getOutputPath() {
         return myArgumentParser.getOptionValue("o");
     }
+
+    /**
+     * The getMyArgumentParser method for ArgsService
+     * @return the command line
+     */
+    public CommandLine getMyArgumentParser() {
+        return myArgumentParser;
+    }
+
+    /**
+     * The setMyArgumentParser method for ArgsService
+     * @param myArgumentParser the command line
+     */
+    public void setMyArgumentParser(CommandLine myArgumentParser) {
+        this.myArgumentParser = myArgumentParser;
+    }
+
 
 
 }

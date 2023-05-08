@@ -2,32 +2,49 @@ package com.pickle.services;
 
 import com.pickle.utility.Directory;
 import com.pickle.utility.MyLogger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+/**
+ * The DirectoryService class for the directory service
+ * @version 1.0
+ * @since 2023-05-08
+ * @author Illia Ponomarov
+ * @see com.pickle.utility.Directory
+ * @see com.pickle.utility.MyLogger
+ */
+@Service
 public class DirectoryService {
 
         private String path;
 
-        public DirectoryService(String path) {
-                this.path = path;
+        @Autowired
+        public DirectoryService() {
         }
 
+        /*
+         * Method @method createOutputDirectoryStructure is method for creating the output ( test case ) directory structure.
+         */
         public boolean createOutputDirectoryStructure() {
                 File outputDirectory = new File(this.path);
 
+                // The root output directory
                 File rootOutputDirectory = new File(this.path + "\\" + Directory.ROOT_OUTPUT_DIRECTORY);
                 String comparePath = rootOutputDirectory.getPath() + "\\" +Directory.COMPARE_DIRECTORY;
                 String logsPath = rootOutputDirectory.getAbsolutePath() + "\\" + Directory.LOGS_DIRECTORY;
 
                 String[] outputDirectoryStructure = new String[]{rootOutputDirectory.getAbsolutePath(), comparePath, logsPath};
 
+                // Delete the output directory if it already exists
                 if (rootOutputDirectory.exists())
                         deleteDirectory(rootOutputDirectory);
 
+                // Create the output directory structure
                 try {
                         IntStream.range(0, outputDirectoryStructure.length).forEach(index -> {
                                 File directory = new File(outputDirectoryStructure[index]);
@@ -38,6 +55,7 @@ public class DirectoryService {
                         return false;
                 }
 
+                // Check if the output directory structure was created successfully
                 if (!outputDirectory.isDirectory()){
                         MyLogger.logger.error("The output path is not a directory");
                         return false;
@@ -47,6 +65,9 @@ public class DirectoryService {
                 return true;
         }
 
+        /*
+            * Method @method createDirectory is method for creating the directory.
+         */
         public boolean createDirectory(File directory) {
                 if (directory.exists())
                         this.deleteDirectory(directory);
@@ -76,5 +97,9 @@ public class DirectoryService {
                 MyLogger.logger.error("Failed to delete the output directory");
 
                 return false;
+        }
+
+        public void setPath(String path) {
+                this.path = path;
         }
 }
