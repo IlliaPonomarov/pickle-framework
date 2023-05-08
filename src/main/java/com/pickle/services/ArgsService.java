@@ -6,6 +6,8 @@ import com.pickle.utility.exceptions.argumentsExceptions.InputOrOutputNotFoundEx
 import com.pickle.utility.exceptions.argumentsExceptions.InputNotFoundException;
 import com.pickle.utility.exceptions.argumentsExceptions.OutputNotFoundException;
 import org.apache.commons.cli.CommandLine;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
@@ -15,9 +17,10 @@ import java.util.Optional;
  * @author Illia Ponomarov
  * @since 2023-05-07
  */
+@Service
 public class ArgsService {
 
-    private final CommandLine myArgumentParser;
+    private CommandLine myArgumentParser;
 
     public ArgsService() {
         this.myArgumentParser = null;
@@ -96,6 +99,15 @@ public class ArgsService {
     public String getOutputPath() {
         return myArgumentParser.getOptionValue("o");
     }
+
+    public CommandLine getMyArgumentParser() {
+        return myArgumentParser;
+    }
+
+    public void setMyArgumentParser(CommandLine myArgumentParser) {
+        this.myArgumentParser = myArgumentParser;
+    }
+
 
 
 }

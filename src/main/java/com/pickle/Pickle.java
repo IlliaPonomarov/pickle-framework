@@ -5,7 +5,10 @@ import com.pickle.services.DirectoryService;
 import com.pickle.services.FileService;
 import com.pickle.utility.MyLogger;
 import org.apache.commons.cli.CommandLine;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
@@ -16,7 +19,25 @@ import java.util.Optional;
 @SpringBootApplication
 public class Pickle implements CommandLineRunner {
 
+    private final ArgsService argsService;
+
+    private final FileService fileService;
+
+    private final DirectoryService directoryService;
+
+    @Autowired
+    public Pickle(ArgsService argsService, FileService fileService, DirectoryService directoryService) {
+        this.argsService = argsService;
+        this.fileService = fileService;
+        this.directoryService = directoryService;
+    }
+
     public static void main(String... args) {
+        SpringApplication.run(Pickle.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
         args = new String[4];
         System.out.println("\n" +
                 "\033[32m" +
@@ -32,13 +53,8 @@ public class Pickle implements CommandLineRunner {
         CommandLine myArgumentParser;
         String inputPath = "C:\\Users\\hp\\IdeaProjects\\pickle-framework\\src\\test\\java\\files\\yaml";
         String outputPath = "C:\\Users\\hp\\IdeaProjects\\pickle-framework\\src\\test\\java\\files\\yaml";
-        ArgsService argsService;
         Optional<File[]> inputFiles;
 
-//        if (args.length == 0) {
-//            MyLogger.logger.error("No arguments provided");
-//            System.exit(1);
-//        }
         args[0] = "-i";
         args[1] = inputPath;
         args[2] = "-o";
@@ -47,13 +63,11 @@ public class Pickle implements CommandLineRunner {
         MyLogger.logger.info("Starting Pickle ...");
 
         myArgumentParser = MyArgumentParser.build(args);
-        argsService = new ArgsService(myArgumentParser);
+        argsService.setMyArgumentParser(myArgumentParser);
 
         try {
             if (argsService.hasInputAndOutputPath()) {
-                //inputPath = myArgumentParser.getOptionValue("i");
-                //outputPath = myArgumentParser.getOptionValue("o");
-                DirectoryService directoryService = new DirectoryService(outputPath);
+                directoryService.setPath(inputPath);
                 directoryService.createOutputDirectoryStructure();
 
                 MyLogger.logger.info(String.format("INPUT PATH: %s", inputPath));
@@ -73,17 +87,10 @@ public class Pickle implements CommandLineRunner {
                     MyLogger.logger.info("INPUT FILE EXTENSION: " + fileParser.getInputExtensionType());
                     fileService.createOutputFileStructure();
                 });
-
-
             }
         } catch (NullPointerException e) {
             MyLogger.logger.error("No input or output path provided");
             System.exit(1);
         }
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-
     }
 }

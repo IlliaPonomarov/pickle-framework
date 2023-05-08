@@ -5,6 +5,7 @@ import com.pickle.utility.Directory;
 import com.pickle.utility.MyLogger;
 import com.pickle.utility.enums.ExtensionType;
 import com.pickle.utility.exceptions.argumentsExceptions.FileName;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +14,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+/**
+ * Service for handling files
+ * @author Illia Ponomarov
+ * @version 1.0
+ * @since 2023-05-08
+ * @see FileParser
+ * @see DirectoryService
+ */
+@Service
 public class FileService {
 
     private final FileParser fileParser;
@@ -23,6 +33,10 @@ public class FileService {
         this.directoryService = directoryService;
     }
 
+    /**
+     * Creates the output file structure
+     * @return true if the output file structure was created successfully
+     */
     public boolean createOutputFileStructure() {
         ExtensionType inputExtensionType = fileParser.getInputExtensionType();
 
@@ -54,6 +68,9 @@ public class FileService {
         createNewFile(expectedResponseFilePath);
 
 
+        /*
+            Copy the input file to the actual response file
+         */
         try {
             Path sourceFilePath = Paths.get(fileParser.getInputPath());
             Path destinationDirectoryPath = Paths.get(pathToActualTestCase);
@@ -69,6 +86,11 @@ public class FileService {
         return true;
     }
 
+    /**
+     * Deletes the output file structure
+     * @return true if the output file structure was deleted successfully
+     */
+
     public boolean deleteFile(String path) {
         File file = new File(path);
         if (file.exists() && !file.delete()) {
@@ -77,6 +99,11 @@ public class FileService {
         }
         return true;
     }
+
+    /**
+     * Creates a new file
+     * @return true if the file was created successfully
+     */
 
     public boolean createNewFile(String path) {
         File file = new File(path);

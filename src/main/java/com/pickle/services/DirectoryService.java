@@ -2,18 +2,21 @@ package com.pickle.services;
 
 import com.pickle.utility.Directory;
 import com.pickle.utility.MyLogger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+@Service
 public class DirectoryService {
 
         private String path;
 
-        public DirectoryService(String path) {
-                this.path = path;
+        @Autowired
+        public DirectoryService() {
         }
 
         public boolean createOutputDirectoryStructure() {
@@ -76,5 +79,9 @@ public class DirectoryService {
                 MyLogger.logger.error("Failed to delete the output directory");
 
                 return false;
+        }
+
+        public void setPath(String path) {
+                this.path = path;
         }
 }

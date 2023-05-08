@@ -3,6 +3,7 @@ package com.pickle.parsers;
 import com.pickle.services.FileService;
 import com.pickle.utility.MyLogger;
 import com.pickle.utility.enums.ExtensionType;
+import org.springframework.stereotype.Service;
 
 import javax.imageio.IIOException;
 import java.io.File;
@@ -11,16 +12,20 @@ import java.nio.file.Path;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+@Service
 public class FileParser {
     private String inputPath;
     private String outputPath;
     private String extension;
 
+    public FileParser() {
+
+    }
+
     public FileParser(String inputPath, String outputPath) {
         this.inputPath = inputPath;
         this.outputPath = outputPath;
     }
-
 
 
     public String getInputFileName() {
