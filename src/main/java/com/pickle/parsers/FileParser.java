@@ -1,5 +1,7 @@
 package com.pickle.parsers;
 
+import com.pickle.services.FileService;
+import com.pickle.utility.MyLogger;
 import com.pickle.utility.enums.ExtensionType;
 
 import javax.imageio.IIOException;
@@ -7,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class FileParser {
     private String inputPath;
@@ -18,18 +21,26 @@ public class FileParser {
         this.outputPath = outputPath;
     }
 
-    public void createOutputFile() {
-        File file = new File(this.outputPath);
-        boolean isFileCreated = false;
-        try {
-            isFileCreated = file.createNewFile();
 
-            if (!isFileCreated);
-                throw new IOException();
 
-        }  catch (IOException e) {
-            throw new RuntimeException("\"An error occurred while creating the file:" + e.getMessage());
+    public String getInputFileName() {
+        return getFileName(this.inputPath);
+    }
+
+    public boolean removeFile(String path) {
+        File file = new File(path);
+        if (file.exists()) {
+            return file.delete();
         }
+        return false;
+    }
+
+    public String getOutputFileName() {
+        return getFileName(this.outputPath);
+    }
+
+    public String getFileName(String path) {
+        return Path.of(path).getFileName().toString();
     }
 
     public ExtensionType getInputExtensionType() {
@@ -40,21 +51,45 @@ public class FileParser {
         return getExtensionType(this.outputPath);
     }
 
+    public String getInputFileNameWithoutExtension() {
+        return getFileNameWithoutExtension(this.inputPath);
+    }
+
+    public String getOutputFileNameWithoutExtension() {
+        return getFileNameWithoutExtension(this.outputPath);
+    }
+
+    public String getFileNameWithoutExtension(String path) {
+        String fileName = getFileName(path);
+        return fileName.substring(0, fileName.lastIndexOf("."));
+    }
+
     private ExtensionType getExtensionType(String filePath) {
-        String extension = "";
+        ExtensionType extension = ExtensionType.NONE;
+        String extensionString = "";
 
-        if (!isExist(filePath))
-            throw new IllegalArgumentException("File does not exist");
+        try {
+            if (!isExist(filePath))
+                throw new IllegalArgumentException("File does not exist");
 
-        extension = Path.of(filePath).getFileName().toString().split("\\.")[1];
+            extensionString = filePath.substring(filePath.lastIndexOf(".") + 1);
 
-        return ExtensionType.getExtensionType(extension);
+            extension = ExtensionType.getExtensionType(extensionString);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            MyLogger.logger.error("File does not have an extension" + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            MyLogger.logger.error("File does not exist" + e.getMessage());
+        } catch (Exception e) {
+            MyLogger.logger.error("An error occurred while getting the file extension" + e.getMessage());
+        }
+
+        return extension;
     }
 
     private boolean isExist(String path) {
         return new File(path).exists();
     }
-
 
 
     public String getInputPath() {
@@ -68,6 +103,8 @@ public class FileParser {
     public String getExtension() {
         return extension;
     }
+
+
 
     public void setExtension(String extension) {
         this.extension = extension;
@@ -98,4 +135,6 @@ public class FileParser {
     public String toString() {
         return "FileParser(inputPath=" + inputPath + ", outputPath=" + outputPath + ", extension=" + extension + ")";
     }
+
+
 }
