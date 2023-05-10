@@ -43,6 +43,18 @@
 
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <source>17</source>
+                    <outputDirectory>target/docs/api/javadoc</outputDirectory>
+                    <encoding>UTF-8</encoding>
+
+                </configuration>
+
+            </plugin>
+            <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <version>1.8.0</version>
@@ -201,6 +213,7 @@
             <artifactId>spring-web</artifactId>
             <version>6.0.8</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>

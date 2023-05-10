@@ -1832,3 +1832,20 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for l
 [2023-05-08T17:03:38,877] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test2.yaml
 [2023-05-08T17:03:38,877] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test2.yaml
 [2023-05-08T17:03:38,877] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-05-08T17:25:14,589] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 4664 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
+[2023-05-08T17:25:14,594] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
+[2023-05-08T17:25:15,179] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.882 seconds (process running for 1.552)
+[2023-05-08T17:25:15,184] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
+[2023-05-08T17:25:15,187] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
+[2023-05-08T17:25:15,196] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
+[2023-05-08T17:25:15,196] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\files\yaml
+[2023-05-08T17:25:15,196] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\files\yaml
+[2023-05-08T17:25:15,197] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: pickle-output
+[2023-05-08T17:25:15,197] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: pickle-output
+[2023-05-08T17:25:15,198] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: NONE
+[2023-05-08T17:25:15,198] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
+[2023-05-08T17:25:15,198] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
+[2023-05-08T17:25:15,198] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-05-08T17:25:15,203] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test2.yaml
+[2023-05-08T17:25:15,203] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test2.yaml
+[2023-05-08T17:25:15,203] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML

@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -37,6 +38,7 @@ public class Pickle implements CommandLineRunner {
      * @param fileService the file service
      * @param directoryService the directory service
      */
+
     @Autowired
     public Pickle(ArgsService argsService, FileService fileService, DirectoryService directoryService) {
         this.argsService = argsService;
@@ -52,6 +54,8 @@ public class Pickle implements CommandLineRunner {
      * The run method for Pickle
      * @param args the command line arguments
      */
+
+
     @Override
     public void run(String... args) {
         args = new String[4];
@@ -90,7 +94,7 @@ public class Pickle implements CommandLineRunner {
 
                 MyLogger.logger.info(String.format("INPUT PATH: %s", inputPath));
                 MyLogger.logger.info(String.format("OUTPUT PATH: %s", outputPath));
-                var listOfFiles = Optional.ofNullable(new File(inputPath).listFiles());
+                Optional<File[]> listOfFiles = Optional.ofNullable(new File(inputPath).listFiles());
 
                 if (listOfFiles.isEmpty()) {
                     MyLogger.logger.error("No files found in the input directory");

@@ -34,6 +34,7 @@ public class FileParser {
      * @param inputPath the input path
      * @param outputPath the output path
      */
+
     public FileParser(String inputPath, String outputPath) {
         this.inputPath = inputPath;
         this.outputPath = outputPath;
@@ -145,7 +146,10 @@ public class FileParser {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof FileParser that)) return false;
+        if (!(o instanceof FileParser))
+            return false;
+
+        FileParser that = (FileParser) o;
         return Objects.equals(inputPath, that.inputPath) && Objects.equals(outputPath, that.outputPath) && Objects.equals(extension, that.extension);
     }
 

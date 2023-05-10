@@ -116,18 +116,22 @@ public class ArgsService {
         return myArgumentParser.getOptionValue("o");
     }
 
+
     /**
      * The getMyArgumentParser method for ArgsService
      * @return the command line
      */
+
     public CommandLine getMyArgumentParser() {
         return myArgumentParser;
     }
+
 
     /**
      * The setMyArgumentParser method for ArgsService
      * @param myArgumentParser the command line
      */
+
     public void setMyArgumentParser(CommandLine myArgumentParser) {
         this.myArgumentParser = myArgumentParser;
     }

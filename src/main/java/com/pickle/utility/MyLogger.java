@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 public class MyLogger {
 
     /**
-     * @param Logger is object of Logger class
+     * Logger is object of Logger class
      */
     public final static Logger logger = LogManager.getLogger();
 

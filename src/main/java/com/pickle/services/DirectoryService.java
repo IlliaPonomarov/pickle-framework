@@ -18,6 +18,7 @@ import java.util.stream.IntStream;
  * @see com.pickle.utility.Directory
  * @see com.pickle.utility.MyLogger
  */
+
 @Service
 public class DirectoryService {
 
@@ -81,9 +82,6 @@ public class DirectoryService {
                 return true;
         }
 
-        public String getPath() {
-                return path;
-        }
 
         public boolean deleteDirectory(File directory) {
                 if (directory.exists()) {
@@ -99,6 +97,16 @@ public class DirectoryService {
                 return false;
         }
 
+        /*
+         * Method @method getPath is method for getting the path.
+         */
+        public String getPath() {
+                return path;
+        }
+
+        /*
+         * Method @method setPath is method for setting the path.
+         */
         public void setPath(String path) {
                 this.path = path;
         }
