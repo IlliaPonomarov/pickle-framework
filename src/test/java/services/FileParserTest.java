@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FileParserTest {
 
     private FileParser fileParser;
-    private String pathToTestFiles = "src\\test\\java\\files\\";
-    private File testYamlDirectory = new File(pathToTestFiles + "yaml");
-    private File testJsonDirectory = new File(pathToTestFiles + "json");
-    private File testXmlDirectory = new File(pathToTestFiles + "xml");
+    private String pathToTestFiles = "src/test/java/files/";
+    private File testYamlDirectory = new File(pathToTestFiles + "/yaml");
+    private File testJsonDirectory = new File(pathToTestFiles + "/json");
+    private File testXmlDirectory = new File(pathToTestFiles + "/xml");
 
     private File[] yamlFiles;
     private File[] jsonFiles;
