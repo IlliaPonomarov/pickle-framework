@@ -82,6 +82,9 @@ public class DirectoryService {
                 return true;
         }
 
+        /*
+         * Method @method deleteDirectory is method for deleting the directory.
+         */
 
         public boolean deleteDirectory(File directory) {
                 if (directory.exists()) {

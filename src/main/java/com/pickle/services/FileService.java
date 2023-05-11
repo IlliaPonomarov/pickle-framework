@@ -57,19 +57,19 @@ public class FileService {
 
         // Delete directory if it already exists
         String outputFilePath = pathToActualTestCase + "\\";
-
+        deleteFile(outputFilePath);
 
         // Create the actual response file
-        String actualResponseFilePath = pathToActualTestCase + "\\" + FileName.ACTUAL_RESPONSE_FILE_NAME + "." + inputExtension;
+        String actualResponseFilePath = pathToActualTestCase + "-" + FileName.ACTUAL_RESPONSE_FILE_NAME + "." + inputExtension;
         createNewFile(actualResponseFilePath);
 
         // Create the expected response file
-        String expectedResponseFilePath = pathToActualTestCase + "\\" + FileName.EXPECTED_RESPONSE_FILE_NAME + "." + inputExtension;
+        String expectedResponseFilePath = pathToActualTestCase + "-" + FileName.EXPECTED_RESPONSE_FILE_NAME + "." + inputExtension;
         createNewFile(expectedResponseFilePath);
 
 
-        /*
-            Copy the input file to the actual response file
+        /**
+         * Copy the input file to the actual response file
          */
         try {
             Path sourceFilePath = Paths.get(fileParser.getInputPath());
@@ -90,16 +90,16 @@ public class FileService {
      * Deletes the output file structure
      * @return true if the output file structure was deleted successfully
      */
-
     public boolean deleteFile(String path) {
         File file = new File(path);
-        if (file.exists() && !file.delete()) {
+        boolean exists = file.exists();
+        boolean deleted = exists && file.delete();
+        if (!deleted) {
             MyLogger.logger.error("Failed to delete the output file");
             return false;
         }
         return true;
     }
-
     /**
      * Creates a new file
      * @return true if the file was created successfully
@@ -108,10 +108,14 @@ public class FileService {
     public boolean createNewFile(String path) {
         File file = new File(path);
         try {
-            if (!file.createNewFile()) {
+            boolean exists = file.exists();
+            boolean created = !exists && file.createNewFile();
+
+            if (!created) {
                 MyLogger.logger.error("Failed to create the output file");
                 return false;
             }
+
         } catch (IOException e) {
             MyLogger.logger.error("An error occurred while creating the output file: " + e.getMessage());
             return false;
