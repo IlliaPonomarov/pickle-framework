@@ -35,9 +35,9 @@ public class DirectoryService {
                 File outputDirectory = new File(this.path);
 
                 // The root output directory
-                File rootOutputDirectory = new File(this.path + "\\" + Directory.ROOT_OUTPUT_DIRECTORY);
-                String comparePath = rootOutputDirectory.getPath() + "\\" +Directory.COMPARE_DIRECTORY;
-                String logsPath = rootOutputDirectory.getAbsolutePath() + "\\" + Directory.LOGS_DIRECTORY;
+                File rootOutputDirectory = new File(this.path + "/" + Directory.ROOT_OUTPUT_DIRECTORY);
+                String comparePath = rootOutputDirectory.getPath() + "/" +Directory.COMPARE_DIRECTORY;
+                String logsPath = rootOutputDirectory.getAbsolutePath() + "/" + Directory.LOGS_DIRECTORY;
 
                 String[] outputDirectoryStructure = new String[]{rootOutputDirectory.getAbsolutePath(), comparePath, logsPath};
 

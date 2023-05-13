@@ -42,8 +42,8 @@ public class FileServiceTest {
     @Test
     @Disabled
     public void createOutputFileStructureValidTest() {
-        String validInputPath = "src\\test\\java\\files\\yaml\\valid.yaml";
-        String validOutputPath = "src\\test\\java\\testFolder\\yaml\\";
+        String validInputPath = "src/test/java/files/yaml/valid.yaml";
+        String validOutputPath = "src/test/java/testFolder/yaml/";
 
         // Test Case 1:
         FileService fileService = testFileService(validInputPath, validOutputPath);
@@ -58,9 +58,8 @@ public class FileServiceTest {
         assertTrue(actual);
 
         // Test Case 2:
-        validInputPath = "src\\test\\java\\files\\json\\valid.json";
-        validOutputPath = "src\\test\\java\\testFolder\\json\\";
-
+        validInputPath = "src/test/java/files/json/valid.json";
+        validOutputPath = "src/test/java/testFolder/json/";
         fileService = testFileService(validInputPath, validOutputPath);
         fileService.deleteFile(validInputPath);
         fileService.createNewFile(validInputPath);
@@ -69,8 +68,8 @@ public class FileServiceTest {
         assertTrue(actual);
 
         // Test Case 3:
-        validInputPath = "src\\test\\java\\files\\xml\\valid.xml";
-        validOutputPath = "src\\test\\java\\testFolder\\xml\\";
+        validInputPath = "src/test/java/files/xml/valid.xml";
+        validOutputPath = "src/test/java/testFolder/xml/";
 
         fileService = testFileService(validInputPath, validOutputPath);
         fileService.deleteFile(validInputPath);
@@ -87,7 +86,7 @@ public class FileServiceTest {
     @Test
     @Disabled
     public void createOutputFileStructureInvalidTest() {
-        String invalidInputPath = "src\\test\\java\\files\\yaml\\invalid.yaml";
+        String invalidInputPath = "src/test/java/files/yaml/invalid.yaml";
         String invalidOutputPath = "src/test/java/testFolder/yaml/";
 
         // Test Case 1:
@@ -97,7 +96,7 @@ public class FileServiceTest {
         assertFalse(actual);
 
         // Test Case 2:
-        invalidInputPath = "src\\test\\java\\files\\json\\invalid.json";
+        invalidInputPath = "src/test/java/files/json/invalid.json";
         invalidOutputPath = "src/test/java/testFolder/json/";
 
         fileService = testFileService(invalidInputPath, invalidOutputPath);
@@ -105,7 +104,7 @@ public class FileServiceTest {
         assertFalse(actual);
 
         // Test Case 3:
-        invalidInputPath = "src\\test\\java\\files\\xml\\invalid.xml";
+        invalidInputPath = "src/test/java/files/xml/invalid.xml";
         invalidOutputPath = "src/test/java/testFolder/xml/";
 
         fileService = testFileService(invalidInputPath, invalidOutputPath);
@@ -129,8 +128,8 @@ public class FileServiceTest {
     @Disabled
     public void createNewFileValidTest() {
         // Test Case 1:
-        String validInputPath = "src\\test\\java\\files\\yaml\\valid.yaml";
-        String validOutputPath = "src\\test\\java\\files\\yaml\\";
+        String validInputPath = "src/test/java/files/yaml/valid.yaml";
+        String validOutputPath = "src/test/java/files/yaml/";
 
         FileService fileService = testFileService(validInputPath, validOutputPath);
         fileService.deleteFile(validInputPath);
@@ -139,7 +138,7 @@ public class FileServiceTest {
 
 
         // Test Case 2:
-        validInputPath = "src\\test\\java\\files\\json\\valid.json";
+        validInputPath = "src/test/java/files/json/valid.json";
         validOutputPath = "src/test/java/testFolder/json/";
 
         fileService = testFileService(validInputPath, validOutputPath);
@@ -148,7 +147,7 @@ public class FileServiceTest {
         assertTrue(actual);
 
         // Test Case 3:
-        validInputPath = "src\\test\\java\\files\\xml\\valid.xml";
+        validInputPath = "src/test/java/files/xml/valid.xml";
         validOutputPath = "src/test/java/testFolder/xml/";
 
         fileService = testFileService(validInputPath, validOutputPath);
@@ -165,7 +164,7 @@ public class FileServiceTest {
     @Test
     @Disabled
     public void createNewFileInvalidTest() {
-        String invalidInputPath = "src\\test\\java\\files\\lololo\\invalid.yaml";
+        String invalidInputPath = "src/test/test/files/yaml/invalid.yaml";
         String invalidOutputPath = "src/test/test/files/yaml/invalid.yaml";
 
         this.fileParser = new FileParser(invalidInputPath, invalidOutputPath);
@@ -185,8 +184,8 @@ public class FileServiceTest {
     public void deleteFileValidTest() {
 
         // Test Case 1:
-        String validInputPath = "src\\test\\java\\files\\yaml\\valid.yaml";
-        String validOutputPath = "src\\test\\java\\files\\yaml\\";
+        String validInputPath = "src/test/java/files/yaml/valid.yaml";
+        String validOutputPath = "src/test/java/testFolder/yaml/";
 
         FileService fileService = testFileService(validInputPath, validOutputPath);
         boolean actual = fileService.deleteFile(validInputPath);
@@ -194,7 +193,7 @@ public class FileServiceTest {
         assertTrue(actual);
 
         // Test Case 2:
-        validInputPath = "src\\test\\java\\files\\json\\valid.json";
+        validInputPath = "src/test/java/files/json/valid.json";
         validOutputPath = "src/test/java/testFolder/json/";
 
         fileService = testFileService(validInputPath, validOutputPath);
@@ -202,7 +201,7 @@ public class FileServiceTest {
         assertTrue(actual);
 
         // Test Case 3:
-        validInputPath = "src\\test\\java\\files\\xml\\valid.xml";
+        validInputPath = "src/test/java/files/xml/valid.xml";
         validOutputPath = "src/test/java/testFolder/xml/";
 
         fileService = testFileService(validInputPath, validOutputPath);
@@ -217,7 +216,7 @@ public class FileServiceTest {
     @Test
     @Disabled
     public void deleteFileInvalidTest() {
-        String invalidInputPath = "src\\test\\java\\files\\lololo\\invalid.yaml";
+        String invalidInputPath = "src/test/test/files/yaml/invalid.yaml";
         String invalidOutputPath = "src/test/test/files/yaml/invalid.yaml";
 
         this.fileParser = new FileParser(invalidInputPath, invalidOutputPath);

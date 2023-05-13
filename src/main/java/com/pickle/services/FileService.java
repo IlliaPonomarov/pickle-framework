@@ -48,23 +48,29 @@ public class FileService {
         String inputExtension = fileParser.getInputExtensionType().getExtension();
 
         // Get path to actual test case directory
-        String compareDirectoryPath = fileParser.getOutputPath() + "\\" + Directory.ROOT_OUTPUT_DIRECTORY + "\\" + Directory.COMPARE_DIRECTORY;
-        String pathToActualTestCase = compareDirectoryPath + "\\" + inputFileNameWithoutExtension;
+        String compareDirectoryPath = fileParser.getOutputPath() + Directory.ROOT_OUTPUT_DIRECTORY + "/" + Directory.COMPARE_DIRECTORY;
+        String pathToActualTestCase = compareDirectoryPath + "/" + inputFileNameWithoutExtension;
 
         // Create the actual test case directory
         File actualTestCaseDirectory = new File(pathToActualTestCase);
-        directoryService.createDirectory(actualTestCaseDirectory);
+        System.out.println(pathToActualTestCase);
+        System.out.println(actualTestCaseDirectory.getPath());
 
         // Delete directory if it already exists
-        String outputFilePath = pathToActualTestCase + "\\";
+        String outputFilePath = pathToActualTestCase + "/";
         deleteFile(outputFilePath);
 
+        boolean fileCreated =  directoryService.createDirectory(actualTestCaseDirectory);
+        MyLogger.logger.info("Path: " + actualTestCaseDirectory + " fileCreated: " + fileCreated);
+
+
+
         // Create the actual response file
-        String actualResponseFilePath = pathToActualTestCase + "-" + FileName.ACTUAL_RESPONSE_FILE_NAME + "." + inputExtension;
+        String actualResponseFilePath = Paths.get(pathToActualTestCase) + "/" + FileName.ACTUAL_RESPONSE_FILE_NAME + "." + inputExtension;
         createNewFile(actualResponseFilePath);
 
         // Create the expected response file
-        String expectedResponseFilePath = pathToActualTestCase + "-" + FileName.EXPECTED_RESPONSE_FILE_NAME + "." + inputExtension;
+        String expectedResponseFilePath = Paths.get(pathToActualTestCase) + "/" + FileName.EXPECTED_RESPONSE_FILE_NAME + "." + inputExtension;
         createNewFile(expectedResponseFilePath);
 
 

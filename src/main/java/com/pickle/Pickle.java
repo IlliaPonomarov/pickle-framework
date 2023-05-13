@@ -58,7 +58,7 @@ public class Pickle implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        args = new String[4];
+      // args = new String[4];
 
         // Label
         System.out.println("\n" +
@@ -73,23 +73,33 @@ public class Pickle implements CommandLineRunner {
                 "\033[0m");
 
         CommandLine myArgumentParser;
-        String inputPath = "C:\\Users\\hp\\IdeaProjects\\pickle-framework\\src\\test\\java\\files\\yaml";
-        String outputPath = "C:\\Users\\hp\\IdeaProjects\\pickle-framework\\src\\test\\java\\files\\yaml";
-        Optional<File[]> inputFiles;
+//        String inputPath = "C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml";
+//        String outputPath = "C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/";
+//
+//        args[0] = "-i";
+//        args[1] = inputPath;
+//        args[2] = "-o";
+//        args[3] = outputPath;
 
-        args[0] = "-i";
-        args[1] = inputPath;
-        args[2] = "-o";
-        args[3] = outputPath;
+        if (args.length == 0) {
+            MyLogger.logger.error("No arguments provided");
+            System.exit(1);
+        }
+
 
         MyLogger.logger.info("Starting Pickle ...");
+
+        Arrays.stream(args).forEach(arg -> MyLogger.logger.info("ARGUMENT: " + arg) );
 
         myArgumentParser = MyArgumentParser.build(args);
         argsService.setMyArgumentParser(myArgumentParser);
 
+        String inputPath = argsService.getInputPath();
+        String outputPath = argsService.getOutputPath();
+
         try {
             if (argsService.hasInputAndOutputPath()) {
-                directoryService.setPath(inputPath);
+                directoryService.setPath(outputPath);
                 directoryService.createOutputDirectoryStructure();
 
                 MyLogger.logger.info(String.format("INPUT PATH: %s", inputPath));
