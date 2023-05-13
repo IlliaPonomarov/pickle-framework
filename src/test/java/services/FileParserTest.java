@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FileParserTest {
 
     private FileParser fileParser;
-    private String pathToTestFiles = "src/test/java/files/";
-    private File testYamlDirectory = new File(pathToTestFiles + "/yaml");
-    private File testJsonDirectory = new File(pathToTestFiles + "/json");
-    private File testXmlDirectory = new File(pathToTestFiles + "/xml");
+    private String pathToTestFiles = "src/test/java/files";
+    private File testYamlDirectory;
+    private File testJsonDirectory;
+    private File testXmlDirectory;
 
     private File[] yamlFiles;
     private File[] jsonFiles;
@@ -28,9 +28,9 @@ public class FileParserTest {
         // get all files in the test directory
         // for each file, create a new FileParser instance
         // and test the methods
-        this.testYamlDirectory = new File(pathToTestFiles + "yaml");
-        this.testJsonDirectory = new File(pathToTestFiles + "json");
-        this.testXmlDirectory = new File(pathToTestFiles + "xml");
+        this.testYamlDirectory = new File(pathToTestFiles + "/yaml");
+        this.testJsonDirectory = new File(pathToTestFiles + "/json");
+        this.testXmlDirectory = new File(pathToTestFiles + "/xml");
 
         if (!testYamlDirectory.exists() || !testJsonDirectory.exists() || !testXmlDirectory.exists())
             throw new RuntimeException("Test directories do not exist");
