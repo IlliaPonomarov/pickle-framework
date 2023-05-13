@@ -1,47 +1,123 @@
 package com.pickle;
 import com.pickle.parsers.FileParser;
 import com.pickle.services.ArgsService;
+import com.pickle.services.DirectoryService;
 import com.pickle.services.FileService;
 import com.pickle.utility.MyLogger;
 import org.apache.commons.cli.CommandLine;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
+/**
+ * The InputNotFoundException class for the input path
+ * @version 1.0
+ * @since 2023-05-07
+ * @author Illia Ponomarov
+ */
 
-public class Pickle {
+@SpringBootApplication
+public class Pickle implements CommandLineRunner {
 
-    public static void main(String[] args) {
+    private final ArgsService argsService;
+
+    private final FileService fileService;
+
+    private final DirectoryService directoryService;
+
+    /**
+     * The Pickle constructor
+     * @param argsService the args service
+     * @param fileService the file service
+     * @param directoryService the directory service
+     */
+
+    @Autowired
+    public Pickle(ArgsService argsService, FileService fileService, DirectoryService directoryService) {
+        this.argsService = argsService;
+        this.fileService = fileService;
+        this.directoryService = directoryService;
+    }
+
+    public static void main(String... args) {
+        SpringApplication.run(Pickle.class, args);
+    }
+
+    /**
+     * The run method for Pickle
+     * @param args the command line arguments
+     */
+
+
+    @Override
+    public void run(String... args) {
+      // args = new String[4];
+
+        // Label
+        System.out.println("\n" +
+                "\033[32m" +
+                "██████╗ ██╗ ██████╗██╗  ██╗██╗     ███████╗\n" +
+                "██╔══██╗██║██╔════╝██║ ██╔╝██║     ██╔════╝\n" +
+                "██████╔╝██║██║     █████╔╝ ██║     █████╗  \n" +
+                "██╔═══╝ ██║██║     ██╔═██╗ ██║     ██╔══╝  \n" +
+                "██║     ██║╚██████╗██║  ██╗███████╗███████╗\n" +
+                "╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝\n" +
+                "                                           \n" +
+                "\033[0m");
+
         CommandLine myArgumentParser;
-        String inputPath = "";
-        String outputPath = "";
-        ArgsService argsService;
-        Optional<File[]> inputFiles;
-        FileService fileService = new FileService();
+//        String inputPath = "C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml";
+//        String outputPath = "C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/";
+//
+//        args[0] = "-i";
+//        args[1] = inputPath;
+//        args[2] = "-o";
+//        args[3] = outputPath;
 
         if (args.length == 0) {
             MyLogger.logger.error("No arguments provided");
             System.exit(1);
         }
 
+
         MyLogger.logger.info("Starting Pickle ...");
 
-        myArgumentParser = MyArgumentParser.build(args);
-        argsService = new ArgsService(myArgumentParser);
+        Arrays.stream(args).forEach(arg -> MyLogger.logger.info("ARGUMENT: " + arg) );
 
-        myArgumentParser.getOptionValue("i");
+        myArgumentParser = MyArgumentParser.build(args);
+        argsService.setMyArgumentParser(myArgumentParser);
+
+        String inputPath = argsService.getInputPath();
+        String outputPath = argsService.getOutputPath();
 
         try {
             if (argsService.hasInputAndOutputPath()) {
-                MyLogger.logger.info(String.format("INPUT PATH: %s", myArgumentParser.getOptionValue("i")));
-                MyLogger.logger.info(String.format("OUTPUT PATH: %s", myArgumentParser.getOptionValue("o")));
-                inputFiles = Optional.ofNullable(new File(inputPath).listFiles());
+                directoryService.setPath(outputPath);
+                directoryService.createOutputDirectoryStructure();
 
-                Arrays.stream(inputFiles.get()).forEach(file -> {
-                    FileParser fileParser = new FileParser(file.getAbsolutePath(), "outputPath");
-                    MyLogger.logger.info(fileParser.getInputExtensionType().toString());
+                MyLogger.logger.info(String.format("INPUT PATH: %s", inputPath));
+                MyLogger.logger.info(String.format("OUTPUT PATH: %s", outputPath));
+                Optional<File[]> listOfFiles = Optional.ofNullable(new File(inputPath).listFiles());
+
+                if (listOfFiles.isEmpty()) {
+                    MyLogger.logger.error("No files found in the input directory");
+                    System.exit(1);
+                }
+
+                Arrays.stream(listOfFiles.get()).forEach(file -> {
+                    FileParser fileParser = new FileParser(file.getAbsolutePath(), outputPath);
+                    FileService fileService = new FileService(fileParser, directoryService);
+                    MyLogger.logger.info(String.format("Parsing file: %s", file.getName()));
+                    MyLogger.logger.info("INPUT FILE NAME: " + fileParser.getInputFileName());
+                    MyLogger.logger.info("INPUT FILE EXTENSION: " + fileParser.getInputExtensionType());
+                    fileService.createOutputFileStructure();
                 });
             }
         } catch (NullPointerException e) {

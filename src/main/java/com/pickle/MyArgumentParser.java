@@ -47,7 +47,6 @@ public class MyArgumentParser {
     /**
      * The addAllArguments method for MyArgumentParser
      */
-
     public void addAllArguments() {
         addBasicArguments();
         addHeaderArguments();

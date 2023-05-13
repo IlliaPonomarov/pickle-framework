@@ -1,0 +1,211 @@
+[2023-05-10T20:53:02,110] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T20:53:02,121] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T20:54:38,745] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T20:54:38,750] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:11:58,405] [ERROR] [main] com.pickle.utility.MyLogger: Failed to create the output file
+[2023-05-10T21:13:16,957] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:14:17,418] [ERROR] [main] com.pickle.utility.MyLogger: Failed to create the output file
+[2023-05-10T21:14:17,420] [ERROR] [main] com.pickle.utility.MyLogger: Failed to create the output file
+[2023-05-10T21:16:15,662] [ERROR] [main] com.pickle.utility.MyLogger: Failed to create the output file
+[2023-05-10T21:21:43,215] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:21:43,220] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:21:43,220] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:25:11,267] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:25:11,272] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:25:11,272] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:25:52,530] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 3748 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
+[2023-05-10T21:25:52,534] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
+[2023-05-10T21:25:53,074] [INFO ] [main] com.pickle.Pickle: Started Pickle in 1.129 seconds (process running for 1.783)
+[2023-05-10T21:25:53,077] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
+[2023-05-10T21:25:53,080] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
+[2023-05-10T21:25:53,087] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
+[2023-05-10T21:25:53,088] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\files\yaml
+[2023-05-10T21:25:53,088] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\files\yaml
+[2023-05-10T21:25:53,088] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: pickle-output
+[2023-05-10T21:25:53,088] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: pickle-output
+[2023-05-10T21:25:53,089] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: NONE
+[2023-05-10T21:25:53,089] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
+[2023-05-10T21:25:53,089] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
+[2023-05-10T21:25:53,089] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-05-10T21:25:53,092] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test2.yaml
+[2023-05-10T21:25:53,092] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test2.yaml
+[2023-05-10T21:25:53,092] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-05-10T21:25:53,095] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: valid.yaml
+[2023-05-10T21:25:53,095] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: valid.yaml
+[2023-05-10T21:25:53,095] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-05-10T21:27:37,585] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:37,588] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:37,598] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:37,598] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:37,598] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:37,598] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:37,598] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:37,598] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:37,599] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:37,599] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:37,599] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:37,599] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:37,599] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:37,600] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:37,600] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:37,600] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:37,601] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:37,601] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:37,620] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:27:37,621] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:27:37,621] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:27:37,624] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:27:37,625] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:27:37,627] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:27:58,540] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:58,546] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:58,555] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:58,555] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:58,555] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:58,555] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:58,555] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:58,556] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:58,556] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:58,556] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:58,556] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:58,556] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:58,556] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:58,556] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:58,557] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:27:58,557] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:27:58,558] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:58,558] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:27:58,576] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:27:58,590] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:27:58,590] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:27:58,591] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:27:58,593] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:27:58,594] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:27:58,594] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:29:45,163] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:29:45,165] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:29:45,176] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:29:45,176] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:29:45,176] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:29:45,176] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:29:45,177] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:29:45,177] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:29:45,177] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:29:45,177] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:29:45,177] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:29:45,177] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:29:45,178] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:29:45,178] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:29:45,178] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:29:45,178] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:29:45,179] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:29:45,180] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:29:45,202] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:29:45,215] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:29:45,215] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:29:45,215] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:29:45,217] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:29:45,218] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:29:45,219] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:30:39,983] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:30:39,986] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:30:39,996] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:30:39,996] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:30:39,996] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:30:39,997] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:30:39,997] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:30:39,997] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:30:39,997] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:30:39,998] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:30:39,998] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:30:39,998] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:30:39,998] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:30:39,998] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:30:39,998] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:30:39,998] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:30:40,000] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:30:40,000] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:30:40,015] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:30:40,027] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:30:40,027] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:30:40,028] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:30:40,030] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:30:40,031] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:30:40,032] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:33:16,828] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:33:16,830] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:33:16,839] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:33:16,840] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:33:16,840] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:33:16,840] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:33:16,841] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:33:16,841] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:33:16,841] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:33:16,841] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:33:16,841] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:33:16,841] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:33:16,842] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:33:16,842] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:33:16,842] [ERROR] [main] com.pickle.utility.MyLogger: Your output path is blank or empty. No output path provided
+[2023-05-10T21:33:16,842] [ERROR] [main] com.pickle.utility.MyLogger: Your input and output paths are blank or empty. No input or output path provided
+[2023-05-10T21:33:16,843] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:33:16,843] [ERROR] [main] com.pickle.utility.MyLogger: Your input path is blank or empty. No input path provided
+[2023-05-10T21:33:16,858] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:33:16,869] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:33:16,870] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:33:16,870] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:33:16,872] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:33:16,874] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:33:16,876] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:33:16,876] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:33:31,272] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:33:31,275] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:35:07,917] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:35:07,940] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:35:07,941] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:35:07,942] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:35:07,946] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:35:07,947] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:35:07,947] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:35:07,950] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:35:07,953] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:35:07,960] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:35:07,961] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:35:07,963] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:36:19,807] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:36:19,810] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:36:19,810] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:36:19,813] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:36:19,814] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:36:19,814] [ERROR] [main] com.pickle.utility.MyLogger: File does not existFile does not exist
+[2023-05-10T21:36:19,817] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:36:19,819] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-10T21:36:19,823] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:36:19,823] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:36:19,825] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:36:40,804] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:36:40,807] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:36:40,809] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:39:27,074] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:39:27,077] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:39:27,078] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:41:30,548] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:41:30,552] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:41:30,553] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:41:57,542] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:41:57,545] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:41:57,546] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:42:48,461] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:43:56,801] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while creating the output file: The system cannot find the path specified
+[2023-05-10T21:43:56,805] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:46:37,589] [ERROR] [main] com.pickle.utility.MyLogger: Failed to create the output file
+[2023-05-10T21:46:37,594] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:47:09,222] [ERROR] [main] com.pickle.utility.MyLogger: Failed to create the output file
+[2023-05-10T21:47:28,419] [ERROR] [main] com.pickle.utility.MyLogger: Failed to create the output file
+[2023-05-10T21:47:28,423] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:48:30,622] [ERROR] [main] com.pickle.utility.MyLogger: Failed to create the output file
+[2023-05-10T21:48:30,630] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:49:21,978] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output directory
+[2023-05-10T21:49:59,661] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:51:45,050] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
+[2023-05-10T21:57:54,628] [ERROR] [main] com.pickle.utility.MyLogger: An error occurred while copying the input file to the output file: src\test\java\files\yaml\valid.yaml -> src\test\java\testFolder\yaml\pickle-output\compare\valid-result\valid.yaml
