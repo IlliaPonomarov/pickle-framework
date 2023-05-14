@@ -12,9 +12,7 @@
                 <Authorization>Bearer 1234567890</Authorization>
                 <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
             </headers>
-        </request>
-
-        <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+            <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
         <soap:Body>
           <GetUserDataRequest xmlns="http://example.com/">
@@ -22,6 +20,9 @@
           </GetUserDataRequest>
         </soap:Body>
       </soap:Envelope>]]></body>
+        </request>
+
+
         <expected-response>
             <status>200</status>
             <headers>
