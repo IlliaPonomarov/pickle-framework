@@ -3,7 +3,6 @@ package com.pickle.models.rest;
 public class HttpHeaders {
     private final HttpHeaderBuilder httpHeaderBuilder;
 
-
     private HttpHeaders(HttpHeaderBuilder httpHeaderBuilder) {
         this.httpHeaderBuilder = httpHeaderBuilder;
     }

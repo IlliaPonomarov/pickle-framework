@@ -4,7 +4,6 @@ import com.pickle.models.rest.*;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.services.parsers.Parser;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.yaml.snakeyaml.Yaml;
 
@@ -46,7 +45,7 @@ public class YamlParser implements Parser {
         HttpHeaders expectedHttpHeaders = null;
         HttpRequest httpRequest = null;
         HttpExpectedResponse httpExpectedResponse = null;
-        RestTest restTest;
+        RestTestCase restTest;
         HttpStatusCode expectedHttpStatus = null;
         String expectedResponseBody = "";
         Map<UUID, RestTestCase> testCases = new HashMap<>();
@@ -56,12 +55,11 @@ public class YamlParser implements Parser {
 
             // Get the requests names, example ( GET, POST, PUT, DELETE )
             for (Map.Entry<String, Object> requests : rest.entrySet()) {
-
+                String requestName = requests.getKey();
                 // Get the request info, example ( request, expectedResponse )
                 for (Map.Entry<String, Object> requestInfo : ((Map<String, Object>) requests.getValue()).entrySet()) {
                     RestTestCase restTestCase = new RestTestCase();
                     restTestCase = new RestTestCase();
-                    String requestName = requests.getKey();
                     restTestCase.setRequestName(requestName);
                     // Get the request headers
                     if (requestInfo.getKey().equals("request")) {
@@ -198,8 +196,9 @@ public class YamlParser implements Parser {
                         httpExpectedResponse = new HttpExpectedResponse(expectedHttpStatus, expectedHttpHeaders, expectedResponseBody);
 
                     }
-                    testCases.put(UUID.randomUUID(), new RestTestCase(httpRequest, httpExpectedResponse, requestName));
                 }
+                testCases.put(UUID.randomUUID(), new RestTestCase(httpRequest, httpExpectedResponse, requestName));
+
             }
         }
 

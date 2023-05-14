@@ -3,16 +3,19 @@ package com.pickle.models.rest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 
+
 import java.util.Objects;
 
 public class HttpExpectedResponse {
 
     private HttpStatusCode httpStatus;
+
     private HttpHeaders httpHeaders;
 
     private String body;
 
     public HttpExpectedResponse(HttpStatusCode httpStatus, HttpHeaders httpHeaders, String body) {
+
         this.httpStatus = httpStatus;
         this.httpHeaders = httpHeaders;
         this.body = body;
