@@ -6,10 +6,10 @@ soap:
       body: /path/to/create_order_body.xml
       params:
         userId: "123456"
-    headers:
-      Content-Type: text/xml;charset=UTF-8
-      Authorization: "Bearer 1234567890"
-      User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+      headers:
+        Content-Type: text/xml;charset=UTF-8
+        Authorization: "Bearer 1234567890"
+        User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
     expected-response:
       status: 200
       headers:
@@ -30,10 +30,10 @@ soap:
       body: /path/to/get_order_body.xml
       params:
         orderId: "12345"
-    headers:
-      Content-Type: text/xml;charset=UTF-8
-      Authorization: "Bearer 1234567890"
-      User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+      headers:
+        Content-Type: text/xml;charset=UTF-8
+        Authorization: "Bearer 1234567890"
+        User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
     expected-response:
       status: 200
       headers:

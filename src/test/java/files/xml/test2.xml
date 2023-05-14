@@ -7,12 +7,13 @@
             <params>
                 <UserId>123456</UserId>
             </params>
+            <headers>
+                <Content-Type>text/xml;charset=UTF-8</Content-Type>
+                <Authorization>Bearer 1234567890</Authorization>
+                <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
+            </headers>
         </request>
-        <headers>
-            <Content-Type>text/xml;charset=UTF-8</Content-Type>
-            <Authorization>Bearer 1234567890</Authorization>
-            <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
-        </headers>
+
         <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
         <soap:Body>
