@@ -1,9 +1,9 @@
-package com.pickle.models;
+package com.pickle.models.rest;
 
-public class HttpHeader {
+public class HttpHeaders {
     private final HttpHeaderBuilder httpHeaderBuilder;
 
-    private HttpHeader(HttpHeaderBuilder httpHeaderBuilder) {
+    private HttpHeaders(HttpHeaderBuilder httpHeaderBuilder) {
         this.httpHeaderBuilder = httpHeaderBuilder;
     }
 
@@ -85,8 +85,8 @@ public class HttpHeader {
             return this;
         }
 
-        public HttpHeader build() {
-            return new HttpHeader(this);
+        public HttpHeaders build() {
+            return new HttpHeaders(this);
         }
     }
 

@@ -85,11 +85,11 @@
                   body: /path/to/body.yaml ( Optional )
                   params: 
                         name: "John"
-            header:
-                  Accept: application/json
-                  Content-Type: application/json
-                  Authorization: "Bearer 1234567890" ( Optional )
-                  User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" ( Optional )
+                  headers:
+                        Accept: application/json
+                        Content-Type: application/json
+                        Authorization: "Bearer 1234567890" ( Optional )
+                        User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
             expected-response:
                      status: 200
                      body:
@@ -107,14 +107,15 @@
                  "body": "/path/to/body.yaml"
                  "params": {
                      "name": "John"
-                 }
-             },
-             "header": {
+                 },
+                 "header": {
                  "Accept": "application/json",
                  "Content-Type": "application/json",
                  "Authorization": "Bearer 1234567890",
                  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+                  },
              },
+             
              "expected-response": {
                  "status": 200,
                  "body": {
@@ -137,15 +138,13 @@
                <params>
                     <name>John</name>
                </params>
-          </request>
-          <header>
-              <Accept>application/json</Accept>
-              <Content-Type>application/json</Content-Type>
-              <Authorization>Bearer 1234567890</Authorization>
-              <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
-          </header>
-
-          
+              <header>
+                 <Accept>application/json</Accept>
+                 <Content-Type>application/json</Content-Type>
+                 <Authorization>Bearer 1234567890</Authorization>
+                 <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
+              </header>
+          </request>          
           <expected-response>
               <status>200</status>
               <body>
@@ -169,10 +168,10 @@ soap:
           params:
                UserId: "123456"
           
-        headers:
-          Content-Type: text/xml;charset=UTF-8
-          Authorization: "Bearer 1234567890"
-          User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+          headers:
+            Content-Type: text/xml;charset=UTF-8
+            Authorization: "Bearer 1234567890"
+            User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
         
         expected-response:
           status: 200
@@ -200,13 +199,15 @@ soap:
             "body": /path/to/body.json
             "params": {
               "UserId": "123456"
-            }
+            },
+            
+            "headers": {
+               "Content-Type": "text/xml;charset=UTF-8",
+               "Authorization": "Bearer 1234567890",
+               "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+             }
           },
-          "headers": {
-            "Content-Type": "text/xml;charset=UTF-8",
-            "Authorization": "Bearer 1234567890",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
-          },
+          
           "expected-response": {
             "status": 200,
             "headers": {
@@ -229,13 +230,16 @@ soap:
            <body>/path/to/body.json</body>
            <params>
                 <UserId>123456</UserId>
-          </params>
+           </params>
+          
+           <headers>
+             <Content-Type>text/xml;charset=UTF-8</Content-Type>
+             <Authorization>Bearer 1234567890</Authorization>
+             <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
+           </headers>
+           
          </request>
-        <headers>
-          <Content-Type>text/xml;charset=UTF-8</Content-Type>
-          <Authorization>Bearer 1234567890</Authorization>
-          <User-Agent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</User-Agent>
-        </headers>
+
         <body><![CDATA[<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><GetUserDataRequest xmlns="http://example.com/"><UserId>123456</UserId></GetUserDataRequest></soap:Body></soap:Envelope>]]></body>
         <expected-response>
           <status>200</status>
@@ -257,37 +261,40 @@ soap:
 #### 7.1 YAML:
 ```
 request:
-    import: /path/to/request.yaml
-header:
-    import: /path/to/header.yaml
+    request-import: /path/to/request.yaml
+    headers:
+        headers-import: /path/to/header.yaml
+        
 expected-response:
-    import: /path/to/expected-response.yaml
+    expected-response-import: /path/to/expected-response.yaml
 ```
 
 #### 7.2 JSON:
 ```
 "request": {
-    "import": "/path/to/request.json"
+    "request-import": "/path/to/request.json",
+    "headers": {
+      "headers-import": "/path/to/header.json"
+    }
 },
-"header": {
-    "import": "/path/to/header.json"
-},
+
 "expected-response": {
-    "import": "/path/to/expected-response.json"
+    "expected-response-import": "/path/to/expected-response.json"
 }
 ```****
 
 #### 7.3 XML:
 ```
 <request>
-    <import>/path/to/request.xml</import>
+    <request-import>/path/to/request.xml</request-import>
+   <headers>
+       <headers-import>/path/to/header.xml</headers-import>
+   </headers>
 </request>
-<header>
-    <import>/path/to/header.xml</import>
-</header>
+
 
 <expected-response>
-    <import>/path/to/expected-response.xml</import>
+    <extepcted-response-import>/path/to/expected-response.xml</extepcted-response-import>
 </expected-response>
 ```
 
