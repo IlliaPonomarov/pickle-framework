@@ -1,0 +1,51 @@
+soap:
+  createOrder:
+    request:
+      url: https://example.com/soap-api
+      soap-action: http://example.com/CreateOrder
+      body: /path/to/create_order_body.xml
+      params:
+        userId: "123456"
+    headers:
+      Content-Type: text/xml;charset=UTF-8
+      Authorization: "Bearer 1234567890"
+      User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+    expected-response:
+      status: 200
+      headers:
+        Content-Type: text/xml;charset=UTF-8
+      body: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+          <soap:Body>
+            <CreateOrderResponse xmlns="http://example.com/">
+              <orderId>12345</orderId>
+            </CreateOrderResponse>
+          </soap:Body>
+        </soap:Envelope>
+  getOrder:
+    request:
+      url: https://example.com/soap-api
+      soap-action: http://example.com/GetOrder
+      body: /path/to/get_order_body.xml
+      params:
+        orderId: "12345"
+    headers:
+      Content-Type: text/xml;charset=UTF-8
+      Authorization: "Bearer 1234567890"
+      User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
+    expected-response:
+      status: 200
+      headers:
+        Content-Type: text/xml;charset=UTF-8
+      body: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+          <soap:Body>
+            <GetOrderResponse xmlns="http://example.com/">
+              <orderId>12345</orderId>
+              <orderName>Example Order</orderName>
+              <customerName>John Doe</customerName>
+            </GetOrderResponse>
+          </soap:Body>
+        </soap:Envelope>
