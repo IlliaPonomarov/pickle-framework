@@ -4,6 +4,13 @@ import com.pickle.parsers.FileParser;
 import com.pickle.parsers.Parser;
 
 public class YamlParser implements Parser {
+
+    private final FileParser fileParser;
+
+    public YamlParser(FileParser fileParser) {
+        this.fileParser = fileParser;
+    }
+
     @Override
     public Object parse(FileParser fileParser) {
         return null;

@@ -1,5 +1,7 @@
 package com.pickle;
 import com.pickle.parsers.FileParser;
+import com.pickle.parsers.Parser;
+import com.pickle.parsers.ParserFactory;
 import com.pickle.services.ArgsService;
 import com.pickle.services.DirectoryService;
 import com.pickle.services.FileService;
@@ -118,6 +120,9 @@ public class Pickle implements CommandLineRunner {
                     MyLogger.logger.info("INPUT FILE NAME: " + fileParser.getInputFileName());
                     MyLogger.logger.info("INPUT FILE EXTENSION: " + fileParser.getInputExtensionType());
                     fileService.createOutputFileStructure();
+
+                    Parser parser = new ParserFactory().getParser(fileParser.getExtension());
+                    parser.headerParser();
                 });
             }
         } catch (NullPointerException e) {
