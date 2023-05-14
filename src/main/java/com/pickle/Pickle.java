@@ -121,7 +121,7 @@ public class Pickle implements CommandLineRunner {
                     MyLogger.logger.info("INPUT FILE EXTENSION: " + fileParser.getInputExtensionType());
                     fileService.createOutputFileStructure();
 
-                    Parser parser = new ParserFactory().getParser(fileParser.getExtension());
+                    Parser parser = new ParserFactory(fileParser).getParser();
                     parser.headerParser();
                 });
             }

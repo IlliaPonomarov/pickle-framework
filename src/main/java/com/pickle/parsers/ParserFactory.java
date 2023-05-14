@@ -34,11 +34,10 @@ public class ParserFactory {
 
     /**
      * The getParser method
-     * @param extension the extension of file
      * @return Parser
      */
-    public Parser getParser(String extension) {
-        ExtensionType extensionType = ExtensionType.getExtensionType(extension);
+    public Parser getParser() {
+        ExtensionType extensionType = ExtensionType.getExtensionType(this.fileParser.getExtension());
         Optional<Parser> parser = Optional.of((Parser) this.parsers.get(extensionType));
 
         return parser.orElseGet(parser::orElseThrow);
