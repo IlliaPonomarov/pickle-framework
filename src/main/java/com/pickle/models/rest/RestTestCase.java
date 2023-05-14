@@ -1,15 +1,22 @@
 package com.pickle.models.rest;
 
+import com.pickle.models.TestCase;
+
+import java.util.Map;
 import java.util.Objects;
 
-public class RestRequest {
+public class RestTestCase implements TestCase{
 
-    private final HttpRequest httpRequest;
-    private final HttpExpectedResponse httpExpectedResponse;
+    private  HttpRequest httpRequest;
+    private  HttpExpectedResponse httpExpectedResponse;
 
-    private final String requestName;
+    private  String requestName;
 
-    private RestRequest(HttpRequest httpRequest, HttpExpectedResponse httpExpectedResponse, String requestName) {
+    public RestTestCase() {
+
+    }
+
+    public RestTestCase(HttpRequest httpRequest, HttpExpectedResponse httpExpectedResponse, String requestName) {
         this.httpRequest = httpRequest;
         this.httpExpectedResponse = httpExpectedResponse;
         this.requestName = requestName;
@@ -30,8 +37,8 @@ public class RestRequest {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof RestRequest restRequest)) return false;
-        return Objects.equals(httpRequest, restRequest.httpRequest) && Objects.equals(httpExpectedResponse, restRequest.httpExpectedResponse) && Objects.equals(requestName, restRequest.requestName);
+        if (!(o instanceof RestTestCase restTestCase)) return false;
+        return Objects.equals(httpRequest, restTestCase.httpRequest) && Objects.equals(httpExpectedResponse, restTestCase.httpExpectedResponse) && Objects.equals(requestName, restTestCase.requestName);
     }
 
     @Override
@@ -46,5 +53,14 @@ public class RestRequest {
                 ", httpExpectedResponse=" + httpExpectedResponse +
                 ", requestName='" + requestName + '\'' +
                 '}';
+    }
+
+    @Override
+    public Object getTestCases() {
+        return this;
+    }
+
+    public void setRequestName(String requestName) {
+        this.requestName = requestName;
     }
 }

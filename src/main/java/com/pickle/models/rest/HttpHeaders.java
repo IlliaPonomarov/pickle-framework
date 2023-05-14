@@ -3,9 +3,11 @@ package com.pickle.models.rest;
 public class HttpHeaders {
     private final HttpHeaderBuilder httpHeaderBuilder;
 
+
     private HttpHeaders(HttpHeaderBuilder httpHeaderBuilder) {
         this.httpHeaderBuilder = httpHeaderBuilder;
     }
+
 
     public static class HttpHeaderBuilder {
         private String contentType;
@@ -88,6 +90,12 @@ public class HttpHeaders {
         public HttpHeaders build() {
             return new HttpHeaders(this);
         }
+
+        public HttpHeaderBuilder xRequestedWith(String xRequestedWith) {
+            this.xRequestedWith = xRequestedWith;
+            return this;
+        }
+
     }
 
 }

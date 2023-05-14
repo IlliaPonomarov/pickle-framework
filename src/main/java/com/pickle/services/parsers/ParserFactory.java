@@ -1,8 +1,8 @@
-package com.pickle.parsers;
+package com.pickle.services.parsers;
 
-import com.pickle.parsers.json.JsonParser;
-import com.pickle.parsers.xml.XmlParser;
-import com.pickle.parsers.yaml.YamlParser;
+import com.pickle.services.parsers.json.JsonParser;
+import com.pickle.services.parsers.xml.XmlParser;
+import com.pickle.services.parsers.yaml.YamlParser;
 import com.pickle.utility.enums.ExtensionType;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,6 @@ import java.util.Optional;
  * @since 2023-05-07
  * @author Illia Ponomarov
  */
-@Component
 public class ParserFactory {
 
     private Map<ExtensionType, Object> parsers;
@@ -37,9 +36,9 @@ public class ParserFactory {
      * @return Parser
      */
     public Parser getParser() {
-        ExtensionType extensionType = ExtensionType.getExtensionType(this.fileParser.getExtension());
+        ExtensionType extensionType = this.fileParser.getInputExtensionType();
         Optional<Parser> parser = Optional.of((Parser) this.parsers.get(extensionType));
-
+        System.out.println(parser);
         return parser.orElseGet(parser::orElseThrow);
     }
 

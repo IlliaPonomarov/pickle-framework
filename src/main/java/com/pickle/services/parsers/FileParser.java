@@ -1,16 +1,15 @@
-package com.pickle.parsers;
+package com.pickle.services.parsers;
 
-import com.pickle.services.FileService;
 import com.pickle.utility.MyLogger;
 import com.pickle.utility.enums.ExtensionType;
 import org.springframework.stereotype.Service;
 
-import javax.imageio.IIOException;
 import java.io.File;
-import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 /**
  * The InputNotFoundException class for the input path
@@ -109,6 +108,16 @@ public class FileParser {
 
         return extension;
     }
+
+    public InputStream getInputStream() {
+        try {
+            return new FileInputStream(this.inputPath);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
     private boolean isExist(String path) {
         return new File(path).exists();

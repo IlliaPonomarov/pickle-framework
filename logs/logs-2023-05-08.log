@@ -1023,7 +1023,7 @@ Positive matches:
       - @ConditionalOnBean (types: com.fasterxml.jackson.databind.ObjectMapper; SearchStrategy: all) found bean 'jacksonObjectMapper' (OnBeanCondition)
 
    JacksonHttpMessageConvertersConfiguration.MappingJackson2HttpMessageConverterConfiguration#mappingJackson2HttpMessageConverter matched:
-      - @ConditionalOnMissingBean (types: org.springframework.http.converter.json.MappingJackson2HttpMessageConverter ignored: org.springframework.hateoas.server.mvc.TypeConstrainedMappingJackson2HttpMessageConverter,org.springframework.data.restRequest.webmvc.alps.AlpsJsonHttpMessageConverter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.http.converter.json.MappingJackson2HttpMessageConverter ignored: org.springframework.hateoas.server.mvc.TypeConstrainedMappingJackson2HttpMessageConverter,org.springframework.data.restTestCase.webmvc.alps.AlpsJsonHttpMessageConverter; SearchStrategy: all) did not find any beans (OnBeanCondition)
 
    JmxAutoConfiguration matched:
       - @ConditionalOnClass found required class 'org.springframework.jmx.export.MBeanExporter' (OnClassCondition)
@@ -1586,7 +1586,7 @@ Negative matches:
 
    RepositoryRestMvcAutoConfiguration:
       Did not match:
-         - @ConditionalOnClass did not find required class 'org.springframework.data.restRequest.webmvc.config.RepositoryRestMvcConfiguration' (OnClassCondition)
+         - @ConditionalOnClass did not find required class 'org.springframework.data.restTestCase.webmvc.config.RepositoryRestMvcConfiguration' (OnClassCondition)
 
    Saml2RelyingPartyAutoConfiguration:
       Did not match:

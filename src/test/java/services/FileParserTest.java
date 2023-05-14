@@ -1,8 +1,7 @@
 package services;
 
-import com.pickle.parsers.FileParser;
+import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.ExtensionType;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

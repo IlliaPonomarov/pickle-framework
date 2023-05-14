@@ -1,6 +1,6 @@
 package services;
 
-import com.pickle.parsers.FileParser;
+import com.pickle.services.parsers.FileParser;
 import com.pickle.services.DirectoryService;
 import com.pickle.services.FileService;
 import org.junit.jupiter.api.BeforeEach;

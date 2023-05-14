@@ -1,27 +1,28 @@
 package com.pickle.models.rest;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
 import java.util.Objects;
 
 public class HttpExpectedResponse {
 
-    private HttpStatus httpStatus;
+    private HttpStatusCode httpStatus;
     private HttpHeaders httpHeaders;
 
     private String body;
 
-    public HttpExpectedResponse(HttpStatus httpStatus, HttpHeaders httpHeaders, String body) {
+    public HttpExpectedResponse(HttpStatusCode httpStatus, HttpHeaders httpHeaders, String body) {
         this.httpStatus = httpStatus;
         this.httpHeaders = httpHeaders;
         this.body = body;
     }
 
-    public HttpStatus getHttpStatus() {
+    public HttpStatusCode getHttpStatus() {
         return httpStatus;
     }
 
-    public void setHttpStatus(HttpStatus httpStatus) {
+    public void setHttpStatus(HttpStatusCode httpStatus) {
         this.httpStatus = httpStatus;
     }
 

@@ -1,6 +1,6 @@
 package com.pickle.services;
 
-import com.pickle.parsers.FileParser;
+import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.Directory;
 import com.pickle.utility.MyLogger;
 import com.pickle.utility.enums.ExtensionType;

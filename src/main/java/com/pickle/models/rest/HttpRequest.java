@@ -17,7 +17,7 @@ public class HttpRequest {
 
         private HttpHeaders httpHeaders;
 
-        private Map<String, String> params;
+        private Map<String, Object> params;
 
         private String body;
 
@@ -35,7 +35,7 @@ public class HttpRequest {
             return this;
         }
 
-        public HttpRequestBuilder params(Map<String, String> params) {
+        public HttpRequestBuilder params(Map<String, Object> params) {
             this.params = params;
             return this;
         }

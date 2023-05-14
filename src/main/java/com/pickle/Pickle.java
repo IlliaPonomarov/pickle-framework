@@ -1,7 +1,7 @@
 package com.pickle;
-import com.pickle.parsers.FileParser;
-import com.pickle.parsers.Parser;
-import com.pickle.parsers.ParserFactory;
+import com.pickle.services.parsers.FileParser;
+import com.pickle.services.parsers.Parser;
+import com.pickle.services.parsers.ParserFactory;
 import com.pickle.services.ArgsService;
 import com.pickle.services.DirectoryService;
 import com.pickle.services.FileService;
@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -60,7 +59,7 @@ public class Pickle implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-      // args = new String[4];
+      args = new String[4];
 
         // Label
         System.out.println("\n" +
@@ -75,18 +74,18 @@ public class Pickle implements CommandLineRunner {
                 "\033[0m");
 
         CommandLine myArgumentParser;
-//        String inputPath = "C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml";
-//        String outputPath = "C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/";
-//
-//        args[0] = "-i";
-//        args[1] = inputPath;
-//        args[2] = "-o";
-//        args[3] = outputPath;
+        String inputPath = "C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml";
+        String outputAbsolutePath = "C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/";
 
-        if (args.length == 0) {
-            MyLogger.logger.error("No arguments provided");
-            System.exit(1);
-        }
+        args[0] = "-i";
+        args[1] = inputPath;
+        args[2] = "-o";
+        args[3] = outputAbsolutePath;
+
+//        if (args.length == 0) {
+//            MyLogger.logger.error("No arguments provided");
+//            System.exit(1);
+//        }
 
 
         MyLogger.logger.info("Starting Pickle ...");
@@ -96,16 +95,16 @@ public class Pickle implements CommandLineRunner {
         myArgumentParser = MyArgumentParser.build(args);
         argsService.setMyArgumentParser(myArgumentParser);
 
-        String inputPath = argsService.getInputPath();
-        String outputPath = argsService.getOutputPath();
+//        String inputPath = argsService.getInputPath();
+//        String outputAbsolutePath = argsService.getOutputPath();
 
         try {
             if (argsService.hasInputAndOutputPath()) {
-                directoryService.setPath(outputPath);
+                directoryService.setPath(outputAbsolutePath);
                 directoryService.createOutputDirectoryStructure();
 
                 MyLogger.logger.info(String.format("INPUT PATH: %s", inputPath));
-                MyLogger.logger.info(String.format("OUTPUT PATH: %s", outputPath));
+                MyLogger.logger.info(String.format("OUTPUT PATH: %s", outputAbsolutePath));
                 Optional<File[]> listOfFiles = Optional.ofNullable(new File(inputPath).listFiles());
 
                 if (listOfFiles.isEmpty()) {
@@ -114,7 +113,8 @@ public class Pickle implements CommandLineRunner {
                 }
 
                 Arrays.stream(listOfFiles.get()).forEach(file -> {
-                    FileParser fileParser = new FileParser(file.getAbsolutePath(), outputPath);
+                    String inputAbsolutePath = file.getAbsolutePath();
+                    FileParser fileParser = new FileParser(inputAbsolutePath, outputAbsolutePath);
                     FileService fileService = new FileService(fileParser, directoryService);
                     MyLogger.logger.info(String.format("Parsing file: %s", file.getName()));
                     MyLogger.logger.info("INPUT FILE NAME: " + fileParser.getInputFileName());
@@ -122,7 +122,9 @@ public class Pickle implements CommandLineRunner {
                     fileService.createOutputFileStructure();
 
                     Parser parser = new ParserFactory(fileParser).getParser();
-                    parser.headerParser();
+                    parser.parseFile();
+                    parser.createTestCase();
+
                 });
             }
         } catch (NullPointerException e) {

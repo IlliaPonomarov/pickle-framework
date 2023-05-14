@@ -11,7 +11,7 @@
 4. [Pickle TechStack](#4-pickle-techstack)
 5. [How to test endpoints ?](#5-how-to-test-endpoints-)
 6. [Pickle file structure](#6-pickle-file-structure)<br/>
-6.1 [REST](#61-restRequest)
+6.1 [REST](#61-restTestCase)
     1. [YAML](#611-yaml)
     2. [JSON](#622-json)
     3. [XML](#623-xml)
@@ -77,7 +77,7 @@
 ### 6.1 REST
 #### 6.1.1 YAML
 ```
-   restRequest:
+   restTestCase:
         requestName:
             request:
                   method: GET
@@ -99,7 +99,7 @@
 
 ### 6.1.2 JSON
 ```
-   "restRequest": {
+   "restTestCase": {
       "requestName": {
              "request": {
                  "method": "GET",
@@ -129,7 +129,7 @@
 
 ### 6.1.3 XML
 ```
-<restRequest>
+<restTestCase>
    <requestName>
           <request>
               <method>GET</method>
@@ -153,7 +153,7 @@
               </body>
           </expected-response>
    </requestName>
-</restRequest>
+</restTestCase>
 ```
 
 ## 6.2 SOAP

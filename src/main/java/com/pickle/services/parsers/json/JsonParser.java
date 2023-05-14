@@ -1,0 +1,33 @@
+package com.pickle.services.parsers.json;
+
+import com.pickle.models.rest.HttpHeaders;
+import com.pickle.services.parsers.FileParser;
+import com.pickle.services.parsers.Parser;
+
+public class JsonParser implements Parser {
+
+    private final FileParser fileParser;
+
+    public JsonParser(FileParser fileParser) {
+        this.fileParser = fileParser;
+    }
+    @Override
+    public Object parseFile() {
+        return null;
+    }
+
+    @Override
+    public HttpHeaders createTestCase() {
+        return null;
+    }
+
+    @Override
+    public String requestParser() {
+        return null;
+    }
+
+    @Override
+    public String expectedResponseParser() {
+        return null;
+    }
+}

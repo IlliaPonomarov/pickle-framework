@@ -4,6 +4,8 @@ rest:
       method: POST
       url: https://example.com/api/create_order
       body: '{"orderName": "Example Order", "customerId": "12345"}'
+      params:
+        orderId: "54321"
       headers:
         Content-Type: application/json
         Authorization: "Bearer 1234567890"
