@@ -7,11 +7,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
 import org.yaml.snakeyaml.Yaml;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import java.io.InputStream;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class YamlParser implements Parser {
@@ -38,16 +36,13 @@ public class YamlParser implements Parser {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
+    /**
+     * Create a rest test case
+     * @return
+     */
     @Override
-    public HttpHeaders createTestCase() {
+    public HttpHeaders createRestTestCase() {
         Map<String, String> headers = new HashMap<>();
-        HttpHeaders httpHeaders = null;
-        HttpHeaders expectedHttpHeaders = null;
-        HttpRequest httpRequest = null;
-        HttpExpectedResponse httpExpectedResponse = null;
-        RestTestCase restTest;
-        HttpStatusCode expectedHttpStatus = null;
-        String expectedResponseBody = "";
         Map<UUID, RestTestCase> testCases = new HashMap<>();
 
         if (this.fieldsContent.containsKey("rest")) {
@@ -56,152 +51,11 @@ public class YamlParser implements Parser {
             // Get the requests names, example ( GET, POST, PUT, DELETE )
             for (Map.Entry<String, Object> requests : rest.entrySet()) {
                 String requestName = requests.getKey();
-                // Get the request info, example ( request, expectedResponse )
-                for (Map.Entry<String, Object> requestInfo : ((Map<String, Object>) requests.getValue()).entrySet()) {
-                    RestTestCase restTestCase = new RestTestCase();
-                    restTestCase = new RestTestCase();
-                    restTestCase.setRequestName(requestName);
-                    // Get the request headers
-                    if (requestInfo.getKey().equals("request")) {
-                        Map<String, Object> request = (Map<String, Object>) requestInfo.getValue();
-                        String url = "";
-                        String method = "";
-                        String body = "";
-                        Map<String, Object> params = new HashMap<>();
-                        Map<String, Object> headersMap = new HashMap<>();
-                        // Get the request headers
-                        for (Map.Entry<String, Object> requestFields : request.entrySet()) {
-                            String key = requestFields.getKey();
+                RestTestCase restTestCase = getRestTestCase(requests, requestName);
 
-                            if (key.equals("headers")) {
-                                headersMap = (Map<String, Object>) requestFields.getValue();
-                                String accept = "";
-                                String contentLength = "";
-                                String cookie = "";
-                                String contentEncoding = "";
-                                String contentLanguage = "";
-                                String contentType = "";
-                                String userAgent = "";
-                                String authorization = "";
-                                String xRequestedWith = "";
-                                String contentLocation = "";
-                                String contentMD5 = "";
-                                String cacheControl = "";
-
-                                for (Map.Entry<String, Object> header : headersMap.entrySet()) {
-
-                                    if (header.getKey().equals("Authorization")) {
-                                        authorization = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("Accept")) {
-                                        accept = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("Content-Length")) {
-                                        contentLength = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("Cookie")) {
-                                        cookie = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("Content-Encoding")) {
-                                        contentEncoding = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("contentLanguage")) {
-                                        contentLanguage = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("Content-Type")) {
-                                        contentType = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("User-Agent")) {
-                                        userAgent = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("X-Requested-With")) {
-                                        xRequestedWith = header.getValue().toString();
-                                    }
-                                    if (header.getKey().equals("Content-Location")) {
-                                        contentLocation = header.getValue().toString();
-                                    }
-
-                                    if (header.getKey().equals("Content-MD5")) {
-                                        contentMD5 = header.getValue().toString();
-                                    }
-
-                                    if (header.getKey().equals("Cache-Control")) {
-                                        cacheControl = header.getValue().toString();
-                                    }
-                                }
-
-                                httpHeaders = new HttpHeaders.HttpHeaderBuilder().accept(accept)
-                                        .contentLength(contentLength)
-                                        .cookie(cookie)
-                                        .contentEncoding(contentEncoding)
-                                        .contentLanguage(contentLanguage)
-                                        .contentType(contentType)
-                                        .userAgent(userAgent)
-                                        .authorization(authorization)
-                                        .xRequestedWith(xRequestedWith)
-                                        .contentMD5(contentMD5)
-                                        .contentLocation(contentLocation)
-                                        .cacheControl(cacheControl)
-                                        .build();
-
-                            }
-                            if (key.equals("method")) {
-                                method = requestFields.getValue().toString();
-                            }
-                            if (key.equals("url")) {
-                                url = requestFields.getValue().toString();
-                            }
-
-                            if (key.equals("body")) {
-                                body = requestFields.getValue().toString();
-                            }
-
-                            if (key.equals("params"))
-                                params = (Map<String, Object>) requestFields.getValue();
-
-                        }
-                        httpRequest = new HttpRequest.HttpRequestBuilder(HttpMethod.valueOf(method), url)
-                                .params(params)
-                                .httpHeader(httpHeaders)
-                                .body(body)
-                                .build();
-                    }
-                    if (requestInfo.getKey().equals("expected-response")) {
-                        Map<String, Object> expectedResponse = (Map<String, Object>) requestInfo.getValue();
-                        Map<String, Object> headersMap = new HashMap<>();
-
-                        if (expectedResponse.containsKey("headers")) {
-                            headersMap = (Map<String, Object>) expectedResponse.get("headers");
-
-                            for (Map.Entry<String, Object> header : headersMap.entrySet()) {
-                                expectedHttpHeaders = new HttpHeaders.HttpHeaderBuilder().accept(header.getValue().toString())
-                                        .contentLength(header.getValue().toString())
-                                        .cookie(header.getValue().toString())
-                                        .contentEncoding(header.getValue().toString())
-                                        .contentLanguage(header.getValue().toString())
-                                        .contentMD5(header.getValue().toString())
-                                        .cacheControl(header.getValue().toString())
-                                        .authorization(header.getValue().toString())
-                                        .contentType(header.getValue().toString())
-                                        .build();
-                            }
-                        }
-
-                        if (expectedResponse.containsKey("status"))
-                            expectedHttpStatus = HttpStatusCode.valueOf(Integer.parseInt(expectedResponse.get("status").toString()));
-
-                        if (expectedResponse.containsKey("body"))
-                            expectedResponseBody = expectedResponse.get("body").toString();
-
-                        httpExpectedResponse = new HttpExpectedResponse(expectedHttpStatus, expectedHttpHeaders, expectedResponseBody);
-
-                    }
-                }
-                testCases.put(UUID.randomUUID(), new RestTestCase(httpRequest, httpExpectedResponse, requestName));
-
+                testCases.put(UUID.randomUUID(), restTestCase);
             }
         }
-
 
         return new HttpHeaders.HttpHeaderBuilder().accept(headers.get("Accept"))
                 .contentType(headers.get("Content-Type"))
@@ -212,6 +66,154 @@ public class YamlParser implements Parser {
                 .cacheControl(headers.get("Cache-Control"))
                 .build();
     }
+
+    /**
+     * Get the test case from the yaml file
+     * @param requests
+     * @param requestName
+     * @return
+     */
+    private RestTestCase getRestTestCase(Map.Entry<String, Object> requests, String requestName) {
+        HttpRequest httpRequest = new HttpRequest();
+        HttpExpectedResponse httpExpectedResponse = null;
+        final Map<String, Object> requestValueMap = (Map<String, Object>) requests.getValue();
+
+        Optional<Map.Entry<String, Object>> requestEntry = requestValueMap.entrySet().stream()
+                .filter(requestInfo -> requestInfo.getKey().equals("request"))
+                .findFirst();
+
+        if (requestEntry.isPresent())
+            httpRequest = getHttpRequest(requestEntry.get());
+
+        Optional<Map.Entry<String, Object>> expectedResponseEntry = requestValueMap.entrySet().stream()
+                .filter(requestInfo -> requestInfo.getKey().equals("expected-response"))
+                .findFirst();
+
+        if (expectedResponseEntry.isPresent())
+            httpExpectedResponse = getHttpExpectedResponse(expectedResponseEntry.get());
+
+        return new RestTestCase(httpRequest, httpExpectedResponse, requestName);
+    }
+
+    /**
+     * Get the expected response from the yaml file
+     * @param requestInfo
+     * @return
+     */
+
+    private HttpRequest getHttpRequest(Map.Entry<String, Object> requestInfo) {
+        Map<String, Object> request = (Map<String, Object>) requestInfo.getValue();
+        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> headers = ((Map<?, ?>) requestInfo.getValue()).get("headers") != null ?
+                (Map<String, Object>) ((Map<?, ?>) requestInfo.getValue()).get("headers") : new HashMap<>();
+
+        HttpHeaders httpHeaders = getHttpHeaders(headers);
+
+        String url = getValueByKey(request, "url");
+        String method = getValueByKey(request, "method");
+        String body = getValueByKey(request, "body");
+        params = ((Map<?, ?>) requestInfo.getValue()).get("params") != null ?
+                (Map<String, Object>) ((Map<?, ?>) requestInfo.getValue()).get("params") : new HashMap<>();
+
+        return new HttpRequest.HttpRequestBuilder(HttpMethod.valueOf(method), url)
+                .params(params)
+                .httpHeader(httpHeaders)
+                .body(body)
+                .build();
+    }
+
+    /**
+     * Get the expected response from the yaml file
+     * @param mapper
+     * @param key
+     * @return
+     */
+
+    private String getValueByKey(Map<String, Object> mapper, String key) {
+        return mapper.entrySet().stream()
+                .filter(requestInfo -> requestInfo.getKey().equals(key))
+                .findFirst().get()
+                .getValue()
+                .toString();
+    }
+
+    /**
+     * Get the expected response from the yaml file
+     * @param headers
+     * @return
+     */
+    private HttpHeaders getHttpHeaders(Map<String, Object> headers) {
+
+        Map<String, String> headerValues = new HashMap<>(Map.ofEntries(
+                Map.entry("Accept", ""),
+                Map.entry("Content-Length", ""),
+                Map.entry("Cookie", ""),
+                Map.entry("Content-Encoding", ""),
+                Map.entry("Content-Language", ""),
+                Map.entry("Content-Type", ""),
+                Map.entry("User-Agent", ""),
+                Map.entry("Authorization", ""),
+                Map.entry("X-Requested-With", ""),
+                Map.entry("Content-Location", ""),
+                Map.entry("Content-MD5", ""),
+                Map.entry("Cache-Control", "")
+        ));
+
+        headers.forEach((key, value) -> {
+            if (headerValues.get(key) != null) {
+                headerValues.put(key, value.toString());
+            }
+        });
+
+        return new HttpHeaders.HttpHeaderBuilder()
+                .accept(headerValues.get("Accept"))
+                .contentLength(headerValues.get("Content-Length"))
+                .cookie(headerValues.get("Cookie"))
+                .contentEncoding(headerValues.get("Content-Encoding"))
+                .contentLanguage(headerValues.get("Content-Language"))
+                .contentType(headerValues.get("Content-Type"))
+                .userAgent(headerValues.get("User-Agent"))
+                .authorization(headerValues.get("Authorization"))
+                .xRequestedWith(headerValues.get("X-Requested-With"))
+                .contentMD5(headerValues.get("Content-MD5"))
+                .contentLocation(headerValues.get("Content-Location"))
+                .cacheControl(headerValues.get("Cache-Control"))
+                .build();
+    }
+
+    /**
+     * Get the expected response
+     * @param requestInfo
+     * @return
+     */
+    private HttpExpectedResponse getHttpExpectedResponse(Map.Entry<String, Object> requestInfo) {
+
+        // Get the expected response
+        Map<String, Object> expectedResponse = (Map<String, Object>) requestInfo.getValue();
+
+        // Get the expected headers
+        Map<String, Object> headersMap = Optional.ofNullable(expectedResponse.get("headers"))
+                .map(o -> (Map<String, Object>) o)
+                .orElseThrow(() -> new IllegalArgumentException("Missing 'headers' in the expected response"));
+
+        // Get the expected headers
+        HttpHeaders expectedHttpHeaders = headersMap.keySet().stream()
+                .map(key -> getHttpHeaders(headersMap)).findFirst().get();
+
+        // Get the expected status code
+        HttpStatusCode expectedHttpStatus = Optional.ofNullable(expectedResponse.get("status"))
+                .map(o -> HttpStatusCode.valueOf(Integer.parseInt(o.toString())))
+                .orElseThrow(() -> new IllegalArgumentException("Missing 'status' in the expected response"));
+
+        // Get the expected body
+        String expectedResponseBody = Optional.ofNullable(expectedResponse.get("body"))
+                .map(Object::toString)
+                .orElseThrow(() -> new IllegalArgumentException("Missing 'body' in the expected response"));
+
+        return new HttpExpectedResponse(expectedHttpStatus, expectedHttpHeaders, expectedResponseBody);
+    }
+
+
 
     @Override
     public String requestParser() {

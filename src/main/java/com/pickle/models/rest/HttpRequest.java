@@ -7,11 +7,15 @@ import java.util.Objects;
 
 public class HttpRequest {
 
-    private final HttpRequestBuilder httpRequestBuilder;
+    private HttpRequestBuilder httpRequestBuilder;
 
-    private HttpRequest(HttpRequestBuilder httpRequestBuilder) {
+    public HttpRequest(HttpRequestBuilder httpRequestBuilder) {
         this.httpRequestBuilder = httpRequestBuilder;
     }
+
+    public HttpRequest(){}
+
+
 
     public static class HttpRequestBuilder {
 

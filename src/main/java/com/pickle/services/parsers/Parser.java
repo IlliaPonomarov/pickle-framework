@@ -5,7 +5,7 @@ import com.pickle.utility.enums.ProtocolType;
 
 public interface Parser {
     Object parseFile();
-    HttpHeaders createTestCase();
+    HttpHeaders createRestTestCase();
     String requestParser();
     String expectedResponseParser();
 

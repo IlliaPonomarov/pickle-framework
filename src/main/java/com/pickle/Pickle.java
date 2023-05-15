@@ -123,7 +123,7 @@ public class Pickle implements CommandLineRunner {
 
                     Parser parser = new ParserFactory(fileParser).getParser();
                     parser.parseFile();
-                    parser.createTestCase();
+                    parser.createRestTestCase();
 
                 });
             }

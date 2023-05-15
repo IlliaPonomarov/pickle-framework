@@ -17,7 +17,7 @@ public class XmlParser implements Parser {
     }
 
     @Override
-    public HttpHeaders createTestCase() {
+    public HttpHeaders createRestTestCase() {
         return null;
     }
 

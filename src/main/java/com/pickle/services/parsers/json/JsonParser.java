@@ -17,7 +17,7 @@ public class JsonParser implements Parser {
     }
 
     @Override
-    public HttpHeaders createTestCase() {
+    public HttpHeaders createRestTestCase() {
         return null;
     }
 
