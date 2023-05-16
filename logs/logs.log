@@ -1,235 +1,56 @@
-[2023-05-15T20:41:07,809] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 12128 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
-[2023-05-15T20:41:07,818] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
-[2023-05-15T20:41:08,433] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.988 seconds (process running for 2.672)
-[2023-05-15T20:41:08,436] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
-[2023-05-15T20:41:08,436] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
-[2023-05-15T20:41:08,436] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:41:08,437] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
-[2023-05-15T20:41:08,437] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:41:08,440] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
-[2023-05-15T20:41:08,448] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
-[2023-05-15T20:41:08,448] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:41:08,448] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:41:12,894] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
-[2023-05-15T20:41:13,224] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
-[2023-05-15T20:41:13,544] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
-[2023-05-15T20:41:13,857] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
-[2023-05-15T20:41:13,860] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
-[2023-05-15T20:43:34,059] [INFO ] [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: 
+[2023-05-16T21:17:40,389] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 27064 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
+[2023-05-16T21:17:40,396] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
+[2023-05-16T21:17:41,036] [INFO ] [main] com.pickle.Pickle: Started Pickle in 1.078 seconds (process running for 2.744)
+[2023-05-16T21:17:41,039] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
+[2023-05-16T21:17:41,039] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
+[2023-05-16T21:17:41,040] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
+[2023-05-16T21:17:41,040] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
+[2023-05-16T21:17:41,040] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
+[2023-05-16T21:17:41,043] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
+[2023-05-16T21:17:41,049] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
+[2023-05-16T21:17:41,050] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
+[2023-05-16T21:17:41,050] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
+[2023-05-16T21:17:43,901] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
+[2023-05-16T21:17:44,096] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
+[2023-05-16T21:17:44,306] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-05-16T21:17:44,546] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-16T21:17:44,548] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
+[2023-05-16T21:21:40,459] [ERROR] [main] com.pickle.utility.MyLogger: No input or output path provided
+[2023-05-16T21:21:51,756] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 24564 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
+[2023-05-16T21:21:51,760] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
+[2023-05-16T21:21:52,330] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.906 seconds (process running for 1.631)
+[2023-05-16T21:21:52,332] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
+[2023-05-16T21:21:52,332] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
+[2023-05-16T21:21:52,332] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
+[2023-05-16T21:21:52,332] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
+[2023-05-16T21:21:52,332] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
+[2023-05-16T21:21:52,336] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
+[2023-05-16T21:21:52,341] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
+[2023-05-16T21:21:52,341] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
+[2023-05-16T21:21:52,342] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
+[2023-05-16T21:21:53,500] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
+[2023-05-16T21:21:53,701] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
+[2023-05-16T21:21:53,911] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-05-16T21:21:54,111] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-16T21:21:54,112] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
+[2023-05-16T21:22:53,582] [ERROR] [main] com.pickle.utility.MyLogger: No input or output path provided
+[2023-05-16T21:22:57,582] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 27808 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
+[2023-05-16T21:22:57,587] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
+[2023-05-16T21:22:58,188] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.946 seconds (process running for 1.67)
+[2023-05-16T21:22:58,190] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
+[2023-05-16T21:22:58,191] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
+[2023-05-16T21:22:58,191] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
+[2023-05-16T21:22:58,191] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
+[2023-05-16T21:22:58,191] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
+[2023-05-16T21:22:58,194] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
+[2023-05-16T21:22:58,201] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
+[2023-05-16T21:22:58,201] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
+[2023-05-16T21:22:58,201] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
+[2023-05-16T21:22:59,583] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
+[2023-05-16T21:22:59,757] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
+[2023-05-16T21:22:59,932] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-05-16T21:23:00,085] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-05-16T21:23:00,086] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
+[2023-05-16T21:24:03,530] [INFO ] [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-[2023-05-15T20:43:34,074] [ERROR] [main] org.springframework.boot.SpringApplication: Application run failed
-java.lang.IllegalStateException: Failed to execute CommandLineRunner
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:772) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:753) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:317) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) [spring-boot-3.0.4.jar:3.0.4]
-	at com.pickle.Pickle.main(Pickle.java:51) [classes/:?]
-Caused by: java.lang.ClassCastException: class java.util.LinkedHashMap$Entry cannot be cast to class java.util.Map (java.util.LinkedHashMap$Entry and java.util.Map are in module java.base of loader 'bootstrap')
-	at com.pickle.services.parsers.yaml.YamlParser.getHttpRequest(YamlParser.java:101) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.getRestTestCase(YamlParser.java:78) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.createTestCase(YamlParser.java:51) ~[classes/:?]
-	at com.pickle.Pickle.lambda$run$1(Pickle.java:126) ~[classes/:?]
-	at java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992) ~[?:?]
-	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[?:?]
-	at com.pickle.Pickle.run(Pickle.java:115) ~[classes/:?]
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:769) ~[spring-boot-3.0.4.jar:3.0.4]
-	... 5 more
-[2023-05-15T20:43:39,645] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 23304 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
-[2023-05-15T20:43:39,651] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
-[2023-05-15T20:43:40,202] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.899 seconds (process running for 1.685)
-[2023-05-15T20:43:40,205] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
-[2023-05-15T20:43:40,206] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
-[2023-05-15T20:43:40,206] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:43:40,206] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
-[2023-05-15T20:43:40,206] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:43:40,210] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
-[2023-05-15T20:43:40,216] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
-[2023-05-15T20:43:40,216] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:43:40,216] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:43:41,645] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
-[2023-05-15T20:43:41,821] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
-[2023-05-15T20:43:41,999] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
-[2023-05-15T20:43:42,179] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
-[2023-05-15T20:43:42,180] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
-[2023-05-15T20:43:58,228] [INFO ] [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-[2023-05-15T20:43:58,247] [ERROR] [main] org.springframework.boot.SpringApplication: Application run failed
-java.lang.IllegalStateException: Failed to execute CommandLineRunner
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:772) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:753) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:317) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) [spring-boot-3.0.4.jar:3.0.4]
-	at com.pickle.Pickle.main(Pickle.java:51) [classes/:?]
-Caused by: java.lang.ClassCastException: class java.util.LinkedHashMap$Entry cannot be cast to class java.util.Map (java.util.LinkedHashMap$Entry and java.util.Map are in module java.base of loader 'bootstrap')
-	at com.pickle.services.parsers.yaml.YamlParser.getHttpRequest(YamlParser.java:100) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.getRestTestCase(YamlParser.java:78) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.createTestCase(YamlParser.java:51) ~[classes/:?]
-	at com.pickle.Pickle.lambda$run$1(Pickle.java:126) ~[classes/:?]
-	at java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992) ~[?:?]
-	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[?:?]
-	at com.pickle.Pickle.run(Pickle.java:115) ~[classes/:?]
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:769) ~[spring-boot-3.0.4.jar:3.0.4]
-	... 5 more
-[2023-05-15T20:45:29,936] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 12120 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
-[2023-05-15T20:45:29,941] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
-[2023-05-15T20:45:30,539] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.95 seconds (process running for 1.807)
-[2023-05-15T20:45:30,541] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
-[2023-05-15T20:45:30,541] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
-[2023-05-15T20:45:30,541] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:45:30,541] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
-[2023-05-15T20:45:30,541] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:45:30,544] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
-[2023-05-15T20:45:30,550] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
-[2023-05-15T20:45:30,550] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:45:30,550] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:45:32,300] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
-[2023-05-15T20:45:32,480] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
-[2023-05-15T20:45:32,658] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
-[2023-05-15T20:45:32,842] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
-[2023-05-15T20:45:32,844] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
-[2023-05-15T20:47:05,652] [INFO ] [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-[2023-05-15T20:47:05,670] [ERROR] [main] org.springframework.boot.SpringApplication: Application run failed
-java.lang.IllegalStateException: Failed to execute CommandLineRunner
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:772) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:753) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:317) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) [spring-boot-3.0.4.jar:3.0.4]
-	at com.pickle.Pickle.main(Pickle.java:51) [classes/:?]
-Caused by: java.lang.ClassCastException: class java.util.LinkedHashMap$Entry cannot be cast to class java.util.Map (java.util.LinkedHashMap$Entry and java.util.Map are in module java.base of loader 'bootstrap')
-	at com.pickle.services.parsers.yaml.YamlParser.getHttpRequest(YamlParser.java:100) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.getRestTestCase(YamlParser.java:78) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.createTestCase(YamlParser.java:51) ~[classes/:?]
-	at com.pickle.Pickle.lambda$run$1(Pickle.java:126) ~[classes/:?]
-	at java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992) ~[?:?]
-	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[?:?]
-	at com.pickle.Pickle.run(Pickle.java:115) ~[classes/:?]
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:769) ~[spring-boot-3.0.4.jar:3.0.4]
-	... 5 more
-[2023-05-15T20:47:09,590] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 2876 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
-[2023-05-15T20:47:09,597] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
-[2023-05-15T20:47:10,195] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.948 seconds (process running for 1.729)
-[2023-05-15T20:47:10,198] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
-[2023-05-15T20:47:10,198] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
-[2023-05-15T20:47:10,198] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:47:10,198] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
-[2023-05-15T20:47:10,198] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:47:10,202] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
-[2023-05-15T20:47:10,209] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
-[2023-05-15T20:47:10,209] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:47:10,209] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:47:12,705] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
-[2023-05-15T20:47:12,893] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
-[2023-05-15T20:47:13,064] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
-[2023-05-15T20:47:13,239] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
-[2023-05-15T20:47:13,240] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
-[2023-05-15T20:48:08,039] [INFO ] [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-[2023-05-15T20:48:11,938] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 24004 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
-[2023-05-15T20:48:11,942] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
-[2023-05-15T20:48:12,502] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.875 seconds (process running for 1.619)
-[2023-05-15T20:48:12,505] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
-[2023-05-15T20:48:12,505] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
-[2023-05-15T20:48:12,505] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:48:12,505] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
-[2023-05-15T20:48:12,505] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:48:12,509] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
-[2023-05-15T20:48:12,515] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
-[2023-05-15T20:48:12,515] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:48:12,515] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:48:13,628] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
-[2023-05-15T20:48:13,792] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
-[2023-05-15T20:48:13,970] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
-[2023-05-15T20:48:14,167] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
-[2023-05-15T20:48:14,168] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
-[2023-05-15T20:49:45,601] [INFO ] [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-[2023-05-15T20:49:49,483] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 25564 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
-[2023-05-15T20:49:49,487] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
-[2023-05-15T20:49:50,021] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.891 seconds (process running for 1.702)
-[2023-05-15T20:49:50,023] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
-[2023-05-15T20:49:50,024] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
-[2023-05-15T20:49:50,024] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:49:50,024] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
-[2023-05-15T20:49:50,024] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:49:50,028] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
-[2023-05-15T20:49:50,036] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
-[2023-05-15T20:49:50,036] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:49:50,036] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:49:51,591] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
-[2023-05-15T20:49:51,772] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
-[2023-05-15T20:49:51,946] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
-[2023-05-15T20:49:52,139] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
-[2023-05-15T20:49:52,140] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
-[2023-05-15T20:50:31,161] [INFO ] [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-[2023-05-15T20:50:31,195] [ERROR] [main] org.springframework.boot.SpringApplication: Application run failed
-java.lang.IllegalStateException: Failed to execute CommandLineRunner
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:772) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:753) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:317) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) [spring-boot-3.0.4.jar:3.0.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) [spring-boot-3.0.4.jar:3.0.4]
-	at com.pickle.Pickle.main(Pickle.java:51) [classes/:?]
-Caused by: java.lang.IllegalStateException: stream has already been operated upon or closed
-	at java.util.stream.AbstractPipeline.<init>(AbstractPipeline.java:203) ~[?:?]
-	at java.util.stream.ReferencePipeline.<init>(ReferencePipeline.java:96) ~[?:?]
-	at java.util.stream.ReferencePipeline$StatelessOp.<init>(ReferencePipeline.java:800) ~[?:?]
-	at java.util.stream.ReferencePipeline$2.<init>(ReferencePipeline.java:167) ~[?:?]
-	at java.util.stream.ReferencePipeline.filter(ReferencePipeline.java:166) ~[?:?]
-	at com.pickle.services.parsers.yaml.YamlParser.getRequestValue(YamlParser.java:120) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.getHttpRequest(YamlParser.java:107) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.getRestTestCase(YamlParser.java:78) ~[classes/:?]
-	at com.pickle.services.parsers.yaml.YamlParser.createTestCase(YamlParser.java:51) ~[classes/:?]
-	at com.pickle.Pickle.lambda$run$1(Pickle.java:126) ~[classes/:?]
-	at java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992) ~[?:?]
-	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[?:?]
-	at com.pickle.Pickle.run(Pickle.java:115) ~[classes/:?]
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:769) ~[spring-boot-3.0.4.jar:3.0.4]
-	... 5 more
-[2023-05-15T20:52:28,728] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 18360 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
-[2023-05-15T20:52:28,732] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
-[2023-05-15T20:52:29,301] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.884 seconds (process running for 1.633)
-[2023-05-15T20:52:29,303] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
-[2023-05-15T20:52:29,303] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
-[2023-05-15T20:52:29,303] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:52:29,303] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
-[2023-05-15T20:52:29,303] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:52:29,306] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
-[2023-05-15T20:52:29,312] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
-[2023-05-15T20:52:29,312] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:52:29,312] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:52:35,764] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
-[2023-05-15T20:52:35,944] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
-[2023-05-15T20:52:36,134] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
-[2023-05-15T20:52:36,295] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
-[2023-05-15T20:52:36,296] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
-[2023-05-15T20:53:52,162] [INFO ] [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger: 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-[2023-05-15T20:53:56,104] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 9088 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
-[2023-05-15T20:53:56,108] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
-[2023-05-15T20:53:56,682] [INFO ] [main] com.pickle.Pickle: Started Pickle in 0.891 seconds (process running for 1.632)
-[2023-05-15T20:53:56,684] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
-[2023-05-15T20:53:56,685] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
-[2023-05-15T20:53:56,685] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:53:56,685] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
-[2023-05-15T20:53:56,685] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:53:56,688] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
-[2023-05-15T20:53:56,694] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
-[2023-05-15T20:53:56,694] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
-[2023-05-15T20:53:56,694] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
-[2023-05-15T20:53:57,969] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
-[2023-05-15T20:53:58,144] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
-[2023-05-15T20:53:58,347] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
-[2023-05-15T20:53:58,538] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
-[2023-05-15T20:53:58,539] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true

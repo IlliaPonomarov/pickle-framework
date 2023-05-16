@@ -1,4 +1,4 @@
-package com.pickle.services;
+package com.pickle.services.parsers.fileParsers;
 
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.Directory;

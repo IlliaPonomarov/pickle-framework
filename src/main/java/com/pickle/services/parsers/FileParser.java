@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 
@@ -117,6 +119,37 @@ public class FileParser {
         }
     }
 
+    /** not tested yet */
+    @Deprecated
+    public boolean isSOAP() {
+        File file = new File(this.inputPath);
+
+        try{
+            String fileContent = Files.readString(file.toPath(), StandardCharsets.UTF_8);
+
+            if (fileContent.contains("Envelope") || fileContent.contains("Fault") || fileContent.contains("Body") || fileContent.contains("soap") || fileContent.contains("SOAP"))
+                return true;
+        } catch (Exception e) {
+            MyLogger.logger.error("An error occurred while checking if the file is SOAP" + e.getMessage());
+        }
+        return false;
+    }
+
+    /** not tested yet */
+    @Deprecated
+    public boolean isREST() {
+        File file = new File(this.inputPath);
+
+        try{
+            String fileContent = Files.readString(file.toPath(), StandardCharsets.UTF_8).toLowerCase();
+
+            if (fileContent.contains("get") || fileContent.contains("post") || fileContent.contains("put") || fileContent.contains("delete") || fileContent.contains("patch") || fileContent.contains("rest"))
+                return true;
+        } catch (Exception e) {
+            MyLogger.logger.error("An error occurred while checking if the file is REST" + e.getMessage());
+        }
+        return false;
+    }
 
 
     private boolean isExist(String path) {

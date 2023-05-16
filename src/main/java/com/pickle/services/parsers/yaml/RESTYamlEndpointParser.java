@@ -2,7 +2,7 @@ package com.pickle.services.parsers.yaml;
 
 import com.pickle.models.rest.*;
 import com.pickle.services.parsers.FileParser;
-import com.pickle.services.parsers.Parser;
+import com.pickle.utility.enums.ProtocolType;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
 import org.yaml.snakeyaml.Yaml;
@@ -12,38 +12,57 @@ import java.util.*;
 import java.io.InputStream;
 import java.util.stream.Collectors;
 
-public class YamlParser implements Parser {
-
-    private FileParser fileParser;
+public class RESTYamlEndpointParser extends YamlEndpointParser {
     private Yaml yaml;
     private InputStream inputStream;
 
     private Map<String, Object> fieldsContent;
 
-    public YamlParser() {
-    }
-
-    public YamlParser(FileParser fileParser) {
-        this.fileParser = fileParser;
+    public RESTYamlEndpointParser(FileParser fileParser) {
+        super(fileParser);
         this.yaml = new Yaml();
     }
 
-    @Override
     public Map<String, Object> parseFile() {
-        this.inputStream = fileParser.getInputStream();
-        this.fieldsContent = yaml.load(inputStream);
+        this.inputStream = super.getFileParser().getInputStream();
+        Map<String, Object> fieldsContent = yaml.load(inputStream);
         return fieldsContent.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    @Override
+    public ProtocolType extractProtocolType() {
+        return null;
+    }
+
+    @Override
+    public void extractHeaders() {
+
+    }
+
+    @Override
+    public void extractRequest() {
+
+    }
+
+    @Override
+    public void extractExcpevtedResponse() {
+
     }
 
     /**
      * Create a rest test case
      * @return
      */
-    @Override
-    public HttpHeaders createRestTestCase() {
+
+    /**
+     * TODO: Use Factory pattern to separate the creation of the test case to soap and rest
+     * @return
+     */
+    public Map<String, Object> createTestCase() {
         Map<String, String> headers = new HashMap<>();
         Map<UUID, RestTestCase> testCases = new HashMap<>();
+        this.fieldsContent = parseFile();
 
         if (this.fieldsContent.containsKey("rest")) {
             Map<String, Object> rest = (Map<String, Object>) fieldsContent.get("rest");
@@ -57,14 +76,7 @@ public class YamlParser implements Parser {
             }
         }
 
-        return new HttpHeaders.HttpHeaderBuilder().accept(headers.get("Accept"))
-                .contentType(headers.get("Content-Type"))
-                .authorization(headers.get("Authorization"))
-                .contentLanguage(headers.get("Content-Language"))
-                .contentEncoding(headers.get("Content-Encoding"))
-                .contentMD5(headers.get("Content-MD5"))
-                .cacheControl(headers.get("Cache-Control"))
-                .build();
+        return null;
     }
 
     /**
@@ -213,15 +225,4 @@ public class YamlParser implements Parser {
         return new HttpExpectedResponse(expectedHttpStatus, expectedHttpHeaders, expectedResponseBody);
     }
 
-
-
-    @Override
-    public String requestParser() {
-        return null;
-    }
-
-    @Override
-    public String expectedResponseParser() {
-        return null;
-    }
 }

@@ -1,11 +1,15 @@
 package com.pickle;
 import com.pickle.services.parsers.FileParser;
-import com.pickle.services.parsers.Parser;
-import com.pickle.services.parsers.ParserFactory;
+import com.pickle.services.parsers.json.JsonEndpointParser;
+import com.pickle.services.parsers.parserFactories.EndpointParserFactory;
+import com.pickle.services.parsers.parserFactories.ParserFactory;
 import com.pickle.services.ArgsService;
-import com.pickle.services.DirectoryService;
-import com.pickle.services.FileService;
+import com.pickle.services.parsers.fileParsers.DirectoryService;
+import com.pickle.services.parsers.fileParsers.FileService;
+import com.pickle.services.parsers.xml.XmlEndpointParser;
+import com.pickle.services.parsers.yaml.YamlEndpointParser;
 import com.pickle.utility.MyLogger;
+import com.pickle.utility.enums.ExtensionType;
 import org.apache.commons.cli.CommandLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -121,9 +125,35 @@ public class Pickle implements CommandLineRunner {
                     MyLogger.logger.info("INPUT FILE EXTENSION: " + fileParser.getInputExtensionType());
                     fileService.createOutputFileStructure();
 
-                    Parser parser = new ParserFactory(fileParser).getParser();
-                    parser.parseFile();
-                    parser.createRestTestCase();
+                    EndpointParserFactory parser = new ParserFactory(fileParser).getEndpointParserFactory();
+                    ExtensionType extensionType = fileParser.getInputExtensionType();
+                    Optional<YamlEndpointParser> yamlEndpointParser = Optional.empty();
+                    Optional<XmlEndpointParser> xmlEndpointParser = Optional.empty();
+                    Optional<JsonEndpointParser> jsonEndpointParser = Optional.empty();
+
+                    if (extensionType.equals(ExtensionType.YAML)) {
+                        yamlEndpointParser = Optional.ofNullable(parser.createYamlEndpointParser(fileParser));
+
+                        yamlEndpointParser.ifPresent(parser1 -> {
+                            parser1.createTestCase();
+                        });
+                    }
+
+                    if (extensionType.equals(ExtensionType.JSON)) {
+                        jsonEndpointParser = Optional.ofNullable(parser.createJsonEndpointParser(fileParser));
+                        jsonEndpointParser.ifPresent(parser1 -> {
+                            parser1.parseFile();
+                        });
+                    }
+
+
+                    if (extensionType.equals(ExtensionType.XML)) {
+                        xmlEndpointParser = Optional.ofNullable(parser.createXmlEndpointParser(fileParser));
+                        xmlEndpointParser.ifPresent(parser1 -> {
+                            parser1.parseFile();
+                        });
+                    }
+
 
                 });
             }
@@ -132,4 +162,5 @@ public class Pickle implements CommandLineRunner {
             System.exit(1);
         }
     }
+
 }

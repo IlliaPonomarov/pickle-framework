@@ -4,11 +4,6 @@ import com.pickle.models.rest.HttpHeaders;
 import com.pickle.utility.enums.ProtocolType;
 
 public interface Parser {
-    Object parseFile();
-    HttpHeaders createRestTestCase();
-    String requestParser();
-    String expectedResponseParser();
-
     default ProtocolType getRequestType(String protocolType) {
         return ProtocolType.getProtocolType(protocolType).orElseThrow(() -> new IllegalArgumentException("Invalid protocol type"));
     }

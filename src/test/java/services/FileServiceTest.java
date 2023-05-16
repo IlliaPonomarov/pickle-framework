@@ -1,8 +1,8 @@
 package services;
 
 import com.pickle.services.parsers.FileParser;
-import com.pickle.services.DirectoryService;
-import com.pickle.services.FileService;
+import com.pickle.services.parsers.fileParsers.DirectoryService;
+import com.pickle.services.parsers.fileParsers.FileService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
