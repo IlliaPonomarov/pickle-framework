@@ -1,6 +1,7 @@
 package com.pickle.utility.enums;
 
 public enum HeadersValue {
+
     AUTHORIZATION("Authorization"),
     CONTENT_TYPE("Content-Type"),
     ACCEPT("Accept"),
