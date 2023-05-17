@@ -1,8 +1,10 @@
 package com.pickle.services.parsers.yaml;
 
+import com.pickle.models.TestCase;
 import com.pickle.models.rest.*;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.ProtocolType;
+import com.pickle.utility.enums.RestRequestValue;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
 import org.yaml.snakeyaml.Yaml;
@@ -35,21 +37,6 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
         return null;
     }
 
-    @Override
-    public void extractHeaders() {
-
-    }
-
-    @Override
-    public void extractRequest() {
-
-    }
-
-    @Override
-    public void extractExcpevtedResponse() {
-
-    }
-
     /**
      * Create a rest test case
      * @return
@@ -59,7 +46,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * TODO: Use Factory pattern to separate the creation of the test case to soap and rest
      * @return
      */
-    public Map<String, Object> createTestCase() {
+    public Map<UUID, ? extends TestCase> createTestCase() {
         Map<String, String> headers = new HashMap<>();
         Map<UUID, RestTestCase> testCases = new HashMap<>();
         this.fieldsContent = parseFile();
@@ -68,41 +55,42 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
             Map<String, Object> rest = (Map<String, Object>) fieldsContent.get("rest");
 
             // Get the requests names, example ( GET, POST, PUT, DELETE )
-            for (Map.Entry<String, Object> requests : rest.entrySet()) {
-                String requestName = requests.getKey();
-                RestTestCase restTestCase = getRestTestCase(requests, requestName);
+            for (Map.Entry<String, Object> operation : rest.entrySet()) {
+                String operationName = operation.getKey();
+                RestTestCase restTestCase = (RestTestCase) getTestCase(operation, operationName);
 
                 testCases.put(UUID.randomUUID(), restTestCase);
             }
         }
 
-        return null;
+        return testCases;
     }
 
     /**
      * Get the test case from the yaml file
-     * @param requests
+     * @param operations
      * @param requestName
      * @return
      */
-    private RestTestCase getRestTestCase(Map.Entry<String, Object> requests, String requestName) {
+
+    public RestTestCase getTestCase(Map.Entry<String, Object> operations, String requestName) {
         HttpRequest httpRequest = new HttpRequest();
         HttpExpectedResponse httpExpectedResponse = null;
-        final Map<String, Object> requestValueMap = (Map<String, Object>) requests.getValue();
+        final Map<String, Object> operationFields = (Map<String, Object>) operations.getValue();
 
-        Optional<Map.Entry<String, Object>> requestEntry = requestValueMap.entrySet().stream()
+        Optional<Map.Entry<String, Object>> requestFields = operationFields.entrySet().stream()
                 .filter(requestInfo -> requestInfo.getKey().equals("request"))
                 .findFirst();
 
-        if (requestEntry.isPresent())
-            httpRequest = getHttpRequest(requestEntry.get());
+        if (requestFields.isPresent())
+            httpRequest = extractRequest(requestFields.get());
 
-        Optional<Map.Entry<String, Object>> expectedResponseEntry = requestValueMap.entrySet().stream()
+        Optional<Map.Entry<String, Object>> expectedResponseEntry = operationFields.entrySet().stream()
                 .filter(requestInfo -> requestInfo.getKey().equals("expected-response"))
                 .findFirst();
 
         if (expectedResponseEntry.isPresent())
-            httpExpectedResponse = getHttpExpectedResponse(expectedResponseEntry.get());
+            httpExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
 
         return new RestTestCase(httpRequest, httpExpectedResponse, requestName);
     }
@@ -113,21 +101,28 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @return
      */
 
-    private HttpRequest getHttpRequest(Map.Entry<String, Object> requestInfo) {
+    @Override
+    public HttpRequest extractRequest(Map.Entry<String, Object> requestInfo) {
         Map<String, Object> request = (Map<String, Object>) requestInfo.getValue();
         Map<String, Object> params = new HashMap<>();
         Map<String, Object> headers = ((Map<?, ?>) requestInfo.getValue()).get("headers") != null ?
                 (Map<String, Object>) ((Map<?, ?>) requestInfo.getValue()).get("headers") : new HashMap<>();
 
-        HttpHeaders httpHeaders = getHttpHeaders(headers);
+        HttpHeaders httpHeaders = extractHeaders(headers);
 
-        String url = getValueByKey(request, "url");
-        String method = getValueByKey(request, "method");
-        String body = getValueByKey(request, "body");
-        params = ((Map<?, ?>) requestInfo.getValue()).get("params") != null ?
+        String url = getOptionalFieldsValuesByKey(request, RestRequestValue.URL.getValue()).map(String::toString)
+                .orElseThrow( () -> new IllegalArgumentException("URL not found") );
+
+        HttpMethod method = getMandatoryFieldsValuesByKey( request, RestRequestValue.METHOD.getValue() )
+                .map(HttpMethod::valueOf)
+                .orElseThrow( () -> new IllegalArgumentException("Method not found") );
+
+        String body = getOptionalFieldsValuesByKey(request, RestRequestValue.BODY.getValue()).map(String::toString).orElse("");
+
+        params = ((Map<?, ?>) requestInfo.getValue()).get(RestRequestValue.PARAMS.getValue()) != null ?
                 (Map<String, Object>) ((Map<?, ?>) requestInfo.getValue()).get("params") : new HashMap<>();
 
-        return new HttpRequest.HttpRequestBuilder(HttpMethod.valueOf(method), url)
+        return new HttpRequest.HttpRequestBuilder(method, url)
                 .params(params)
                 .httpHeader(httpHeaders)
                 .body(body)
@@ -141,12 +136,19 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @return
      */
 
-    private String getValueByKey(Map<String, Object> mapper, String key) {
+    private Optional<String> getOptionalFieldsValuesByKey(Map<String, Object> mapper, String key) {
         return mapper.entrySet().stream()
                 .filter(requestInfo -> requestInfo.getKey().equals(key))
-                .findFirst().get()
-                .getValue()
-                .toString();
+                .findFirst()
+                .map(entry -> entry.getValue().toString());
+    }
+
+    private Optional<String> getMandatoryFieldsValuesByKey(Map<String, Object> mapper, String key) {
+        return Optional.ofNullable(mapper.entrySet().stream()
+                .filter(requestInfo -> requestInfo.getKey().equals(key))
+                .findFirst()
+                .map(entry -> entry.getValue().toString())
+                .orElseThrow(() -> new IllegalArgumentException("Key or value not found: " + key)));
     }
 
     /**
@@ -154,7 +156,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @param headers
      * @return
      */
-    private HttpHeaders getHttpHeaders(Map<String, Object> headers) {
+    public HttpHeaders extractHeaders(Map<String, Object> headers) {
 
         Map<String, String> headerValues = new HashMap<>(Map.ofEntries(
                 Map.entry("Accept", ""),
@@ -198,7 +200,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @param requestInfo
      * @return
      */
-    private HttpExpectedResponse getHttpExpectedResponse(Map.Entry<String, Object> requestInfo) {
+    public HttpExpectedResponse extractExpectedResponse(Map.Entry<String, Object> requestInfo) {
 
         // Get the expected response
         Map<String, Object> expectedResponse = (Map<String, Object>) requestInfo.getValue();
@@ -210,7 +212,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
 
         // Get the expected headers
         HttpHeaders expectedHttpHeaders = headersMap.keySet().stream()
-                .map(key -> getHttpHeaders(headersMap)).findFirst().get();
+                .map(key -> extractHeaders(headersMap)).findFirst().get();
 
         // Get the expected status code
         HttpStatusCode expectedHttpStatus = Optional.ofNullable(expectedResponse.get("status"))

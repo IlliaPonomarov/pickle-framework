@@ -1,14 +1,15 @@
 package com.pickle.models.rest;
 
-public class HttpHeaders {
-    private final HttpHeaderBuilder httpHeaderBuilder;
+import com.pickle.models.Headers;
+
+public class HttpHeaders extends Headers {
 
     private HttpHeaders(HttpHeaderBuilder httpHeaderBuilder) {
-        this.httpHeaderBuilder = httpHeaderBuilder;
+        super(httpHeaderBuilder);
     }
 
 
-    public static class HttpHeaderBuilder {
+    public static class HttpHeaderBuilder extends Headers.HeadersBuilder {
         private String contentType;
         private String contentLength;
         private String contentEncoding;

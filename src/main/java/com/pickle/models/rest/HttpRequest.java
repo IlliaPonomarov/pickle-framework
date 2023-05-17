@@ -1,23 +1,25 @@
 package com.pickle.models.rest;
 
+import com.pickle.models.Request;
 import org.springframework.http.HttpMethod;
 
 import java.util.Map;
 import java.util.Objects;
 
-public class HttpRequest {
+public class HttpRequest extends Request {
 
     private HttpRequestBuilder httpRequestBuilder;
 
     public HttpRequest(HttpRequestBuilder httpRequestBuilder) {
+        super(httpRequestBuilder);
         this.httpRequestBuilder = httpRequestBuilder;
     }
 
-    public HttpRequest(){}
+    public HttpRequest(){
+        ;
+    }
 
-
-
-    public static class HttpRequestBuilder {
+    public static class HttpRequestBuilder extends Request.RequestBuilder{
 
         private HttpHeaders httpHeaders;
 
