@@ -111,25 +111,25 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
     public HttpRequest extractRequest(Map.Entry<String, Object> requestInfo) {
         String headersValue = RestRequestValue.HEADERS.getValue();
 
-        Map<String, Object> request = (Map<String, Object>) requestInfo.getValue();
+        Map<String, Object> requestData = (Map<String, Object>) requestInfo.getValue();
         Map<String, Object> params = new HashMap<>();
-        Map<String, Object> headers = Optional.ofNullable((Map<String, Object>) request.get(headersValue))
+        Map<String, Object> headersData = Optional.ofNullable((Map<String, Object>) requestData.get(headersValue))
                 .orElse(new HashMap<>());
 
         // Extract the request fields from the yaml file
         HttpHeaders httpHeaders  = null;
 
-        if (headers.size() > 0)
-            httpHeaders = extractHeaders(headers);
+        if (headersData.size() > 0)
+            httpHeaders = extractHeaders(headersData);
 
-        String url = getOptionalFieldsValuesByKey(request, RestRequestValue.URL.getValue()).map(String::toString)
+        String url = getOptionalFieldValuesByKey(requestData, RestRequestValue.URL.getValue()).map(String::toString)
                 .orElseThrow( () -> new IllegalArgumentException("URL not found") );
 
-        HttpMethod method = getMandatoryFieldsValuesByKey( request, RestRequestValue.METHOD.getValue() )
+        HttpMethod method = getMandatoryFieldValuesByKey( requestData, RestRequestValue.METHOD.getValue() )
                 .map(HttpMethod::valueOf)
                 .orElseThrow( () -> new IllegalArgumentException("Method not found") );
 
-        String body = getOptionalFieldsValuesByKey(request, RestRequestValue.BODY.getValue()).map(String::toString).orElse("");
+        String body = getOptionalFieldValuesByKey(requestData, RestRequestValue.BODY.getValue()).map(String::toString).orElse("");
 
         params = ((Map<?, ?>) requestInfo.getValue()).get(RestRequestValue.PARAMS.getValue()) != null ?
                 (Map<String, Object>) ((Map<?, ?>) requestInfo.getValue()).get("params") : new HashMap<>();
@@ -148,14 +148,14 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @return
      */
 
-    private Optional<String> getOptionalFieldsValuesByKey(Map<String, Object> mapper, String key) {
+    private Optional<String> getOptionalFieldValuesByKey(Map<String, Object> mapper, String key) {
         return mapper.entrySet().stream()
                 .filter(requestInfo -> requestInfo.getKey().equals(key))
                 .findFirst()
                 .map(entry -> entry.getValue().toString());
     }
 
-    private Optional<String> getMandatoryFieldsValuesByKey(Map<String, Object> mapper, String key) {
+    private Optional<String> getMandatoryFieldValuesByKey(Map<String, Object> mapper, String key) {
         return Optional.ofNullable(mapper.entrySet().stream()
                 .filter(requestInfo -> requestInfo.getKey().equals(key))
                 .findFirst()
@@ -230,27 +230,25 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
         String headers = RestExpectedResponseValues.HEADERS.getValue();
 
         // Get the expected response
-        Map<String, Object> expectedResponse = (Map<String, Object>) requestInfo.getValue();
+        Map<String, Object> expectedResponseData = (Map<String, Object>) requestInfo.getValue();
 
         // Get the expected headers
-        Map<String, Object> headersMap = Optional.ofNullable(expectedResponse.get(headers))
+        Map<String, Object> headersData = Optional.ofNullable(expectedResponseData.get(headers))
                 .map(o -> (Map<String, Object>) o)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        String.format("Missing '%s' in the expected response",headers)
-                ));
+                .orElse(new HashMap<>());
 
-        HttpHeaders expectedHttpHeaders = headersMap.keySet().stream()
-                .map(key -> extractHeaders(headersMap)).findFirst().get();
+        HttpHeaders expectedHttpHeaders = headersData.keySet().stream()
+                .map(key -> extractHeaders(headersData)).findFirst().get();
 
         // Get the expected status code
-        HttpStatusCode expectedHttpStatus = Optional.ofNullable(expectedResponse.get(statusCode))
+        HttpStatusCode expectedHttpStatus = Optional.ofNullable(expectedResponseData.get(statusCode))
                 .map(o -> HttpStatusCode.valueOf(Integer.parseInt(o.toString())))
                 .orElseThrow(() -> new IllegalArgumentException(
                         String.format("Missing '%s' in the expected response", statusCode))
                 );
 
         // Get the expected body
-        String expectedResponseBody = Optional.ofNullable(expectedResponse.get(body))
+        String expectedResponseBody = Optional.ofNullable(expectedResponseData.get(body))
                 .map(Object::toString)
                 .orElseThrow(() -> new IllegalArgumentException(
                         String.format("Missing '%s' in the expected response", body)

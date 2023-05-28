@@ -4,9 +4,11 @@ import com.pickle.models.ExpectedResponse;
 import com.pickle.models.Headers;
 import com.pickle.models.Request;
 import com.pickle.models.TestCase;
+import com.pickle.models.soap.SoapTestCase;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.ProtocolType;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -17,7 +19,11 @@ public class SOAPYamlEndpointParser extends YamlEndpointParser{
 
     @Override
     public Map<UUID, ? extends TestCase>  createTestCase() {
-        return null;
+        Map<UUID, SoapTestCase> soapTestCases = new HashMap<>();
+        String soapProtocolType = ProtocolType.SOAP.getProtocolType();
+
+
+        return soapTestCases;
     }
 
     @Override
