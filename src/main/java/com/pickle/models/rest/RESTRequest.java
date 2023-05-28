@@ -6,22 +6,22 @@ import org.springframework.http.HttpMethod;
 import java.util.Map;
 import java.util.Objects;
 
-public class HttpRequest extends Request {
+public class RESTRequest extends Request {
 
     private HttpRequestBuilder httpRequestBuilder;
 
-    public HttpRequest(HttpRequestBuilder httpRequestBuilder) {
+    public RESTRequest(HttpRequestBuilder httpRequestBuilder) {
         super(httpRequestBuilder);
         this.httpRequestBuilder = httpRequestBuilder;
     }
 
-    public HttpRequest(){
+    public RESTRequest(){
         ;
     }
 
     public static class HttpRequestBuilder extends Request.RequestBuilder{
 
-        private HttpHeaders httpHeaders;
+        private RESTHeaders RESTHeaders;
 
         private Map<String, Object> params;
 
@@ -36,8 +36,8 @@ public class HttpRequest extends Request {
             this.url = url;
         }
 
-        public HttpRequestBuilder httpHeader(HttpHeaders httpHeaders) {
-            this.httpHeaders = httpHeaders;
+        public HttpRequestBuilder httpHeader(RESTHeaders RESTHeaders) {
+            this.RESTHeaders = RESTHeaders;
             return this;
         }
 
@@ -51,14 +51,14 @@ public class HttpRequest extends Request {
             return this;
         }
 
-        public HttpRequest build() {
-            return new HttpRequest(this);
+        public RESTRequest build() {
+            return new RESTRequest(this);
         }
 
         @Override
         public String toString() {
             return "HttpRequestBuilder{" +
-                    "httpHeader=" + httpHeaders +
+                    "httpHeader=" + RESTHeaders +
                     ", params=" + params +
                     ", body='" + body + '\'' +
                     ", method=" + method +
@@ -67,14 +67,14 @@ public class HttpRequest extends Request {
         }
     }
 
-    public HttpHeaders getHttpHeader() {
-        return this.httpRequestBuilder.httpHeaders;
+    public RESTHeaders getHttpHeader() {
+        return this.httpRequestBuilder.RESTHeaders;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HttpRequest that)) return false;
+        if (!(o instanceof RESTRequest that)) return false;
         return Objects.equals(httpRequestBuilder, that.httpRequestBuilder);
     }
 

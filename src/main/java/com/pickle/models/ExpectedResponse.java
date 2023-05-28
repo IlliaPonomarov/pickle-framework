@@ -1,8 +1,5 @@
 package com.pickle.models;
 
-import com.pickle.models.rest.HttpHeaders;
-import org.springframework.http.HttpStatusCode;
-
 public abstract class ExpectedResponse {
 
 

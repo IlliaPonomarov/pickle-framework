@@ -37,7 +37,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      */
 
     public Map<UUID, ? extends OperationTestCase> createTestCase() {
-        Map<UUID, RestOperationTestCase> restTestOperations = new HashMap<>();
+        Map<UUID, RESTOperationTestCase> restTestOperations = new HashMap<>();
         String restProtocolType = ProtocolType.REST.getProtocolType();
 
         this.fieldsContent = super.parseFile();
@@ -48,7 +48,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
 
             stream.forEach(operation -> {
                 String operationName = operation.getKey();
-                RestOperationTestCase restTestCase = (RestOperationTestCase) getOperationTestCase(operation, operationName);
+                RESTOperationTestCase restTestCase = (RESTOperationTestCase) getOperationTestCase(operation, operationName);
                 UUID randomUUID = UUID.randomUUID();
 
                 restTestOperations.put(randomUUID, restTestCase);
@@ -66,9 +66,9 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @return
      */
 
-    public RestOperationTestCase getOperationTestCase(Map.Entry<String, Object> operations, String requestName) {
-        HttpRequest httpRequest = new HttpRequest();
-        HttpExpectedResponse httpExpectedResponse = null;
+    public RESTOperationTestCase getOperationTestCase(Map.Entry<String, Object> operations, String requestName) {
+        RESTRequest RESTRequest = new RESTRequest();
+        RESTExpectedResponse RESTExpectedResponse = null;
 
         String request = RestRequestValue.REQUEST.getValue();
         String expectedResponse = RestExpectedResponseValues.EXPECTED_RESPONSE.getValue();
@@ -82,7 +82,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
 
         // If the request is present, create the request object
         if (requestFields.isPresent())
-            httpRequest = extractRequest(requestFields.get());
+            RESTRequest = extractRequest(requestFields.get());
 
         // Get the expected response from the yaml file and create the expected response object
         Optional<Map.Entry<String, Object>> expectedResponseEntry = operationFields.entrySet().stream()
@@ -91,9 +91,9 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
 
         // If the expected response is present, create the expected response object
         if (expectedResponseEntry.isPresent())
-            httpExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
+            RESTExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
 
-        return new RestOperationTestCase(httpRequest, httpExpectedResponse, requestName);
+        return new RESTOperationTestCase(RESTRequest, RESTExpectedResponse, requestName);
     }
 
     /**
@@ -103,7 +103,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      */
 
     @Override
-    public HttpRequest extractRequest(Map.Entry<String, Object> requestInfo) {
+    public RESTRequest extractRequest(Map.Entry<String, Object> requestInfo) {
         String headersValue = RestRequestValue.HEADERS.getValue();
 
         Map<String, Object> requestData = (Map<String, Object>) requestInfo.getValue();
@@ -112,10 +112,10 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
                 .orElse(new HashMap<>());
 
         // Extract the request fields from the yaml file
-        HttpHeaders httpHeaders  = null;
+        RESTHeaders RESTHeaders = null;
 
         if (headersData.size() > 0)
-            httpHeaders = extractHeaders(headersData);
+            RESTHeaders = extractHeaders(headersData);
 
         String url = getOptionalFieldValuesByKey(requestData, RestRequestValue.URL.getValue()).map(String::toString)
                 .orElseThrow( () -> new IllegalArgumentException("URL not found") );
@@ -129,9 +129,9 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
         params = ((Map<?, ?>) requestInfo.getValue()).get(RestRequestValue.PARAMS.getValue()) != null ?
                 (Map<String, Object>) ((Map<?, ?>) requestInfo.getValue()).get("params") : new HashMap<>();
 
-        return new HttpRequest.HttpRequestBuilder(method, url)
+        return new RESTRequest.HttpRequestBuilder(method, url)
                 .params(params)
-                .httpHeader(httpHeaders)
+                .httpHeader(RESTHeaders)
                 .body(body)
                 .build();
     }
@@ -163,7 +163,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @param headers
      * @return
      */
-    public HttpHeaders extractHeaders(Map<String, Object> headers) {
+    public RESTHeaders extractHeaders(Map<String, Object> headers) {
         String accept = HeadersValue.ACCEPT.getValue();
         String contentLength = HeadersValue.CONTENT_LENGTH.getValue();
         String cookie = HeadersValue.COOKIE.getValue();
@@ -198,7 +198,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
             }
         });
 
-        return new HttpHeaders.HttpHeaderBuilder()
+        return new RESTHeaders.HttpHeaderBuilder()
                 .accept(headerValues.get(accept))
                 .contentLength(headerValues.get(contentLength))
                 .cookie(headerValues.get(cookie))
@@ -219,7 +219,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @param requestInfo
      * @return
      */
-    public HttpExpectedResponse extractExpectedResponse(Map.Entry<String, Object> requestInfo) {
+    public RESTExpectedResponse extractExpectedResponse(Map.Entry<String, Object> requestInfo) {
         String body = RestExpectedResponseValues.BODY.getValue();
         String statusCode = RestExpectedResponseValues.STATUS_CODE.getValue();
         String headers = RestExpectedResponseValues.HEADERS.getValue();
@@ -232,7 +232,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
                 .map(o -> (Map<String, Object>) o)
                 .orElse(new HashMap<>());
 
-        HttpHeaders expectedHttpHeaders = headersData.keySet().stream()
+        RESTHeaders expectedRESTHeaders = headersData.keySet().stream()
                 .map(key -> extractHeaders(headersData)).findFirst().get();
 
         // Get the expected status code
@@ -249,7 +249,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
                         String.format("Missing '%s' in the expected response", body)
                 ));
 
-        return new HttpExpectedResponse(expectedHttpStatus, expectedHttpHeaders, expectedResponseBody);
+        return new RESTExpectedResponse(expectedHttpStatus, expectedRESTHeaders, expectedResponseBody);
     }
 
 }

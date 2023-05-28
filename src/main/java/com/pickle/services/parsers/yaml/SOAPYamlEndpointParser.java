@@ -4,9 +4,9 @@ import com.pickle.models.ExpectedResponse;
 import com.pickle.models.Headers;
 import com.pickle.models.OperationTestCase;
 import com.pickle.models.Request;
-import com.pickle.models.rest.HttpExpectedResponse;
-import com.pickle.models.rest.HttpRequest;
-import com.pickle.models.rest.RestOperationTestCase;
+import com.pickle.models.rest.RESTExpectedResponse;
+import com.pickle.models.rest.RESTOperationTestCase;
+import com.pickle.models.rest.RESTRequest;
 import com.pickle.models.soap.SOAPOperationTestCase;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.ProtocolType;
@@ -49,8 +49,8 @@ public class SOAPYamlEndpointParser extends YamlEndpointParser{
 
     @Override
     public OperationTestCase getOperationTestCase(Map.Entry<String, Object> operations, String requestName) {
-        SoapRequest httpRequest = new HttpRequest();
-        HttpExpectedResponse httpExpectedResponse = null;
+        SoapRequest httpRequest = new RESTRequest();
+        RESTExpectedResponse RESTExpectedResponse = null;
 
         String request = RestRequestValue.REQUEST.getValue();
         String expectedResponse = RestExpectedResponseValues.EXPECTED_RESPONSE.getValue();
@@ -73,9 +73,9 @@ public class SOAPYamlEndpointParser extends YamlEndpointParser{
 
         // If the expected response is present, create the expected response object
         if (expectedResponseEntry.isPresent())
-            httpExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
+            RESTExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
 
-        return new RestOperationTestCase(httpRequest, httpExpectedResponse, requestName);
+        return new RESTOperationTestCase(httpRequest, RESTExpectedResponse, requestName);
     }
 
     @Override

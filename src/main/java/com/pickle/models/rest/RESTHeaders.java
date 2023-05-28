@@ -2,9 +2,9 @@ package com.pickle.models.rest;
 
 import com.pickle.models.Headers;
 
-public class HttpHeaders extends Headers {
+public class RESTHeaders extends Headers {
 
-    private HttpHeaders(HttpHeaderBuilder httpHeaderBuilder) {
+    private RESTHeaders(HttpHeaderBuilder httpHeaderBuilder) {
         super(httpHeaderBuilder);
     }
 
@@ -87,8 +87,8 @@ public class HttpHeaders extends Headers {
             return this;
         }
 
-        public HttpHeaders build() {
-            return new HttpHeaders(this);
+        public RESTHeaders build() {
+            return new RESTHeaders(this);
         }
 
         public HttpHeaderBuilder xRequestedWith(String xRequestedWith) {

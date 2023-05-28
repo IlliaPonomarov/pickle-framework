@@ -1,25 +1,24 @@
 package com.pickle.models.rest;
 
 import com.pickle.models.ExpectedResponse;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 
 
 import java.util.Objects;
 
-public class HttpExpectedResponse extends ExpectedResponse {
+public class RESTExpectedResponse extends ExpectedResponse {
 
     private HttpStatusCode httpStatus;
 
-    private HttpHeaders httpHeaders;
+    private RESTHeaders RESTHeaders;
 
     private String body;
 
-    public HttpExpectedResponse(HttpStatusCode httpStatus, HttpHeaders httpHeaders, String body) {
-        super(body, httpHeaders);
+    public RESTExpectedResponse(HttpStatusCode httpStatus, RESTHeaders RESTHeaders, String body) {
+        super(body, RESTHeaders);
 
         this.httpStatus = httpStatus;
-        this.httpHeaders = httpHeaders;
+        this.RESTHeaders = RESTHeaders;
         this.body = body;
     }
 
@@ -31,12 +30,12 @@ public class HttpExpectedResponse extends ExpectedResponse {
         this.httpStatus = httpStatus;
     }
 
-    public HttpHeaders getHttpHeaders() {
-        return httpHeaders;
+    public RESTHeaders getHttpHeaders() {
+        return RESTHeaders;
     }
 
-    public void setHttpHeaders(HttpHeaders httpHeaders) {
-        this.httpHeaders = httpHeaders;
+    public void setHttpHeaders(RESTHeaders RESTHeaders) {
+        this.RESTHeaders = RESTHeaders;
     }
 
     public String getBody() {
@@ -50,20 +49,20 @@ public class HttpExpectedResponse extends ExpectedResponse {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HttpExpectedResponse that)) return false;
-        return httpStatus == that.httpStatus && Objects.equals(httpHeaders, that.httpHeaders) && Objects.equals(body, that.body);
+        if (!(o instanceof RESTExpectedResponse that)) return false;
+        return httpStatus == that.httpStatus && Objects.equals(RESTHeaders, that.RESTHeaders) && Objects.equals(body, that.body);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(httpStatus, httpHeaders, body);
+        return Objects.hash(httpStatus, RESTHeaders, body);
     }
 
     @Override
     public String toString() {
         return "HttpExpectedResponse{" +
                 "httpStatus=" + httpStatus +
-                ", httpHeaders=" + httpHeaders +
+                ", httpHeaders=" + RESTHeaders +
                 ", body='" + body + '\'' +
                 '}';
     }

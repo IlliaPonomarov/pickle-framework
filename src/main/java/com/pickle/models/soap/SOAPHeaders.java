@@ -1,7 +1,6 @@
 package com.pickle.models.soap;
 
 import com.pickle.models.Headers;
-import com.pickle.models.rest.HttpHeaders;
 
 public class SOAPHeaders extends Headers {
     private SOAPHeaders (SOAPHeaderBuilder builder) {
