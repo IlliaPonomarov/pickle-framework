@@ -18,19 +18,17 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RESTYamlEndpointParser extends YamlEndpointParser {
-    private final Yaml yaml;
     private InputStream inputStream;
 
     private Map<String, Object> fieldsContent;
 
     public RESTYamlEndpointParser(FileParser fileParser) {
-        super(fileParser);
-        this.yaml = new Yaml();
+        super(fileParser, new Yaml());
     }
 
     public Map<String, Object> parseFile() {
         this.inputStream = super.getFileParser().getInputStream();
-        Map<String, Object> fieldsContent = yaml.load(inputStream);
+        Map<String, Object> fieldsContent = super.yaml.load(inputStream);
         return fieldsContent.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
