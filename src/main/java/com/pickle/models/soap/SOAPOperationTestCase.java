@@ -1,8 +1,8 @@
 package com.pickle.models.soap;
 
-import com.pickle.models.TestCase;
+import com.pickle.models.OperationTestCase;
 
-public class SoapTestCase implements TestCase {
+public class SOAPOperationTestCase implements OperationTestCase {
 
 
     @Override

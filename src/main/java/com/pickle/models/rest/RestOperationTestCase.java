@@ -1,21 +1,21 @@
 package com.pickle.models.rest;
 
-import com.pickle.models.TestCase;
+import com.pickle.models.OperationTestCase;
 
 import java.util.Map;
 import java.util.Objects;
 
-public class RestTestCase implements TestCase {
+public class RestOperationTestCase implements OperationTestCase {
 
     private HttpRequest httpRequest;
     private HttpExpectedResponse httpExpectedResponse;
 
     private  String requestName;
 
-    public RestTestCase() {
+    public RestOperationTestCase() {
     }
 
-    public RestTestCase(HttpRequest httpRequest, HttpExpectedResponse httpExpectedResponse, String requestName) {
+    public RestOperationTestCase(HttpRequest httpRequest, HttpExpectedResponse httpExpectedResponse, String requestName) {
         this.httpRequest = httpRequest;
         this.httpExpectedResponse = httpExpectedResponse;
         this.requestName = requestName;
@@ -37,7 +37,7 @@ public class RestTestCase implements TestCase {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof RestTestCase rest)) return false;
+        if (!(o instanceof RestOperationTestCase rest)) return false;
         return Objects.equals(httpRequest, rest.httpRequest) && Objects.equals(httpExpectedResponse, rest.httpExpectedResponse) && Objects.equals(requestName, rest.requestName);
     }
 
@@ -56,7 +56,7 @@ public class RestTestCase implements TestCase {
     }
 
     @Override
-    public Map<String, ? extends TestCase> getTestCases() {
+    public Map<String, ? extends OperationTestCase> getTestCases() {
         return null;
     }
 

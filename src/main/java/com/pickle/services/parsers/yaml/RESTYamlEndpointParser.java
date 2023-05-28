@@ -1,6 +1,6 @@
 package com.pickle.services.parsers.yaml;
 
-import com.pickle.models.TestCase;
+import com.pickle.models.OperationTestCase;
 import com.pickle.models.rest.*;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.HeadersValue;
@@ -14,7 +14,6 @@ import org.yaml.snakeyaml.Yaml;
 import java.util.*;
 
 import java.io.InputStream;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RESTYamlEndpointParser extends YamlEndpointParser {
@@ -26,12 +25,6 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
         super(fileParser, new Yaml());
     }
 
-    public Map<String, Object> parseFile() {
-        this.inputStream = super.getFileParser().getInputStream();
-        Map<String, Object> fieldsContent = super.yaml.load(inputStream);
-        return fieldsContent.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
 
     @Override
     public ProtocolType extractProtocolType() {
@@ -43,10 +36,11 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @return
      */
 
-    public Map<UUID, ? extends TestCase> createTestCase() {
-        Map<UUID, RestTestCase> restTestOperations = new HashMap<>();
+    public Map<UUID, ? extends OperationTestCase> createTestCase() {
+        Map<UUID, RestOperationTestCase> restTestOperations = new HashMap<>();
         String restProtocolType = ProtocolType.REST.getProtocolType();
-        this.fieldsContent = parseFile();
+
+        this.fieldsContent = super.parseFile();
 
         if (this.fieldsContent.containsKey(restProtocolType)) {
             Map<String, Object> rest = (Map<String, Object>) fieldsContent.get(restProtocolType);
@@ -54,9 +48,10 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
 
             stream.forEach(operation -> {
                 String operationName = operation.getKey();
-                RestTestCase restTestCase = (RestTestCase) getTestCase(operation, operationName);
+                RestOperationTestCase restTestCase = (RestOperationTestCase) getOperationTestCase(operation, operationName);
+                UUID randomUUID = UUID.randomUUID();
 
-                restTestOperations.put(UUID.randomUUID(), restTestCase);
+                restTestOperations.put(randomUUID, restTestCase);
             });
 
         }
@@ -71,11 +66,13 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @return
      */
 
-    public RestTestCase getTestCase(Map.Entry<String, Object> operations, String requestName) {
+    public RestOperationTestCase getOperationTestCase(Map.Entry<String, Object> operations, String requestName) {
         HttpRequest httpRequest = new HttpRequest();
         HttpExpectedResponse httpExpectedResponse = null;
+
         String request = RestRequestValue.REQUEST.getValue();
         String expectedResponse = RestExpectedResponseValues.EXPECTED_RESPONSE.getValue();
+
         final Map<String, Object> operationFields = (Map<String, Object>) operations.getValue();
 
         // Get the request from the yaml file and create the request object
@@ -96,7 +93,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
         if (expectedResponseEntry.isPresent())
             httpExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
 
-        return new RestTestCase(httpRequest, httpExpectedResponse, requestName);
+        return new RestOperationTestCase(httpRequest, httpExpectedResponse, requestName);
     }
 
     /**

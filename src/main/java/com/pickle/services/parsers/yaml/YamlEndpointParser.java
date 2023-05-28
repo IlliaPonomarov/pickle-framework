@@ -2,8 +2,8 @@ package com.pickle.services.parsers.yaml;
 
 import com.pickle.models.ExpectedResponse;
 import com.pickle.models.Headers;
+import com.pickle.models.OperationTestCase;
 import com.pickle.models.Request;
-import com.pickle.models.TestCase;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.ProtocolType;
 import org.yaml.snakeyaml.Yaml;
@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public abstract class YamlEndpointParser{
 
@@ -24,11 +25,9 @@ public abstract class YamlEndpointParser{
         this.fileParser = fileParser;
         this.yaml = yaml;
     }
-    public abstract Map<UUID, ? extends TestCase> createTestCase();
+    public abstract Map<UUID, ? extends OperationTestCase> createTestCase();
 
-    public abstract TestCase getTestCase(Map.Entry<String, Object> operations, String requestName);
-
-    public abstract Map<String, Object> parseFile();
+    public abstract OperationTestCase getOperationTestCase(Map.Entry<String, Object> operations, String requestName);
 
     public abstract ProtocolType extractProtocolType();
     public abstract Headers extractHeaders(Map<String, Object> headers);
@@ -36,6 +35,13 @@ public abstract class YamlEndpointParser{
     public abstract Request extractRequest(Map.Entry<String, Object> requestInfo);
 
     public abstract ExpectedResponse extractExpectedResponse(Map.Entry<String, Object> requestInfo);
+
+    public Map<String, Object> parseFile() {
+        this.inputStream = this.fileParser.getInputStream();
+        Map<String, Object> fieldsContent = this.yaml.load(inputStream);
+        return fieldsContent.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
 
     public FileParser getFileParser() {
         return fileParser;
