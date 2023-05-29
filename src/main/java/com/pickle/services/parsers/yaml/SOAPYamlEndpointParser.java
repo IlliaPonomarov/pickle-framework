@@ -8,6 +8,7 @@ import com.pickle.models.rest.RESTExpectedResponse;
 import com.pickle.models.rest.RESTOperationTestCase;
 import com.pickle.models.rest.RESTRequest;
 import com.pickle.models.soap.SOAPOperationTestCase;
+import com.pickle.models.soap.SOAPRequest;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.ProtocolType;
 import com.pickle.utility.enums.RestExpectedResponseValues;
@@ -49,10 +50,10 @@ public class SOAPYamlEndpointParser extends YamlEndpointParser{
 
     @Override
     public OperationTestCase getOperationTestCase(Map.Entry<String, Object> operations, String requestName) {
-        SoapRequest httpRequest = new RESTRequest();
+        SOAPRequest soapRequest = null;
         RESTExpectedResponse RESTExpectedResponse = null;
 
-        String request = RestRequestValue.REQUEST.getValue();
+        String request = SOAPRequestValue.getValue();
         String expectedResponse = RestExpectedResponseValues.EXPECTED_RESPONSE.getValue();
 
         final Map<String, Object> operationFields = (Map<String, Object>) operations.getValue();
@@ -64,7 +65,7 @@ public class SOAPYamlEndpointParser extends YamlEndpointParser{
 
         // If the request is present, create the request object
         if (requestFields.isPresent())
-            httpRequest = extractRequest(requestFields.get());
+            soapRequest = extractRequest(requestFields.get());
 
         // Get the expected response from the yaml file and create the expected response object
         Optional<Map.Entry<String, Object>> expectedResponseEntry = operationFields.entrySet().stream()
@@ -75,7 +76,7 @@ public class SOAPYamlEndpointParser extends YamlEndpointParser{
         if (expectedResponseEntry.isPresent())
             RESTExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
 
-        return new RESTOperationTestCase(httpRequest, RESTExpectedResponse, requestName);
+        return new RESTOperationTestCase(soapRequest, RESTExpectedResponse, requestName);
     }
 
     @Override

@@ -4,25 +4,29 @@ import com.pickle.models.OperationTestCase;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 public class RESTOperationTestCase implements OperationTestCase {
 
-    private RESTRequest RESTRequest;
+    private final UUID id;
+    private String requestName;
+    private RESTRequest restRequest;
     private RESTExpectedResponse RESTExpectedResponse;
 
-    private  String requestName;
-
-    public RESTOperationTestCase() {
-    }
-
-    public RESTOperationTestCase(RESTRequest RESTRequest, RESTExpectedResponse RESTExpectedResponse, String requestName) {
-        this.RESTRequest = RESTRequest;
+    public RESTOperationTestCase(RESTRequest restRequest, RESTExpectedResponse RESTExpectedResponse, String requestName) {
+        this.id = UUID.randomUUID();
+        this.restRequest = restRequest;
         this.RESTExpectedResponse = RESTExpectedResponse;
         this.requestName = requestName;
     }
 
+    @Override
+    public RESTOperationTestCase getTestCases() {
+        return this;
+    }
+
     public RESTRequest getHttpRequest() {
-        return RESTRequest;
+        return restRequest;
     }
 
     public RESTExpectedResponse getHttpExpectedResponse() {
@@ -32,35 +36,49 @@ public class RESTOperationTestCase implements OperationTestCase {
     public String getRequestName() {
         return requestName;
     }
+    public void setRequestName(String requestName) {
+        this.requestName = requestName;
+    }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public RESTRequest getRestRequest() {
+        return restRequest;
+    }
+
+    public void setRestRequest(RESTRequest restRequest) {
+        this.restRequest = restRequest;
+    }
+
+    public com.pickle.models.rest.RESTExpectedResponse getRESTExpectedResponse() {
+        return RESTExpectedResponse;
+    }
+
+    public void setRESTExpectedResponse(com.pickle.models.rest.RESTExpectedResponse RESTExpectedResponse) {
+        this.RESTExpectedResponse = RESTExpectedResponse;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof RESTOperationTestCase rest)) return false;
-        return Objects.equals(RESTRequest, rest.RESTRequest) && Objects.equals(RESTExpectedResponse, rest.RESTExpectedResponse) && Objects.equals(requestName, rest.requestName);
+        if (!(o instanceof RESTOperationTestCase that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(requestName, that.requestName) && Objects.equals(restRequest, that.restRequest) && Objects.equals(RESTExpectedResponse, that.RESTExpectedResponse);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(RESTRequest, RESTExpectedResponse, requestName);
+        return Objects.hash(id, requestName, restRequest, RESTExpectedResponse);
     }
 
     @Override
     public String toString() {
         return "Rest{" +
-                "httpRequest=" + RESTRequest +
+                "httpRequest=" + restRequest +
                 ", httpExpectedResponse=" + RESTExpectedResponse +
                 ", requestName='" + requestName + '\'' +
                 '}';
     }
 
-    @Override
-    public Map<String, ? extends OperationTestCase> getTestCases() {
-        return null;
-    }
-
-    public void setRequestName(String requestName) {
-        this.requestName = requestName;
-    }
 }
