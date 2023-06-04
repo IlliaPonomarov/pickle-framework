@@ -32,3 +32,25 @@
 [2023-06-04T18:03:58,968] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
 [2023-06-04T18:03:58,969] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
 [2023-06-04T18:03:58,970] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
+[2023-06-04T18:04:05,328] [INFO ] [main] com.pickle.Pickle: Starting Pickle using Java 17.0.5 with PID 2464 (C:\Users\hp\IdeaProjects\pickle-framework\target\classes started by hp in C:\Users\hp\IdeaProjects\pickle-framework)
+[2023-06-04T18:04:05,333] [INFO ] [main] com.pickle.Pickle: No active profile set, falling back to 1 default profile: "default"
+[2023-06-04T18:04:06,013] [INFO ] [main] com.pickle.Pickle: Started Pickle in 1.033 seconds (process running for 1.829)
+[2023-06-04T18:04:06,015] [INFO ] [main] com.pickle.utility.MyLogger: Starting Pickle ...
+[2023-06-04T18:04:06,015] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -i
+[2023-06-04T18:04:06,015] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
+[2023-06-04T18:04:06,015] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: -o
+[2023-06-04T18:04:06,015] [INFO ] [main] com.pickle.utility.MyLogger: ARGUMENT: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
+[2023-06-04T18:04:06,019] [INFO ] [main] com.pickle.utility.MyLogger: Parsing arguments ...
+[2023-06-04T18:04:06,024] [INFO ] [main] com.pickle.utility.MyLogger: Successfully created the output directory structure
+[2023-06-04T18:04:06,025] [INFO ] [main] com.pickle.utility.MyLogger: INPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/files/yaml
+[2023-06-04T18:04:06,025] [INFO ] [main] com.pickle.utility.MyLogger: OUTPUT PATH: C:/Users/hp/IdeaProjects/pickle-framework/src/test/java/testF/
+[2023-06-04T18:04:08,040] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test1.yaml
+[2023-06-04T18:04:08,178] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test1.yaml
+[2023-06-04T18:04:08,399] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-06-04T18:04:10,995] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-06-04T18:04:10,997] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test1-result fileCreated: true
+[2023-06-04T18:04:55,210] [INFO ] [main] com.pickle.utility.MyLogger: Parsing file: test2.yaml
+[2023-06-04T18:04:55,514] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE NAME: test2.yaml
+[2023-06-04T18:04:55,851] [INFO ] [main] com.pickle.utility.MyLogger: INPUT FILE EXTENSION: YAML
+[2023-06-04T18:04:56,208] [ERROR] [main] com.pickle.utility.MyLogger: Failed to delete the output file
+[2023-06-04T18:04:56,209] [INFO ] [main] com.pickle.utility.MyLogger: Path: C:\Users\hp\IdeaProjects\pickle-framework\src\test\java\testF\pickle-output\compare\test2-result fileCreated: true
