@@ -1,15 +1,13 @@
 package com.pickle;
 import com.pickle.models.OperationTestCase;
+import com.pickle.services.communications.RESTCommunication;
 import com.pickle.services.parsers.EndpointParser;
 import com.pickle.services.parsers.FileParser;
-import com.pickle.services.parsers.json.JsonEndpointParser;
 import com.pickle.services.parsers.parserFactories.EndpointParserFactory;
 import com.pickle.services.parsers.parserFactories.ParserFactory;
 import com.pickle.services.ArgsService;
 import com.pickle.services.parsers.fileParsers.DirectoryService;
 import com.pickle.services.parsers.fileParsers.FileService;
-import com.pickle.services.parsers.xml.XmlEndpointParser;
-import com.pickle.services.parsers.yaml.YamlEndpointParser;
 import com.pickle.utility.MyLogger;
 import com.pickle.utility.enums.ExtensionType;
 import org.apache.commons.cli.CommandLine;
@@ -17,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 
 import java.io.File;
 import java.util.*;
@@ -33,9 +30,6 @@ import java.util.*;
 public class Pickle implements CommandLineRunner {
 
     private final ArgsService argsService;
-
-    private final FileService fileService;
-
     private final DirectoryService directoryService;
     private final Map<UUID, Map<UUID, ? extends OperationTestCase>> operations = new HashMap<>();
 
@@ -43,14 +37,12 @@ public class Pickle implements CommandLineRunner {
     /**
      * The Pickle constructor
      * @param argsService the args service
-     * @param fileService the file service
      * @param directoryService the directory service
      */
 
     @Autowired
-    public Pickle(ArgsService argsService, FileService fileService, DirectoryService directoryService) {
+    public Pickle(ArgsService argsService, DirectoryService directoryService) {
         this.argsService = argsService;
-        this.fileService = fileService;
         this.directoryService = directoryService;
     }
 
@@ -113,6 +105,7 @@ public class Pickle implements CommandLineRunner {
                 MyLogger.logger.info(String.format("INPUT PATH: %s", inputPath));
                 MyLogger.logger.info(String.format("OUTPUT PATH: %s", outputAbsolutePath));
                 Optional<File[]> listOfFiles = Optional.ofNullable(new File(inputPath).listFiles());
+                RESTCommunication restCommunication = null;
 
                 if (listOfFiles.isEmpty()) {
                     MyLogger.logger.error("No files found in the input directory");
@@ -130,15 +123,19 @@ public class Pickle implements CommandLineRunner {
 
                     fileService.createOutputFileStructure();
 
-                    EndpointParserFactory parser = new ParserFactory(fileParser).getEndpointParserFactory();
+                    Optional<EndpointParserFactory> parser = Optional.ofNullable(new ParserFactory(fileParser).getEndpointParserFactory());
                     ExtensionType extensionType = fileParser.getInputExtensionType();;
                     Optional<? extends EndpointParser> endpointParser = Optional.empty();
 
+                    if (extensionType.equals(ExtensionType.NONE) || parser.isEmpty()) {
+                        MyLogger.logger.error(String.format("\nError: Unsupported file extension\nFile: %s",  file.getName()));
+                        return;
+                    }
 
                     switch (extensionType) {
-                        case YAML -> endpointParser = Optional.ofNullable(parser.createYamlEndpointParser(fileParser));
-                        case JSON -> endpointParser = Optional.ofNullable(parser.createJsonEndpointParser(fileParser));
-                        case XML  -> endpointParser = Optional.ofNullable(parser.createXmlEndpointParser(fileParser));
+                        case YAML -> endpointParser = Optional.ofNullable(parser.get().createYamlEndpointParser(fileParser));
+                        case JSON -> endpointParser = Optional.ofNullable(parser.get().createJsonEndpointParser(fileParser));
+                        case XML  -> endpointParser = Optional.ofNullable(parser.get().createXmlEndpointParser(fileParser));
                     }
 
                     endpointParser.ifPresent(endpoint -> {
@@ -146,9 +143,12 @@ public class Pickle implements CommandLineRunner {
                     });
 
                 });
+
+                restCommunication = new RESTCommunication(operations);
+                restCommunication.sendRequest();
             }
         } catch (NullPointerException e) {
-            MyLogger.logger.error("No input or output path provided");
+            MyLogger.logger.error("Error: " + e.getMessage());
             System.exit(1);
         }
     }

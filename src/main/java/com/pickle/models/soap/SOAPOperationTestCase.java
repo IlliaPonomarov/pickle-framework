@@ -21,7 +21,7 @@ public class SOAPOperationTestCase implements OperationTestCase {
     }
 
     @Override
-    public Object getTestCases() {
+    public OperationTestCase getTestCases() {
         return this;
     }
 

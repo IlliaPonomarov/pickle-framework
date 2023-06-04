@@ -2,5 +2,9 @@ package com.pickle.models;
 
 public interface OperationTestCase {
 
-    Object getTestCases();
+    OperationTestCase getTestCases();
+    String getRequestName();
+    void setRequestName(String requestName);
+    Object getId();
+
 }
