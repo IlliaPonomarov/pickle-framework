@@ -1,6 +1,10 @@
 package com.pickle.services.parsers.xml;
 
+import com.pickle.models.OperationTestCase;
 import com.pickle.services.parsers.FileParser;
+
+import java.util.Map;
+import java.util.UUID;
 
 public class SOAPXmlEndpointParser extends XmlEndpointParser{
     public SOAPXmlEndpointParser(FileParser fileParser) {
@@ -30,5 +34,10 @@ public class SOAPXmlEndpointParser extends XmlEndpointParser{
     @Override
     public void extractExepcted() {
 
+    }
+
+    @Override
+    public Map<UUID, ? extends OperationTestCase> createTestCase() {
+        return null;
     }
 }

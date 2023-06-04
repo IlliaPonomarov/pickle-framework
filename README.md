@@ -77,7 +77,7 @@
 ### 6.1 REST
 #### 6.1.1 YAML
 ```
-   restTestCase:
+   rest:
         requestName:
             request:
                   method: GET
@@ -99,7 +99,7 @@
 
 ### 6.1.2 JSON
 ```
-   "restTestCase": {
+   "rest": {
       "requestName": {
              "request": {
                  "method": "GET",
@@ -129,7 +129,7 @@
 
 ### 6.1.3 XML
 ```
-<restTestCase>
+<rest>
    <requestName>
           <request>
               <method>GET</method>
@@ -153,7 +153,7 @@
               </body>
           </expected-response>
    </requestName>
-</restTestCase>
+</rest>
 ```
 
 ## 6.2 SOAP

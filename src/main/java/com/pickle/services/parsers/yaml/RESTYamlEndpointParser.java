@@ -5,8 +5,8 @@ import com.pickle.models.rest.*;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.HeadersValue;
 import com.pickle.utility.enums.ProtocolType;
-import com.pickle.utility.enums.RestExpectedResponseValues;
-import com.pickle.utility.enums.RestRequestValue;
+import com.pickle.utility.enums.ExpectedResponseValues;
+import com.pickle.utility.enums.RequestValue;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
 import org.yaml.snakeyaml.Yaml;
@@ -67,33 +67,33 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      */
 
     public RESTOperationTestCase getOperationTestCase(Map.Entry<String, Object> operations, String requestName) {
-        RESTRequest RESTRequest = new RESTRequest();
-        RESTExpectedResponse RESTExpectedResponse = null;
+        RESTRequest restRequest = new RESTRequest();
+        RESTExpectedResponse restExpectedResponse = null;
 
-        String request = RestRequestValue.REQUEST.getValue();
-        String expectedResponse = RestExpectedResponseValues.EXPECTED_RESPONSE.getValue();
+        String requestField = RequestValue.REQUEST.getValue();
+        String expectedResponseField = ExpectedResponseValues.EXPECTED_RESPONSE.getValue();
 
         final Map<String, Object> operationFields = (Map<String, Object>) operations.getValue();
 
         // Get the request from the yaml file and create the request object
         Optional<Map.Entry<String, Object>> requestFields = operationFields.entrySet().stream()
-                .filter(requestInfo -> requestInfo.getKey().equals(request))
+                .filter(requestInfo -> requestInfo.getKey().equals(requestField))
                 .findFirst();
 
         // If the request is present, create the request object
         if (requestFields.isPresent())
-            RESTRequest = extractRequest(requestFields.get());
+            restRequest = extractRequest(requestFields.get());
 
         // Get the expected response from the yaml file and create the expected response object
         Optional<Map.Entry<String, Object>> expectedResponseEntry = operationFields.entrySet().stream()
-                .filter(requestInfo -> requestInfo.getKey().equals(expectedResponse))
+                .filter(requestInfo -> requestInfo.getKey().equals(expectedResponseField))
                 .findFirst();
 
         // If the expected response is present, create the expected response object
         if (expectedResponseEntry.isPresent())
-            RESTExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
+            restExpectedResponse = extractExpectedResponse(expectedResponseEntry.get());
 
-        return new RESTOperationTestCase(RESTRequest, RESTExpectedResponse, requestName);
+        return new RESTOperationTestCase(restRequest, restExpectedResponse, requestName);
     }
 
     /**
@@ -104,7 +104,7 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
 
     @Override
     public RESTRequest extractRequest(Map.Entry<String, Object> requestInfo) {
-        String headersValue = RestRequestValue.HEADERS.getValue();
+        String headersValue = RequestValue.HEADERS.getValue();
 
         Map<String, Object> requestData = (Map<String, Object>) requestInfo.getValue();
         Map<String, Object> params = new HashMap<>();
@@ -117,16 +117,16 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
         if (headersData.size() > 0)
             RESTHeaders = extractHeaders(headersData);
 
-        String url = getOptionalFieldValuesByKey(requestData, RestRequestValue.URL.getValue()).map(String::toString)
+        String url = getOptionalFieldValuesByKey(requestData, RequestValue.URL.getValue()).map(String::toString)
                 .orElseThrow( () -> new IllegalArgumentException("URL not found") );
 
-        HttpMethod method = getMandatoryFieldValuesByKey( requestData, RestRequestValue.METHOD.getValue() )
+        HttpMethod method = getMandatoryFieldValuesByKey( requestData, RequestValue.METHOD.getValue() )
                 .map(HttpMethod::valueOf)
                 .orElseThrow( () -> new IllegalArgumentException("Method not found") );
 
-        String body = getOptionalFieldValuesByKey(requestData, RestRequestValue.BODY.getValue()).map(String::toString).orElse("");
+        String body = getOptionalFieldValuesByKey(requestData, RequestValue.BODY.getValue()).map(String::toString).orElse("");
 
-        params = ((Map<?, ?>) requestInfo.getValue()).get(RestRequestValue.PARAMS.getValue()) != null ?
+        params = ((Map<?, ?>) requestInfo.getValue()).get(RequestValue.PARAMS.getValue()) != null ?
                 (Map<String, Object>) ((Map<?, ?>) requestInfo.getValue()).get("params") : new HashMap<>();
 
         return new RESTRequest.HttpRequestBuilder(method, url)
@@ -193,9 +193,9 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
         ));
 
         headers.forEach((key, value) -> {
-            if (headerValues.get(key) != null) {
+            if (headerValues.get(key) != null)
                 headerValues.put(key, value.toString());
-            }
+
         });
 
         return new RESTHeaders.HttpHeaderBuilder()
@@ -220,9 +220,9 @@ public class RESTYamlEndpointParser extends YamlEndpointParser {
      * @return
      */
     public RESTExpectedResponse extractExpectedResponse(Map.Entry<String, Object> requestInfo) {
-        String body = RestExpectedResponseValues.BODY.getValue();
-        String statusCode = RestExpectedResponseValues.STATUS_CODE.getValue();
-        String headers = RestExpectedResponseValues.HEADERS.getValue();
+        String body = ExpectedResponseValues.BODY.getValue();
+        String statusCode = ExpectedResponseValues.STATUS_CODE.getValue();
+        String headers = ExpectedResponseValues.HEADERS.getValue();
 
         // Get the expected response
         Map<String, Object> expectedResponseData = (Map<String, Object>) requestInfo.getValue();

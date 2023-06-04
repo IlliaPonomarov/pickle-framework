@@ -1,6 +1,10 @@
 package com.pickle.services.parsers.json;
 
+import com.pickle.models.OperationTestCase;
 import com.pickle.services.parsers.FileParser;
+
+import java.util.Map;
+import java.util.UUID;
 
 public class RESTJsonEndpointParser extends JsonEndpointParser  {
     public RESTJsonEndpointParser(FileParser fileParser) {
@@ -30,5 +34,10 @@ public class RESTJsonEndpointParser extends JsonEndpointParser  {
     @Override
     public void extractExepcted() {
 
+    }
+
+    @Override
+    public Map<UUID, ? extends OperationTestCase> createTestCase() {
+        return null;
     }
 }

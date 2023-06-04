@@ -1,8 +1,13 @@
 package com.pickle.services.parsers.xml;
 
+import com.pickle.models.OperationTestCase;
+import com.pickle.services.parsers.EndpointParser;
 import com.pickle.services.parsers.FileParser;
 
-public abstract class XmlEndpointParser {
+import java.util.Map;
+import java.util.UUID;
+
+public abstract class XmlEndpointParser implements EndpointParser {
     private final FileParser fileParser;
 
     public XmlEndpointParser(FileParser fileParser) {
@@ -23,4 +28,5 @@ public abstract class XmlEndpointParser {
         return fileParser;
     }
 
+    public abstract Map<UUID, ? extends OperationTestCase> createTestCase();
 }

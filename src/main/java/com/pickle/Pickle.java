@@ -1,4 +1,6 @@
 package com.pickle;
+import com.pickle.models.OperationTestCase;
+import com.pickle.services.parsers.EndpointParser;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.services.parsers.json.JsonEndpointParser;
 import com.pickle.services.parsers.parserFactories.EndpointParserFactory;
@@ -18,8 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * The InputNotFoundException class for the input path
@@ -36,6 +37,8 @@ public class Pickle implements CommandLineRunner {
     private final FileService fileService;
 
     private final DirectoryService directoryService;
+    private final Map<UUID, Map<UUID, ? extends OperationTestCase>> operations = new HashMap<>();
+
 
     /**
      * The Pickle constructor
@@ -120,40 +123,27 @@ public class Pickle implements CommandLineRunner {
                     String inputAbsolutePath = file.getAbsolutePath();
                     FileParser fileParser = new FileParser(inputAbsolutePath, outputAbsolutePath);
                     FileService fileService = new FileService(fileParser, directoryService);
+
                     MyLogger.logger.info(String.format("Parsing file: %s", file.getName()));
                     MyLogger.logger.info("INPUT FILE NAME: " + fileParser.getInputFileName());
                     MyLogger.logger.info("INPUT FILE EXTENSION: " + fileParser.getInputExtensionType());
+
                     fileService.createOutputFileStructure();
 
                     EndpointParserFactory parser = new ParserFactory(fileParser).getEndpointParserFactory();
-                    ExtensionType extensionType = fileParser.getInputExtensionType();
-                    Optional<YamlEndpointParser> yamlEndpointParser = Optional.empty();
-                    Optional<XmlEndpointParser> xmlEndpointParser = Optional.empty();
-                    Optional<JsonEndpointParser> jsonEndpointParser = Optional.empty();
+                    ExtensionType extensionType = fileParser.getInputExtensionType();;
+                    Optional<? extends EndpointParser> endpointParser = Optional.empty();
 
-                    if (extensionType.equals(ExtensionType.YAML)) {
-                        yamlEndpointParser = Optional.ofNullable(parser.createYamlEndpointParser(fileParser));
 
-                        yamlEndpointParser.ifPresent(parser1 -> {
-                            parser1.createTestCase();
-                        });
+                    switch (extensionType) {
+                        case YAML -> endpointParser = Optional.ofNullable(parser.createYamlEndpointParser(fileParser));
+                        case JSON -> endpointParser = Optional.ofNullable(parser.createJsonEndpointParser(fileParser));
+                        case XML  -> endpointParser = Optional.ofNullable(parser.createXmlEndpointParser(fileParser));
                     }
 
-                    if (extensionType.equals(ExtensionType.JSON)) {
-                        jsonEndpointParser = Optional.ofNullable(parser.createJsonEndpointParser(fileParser));
-                        jsonEndpointParser.ifPresent(parser1 -> {
-                            parser1.parseFile();
-                        });
-                    }
-
-
-                    if (extensionType.equals(ExtensionType.XML)) {
-                        xmlEndpointParser = Optional.ofNullable(parser.createXmlEndpointParser(fileParser));
-                        xmlEndpointParser.ifPresent(parser1 -> {
-                            parser1.parseFile();
-                        });
-                    }
-
+                    endpointParser.ifPresent(endpoint -> {
+                        operations.put(UUID.randomUUID(), endpoint.createTestCase()) ;
+                    });
 
                 });
             }

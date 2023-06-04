@@ -1,8 +1,13 @@
 package com.pickle.services.parsers.json;
 
+import com.pickle.models.OperationTestCase;
+import com.pickle.services.parsers.EndpointParser;
 import com.pickle.services.parsers.FileParser;
 
-public abstract class JsonEndpointParser {
+import java.util.Map;
+import java.util.UUID;
+
+public abstract class JsonEndpointParser implements EndpointParser {
 
     private final FileParser fileParser;
 
@@ -23,4 +28,5 @@ public abstract class JsonEndpointParser {
         return fileParser;
     }
 
+    public abstract Map<UUID,? extends OperationTestCase> createTestCase();
 }

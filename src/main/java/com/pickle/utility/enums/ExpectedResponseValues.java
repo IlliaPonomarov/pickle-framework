@@ -1,21 +1,18 @@
 package com.pickle.utility.enums;
 
-public enum RestRequestValue {
-    REQUEST("request"),
-    URL("url"),
+public enum ExpectedResponseValues {
+    EXPECTED_RESPONSE("expected-response"),
+    STATUS_CODE("status"),
     BODY("body"),
-    METHOD("method"),
-    HEADERS("headers"),
-    PARAMS("params");
+    HEADERS("headers");
 
     private final String value;
 
-    RestRequestValue(String value) {
+    ExpectedResponseValues(String value) {
         this.value = value;
     }
 
     public String getValue() {
         return value;
     }
-
 }

@@ -9,14 +9,14 @@ public class SOAPOperationTestCase implements OperationTestCase {
 
     private final UUID id;
     private String requestName;
-    private SOAPHeaders soapHeaders;
+    private SOAPExpectedResponse soapExpectedResponse;
     private SOAPRequest soapRequest;
 
 
-    public SOAPOperationTestCase(String requestName, SOAPHeaders soapHeaders, SOAPRequest soapRequest) {
+    public SOAPOperationTestCase(String requestName, SOAPExpectedResponse soapExpectedResponse, SOAPRequest soapRequest) {
         this.id = UUID.randomUUID();
         this.requestName = requestName;
-        this.soapHeaders = soapHeaders;
+        this.soapExpectedResponse = soapExpectedResponse;
         this.soapRequest = soapRequest;
     }
 
@@ -37,12 +37,12 @@ public class SOAPOperationTestCase implements OperationTestCase {
         this.requestName = requestName;
     }
 
-    public SOAPHeaders getSoapHeaders() {
-        return soapHeaders;
+    public SOAPExpectedResponse getSoapExpectedResponse() {
+        return soapExpectedResponse;
     }
 
-    public void setSoapHeaders(SOAPHeaders soapHeaders) {
-        this.soapHeaders = soapHeaders;
+    public void setSoapExpectedResponse(SOAPExpectedResponse soapExpectedResponse) {
+        this.soapExpectedResponse = soapExpectedResponse;
     }
 
     public SOAPRequest getSoapRequest() {
@@ -57,21 +57,14 @@ public class SOAPOperationTestCase implements OperationTestCase {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof SOAPOperationTestCase that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(requestName, that.requestName) && Objects.equals(soapHeaders, that.soapHeaders) && Objects.equals(soapRequest, that.soapRequest);
+        return Objects.equals(id, that.id) && Objects.equals(requestName, that.requestName) && Objects.equals(soapExpectedResponse, that.soapExpectedResponse) && Objects.equals(soapRequest, that.soapRequest);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, requestName, soapHeaders, soapRequest);
+        return Objects.hash(id, requestName, soapExpectedResponse, soapRequest);
     }
 
-    @Override
-    public String toString() {
-        return "SOAPOperationTestCase{" +
-                "id=" + id +
-                ", requestName='" + requestName + '\'' +
-                ", soapHeaders=" + soapHeaders +
-                ", soapRequest=" + soapRequest +
-                '}';
-    }
+
+
 }

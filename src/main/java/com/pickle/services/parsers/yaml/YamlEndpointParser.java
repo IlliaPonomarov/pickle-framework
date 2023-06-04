@@ -4,6 +4,7 @@ import com.pickle.models.ExpectedResponse;
 import com.pickle.models.Headers;
 import com.pickle.models.OperationTestCase;
 import com.pickle.models.Request;
+import com.pickle.services.parsers.EndpointParser;
 import com.pickle.services.parsers.FileParser;
 import com.pickle.utility.enums.ProtocolType;
 import org.yaml.snakeyaml.Yaml;
@@ -14,7 +15,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public abstract class YamlEndpointParser{
+public abstract class YamlEndpointParser implements EndpointParser {
 
     private final FileParser fileParser;
     protected final Yaml yaml;
